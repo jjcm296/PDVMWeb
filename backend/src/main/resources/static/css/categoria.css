@@ -1,0 +1,65 @@
+.inputCategoria {
+    width: 310px;
+    height: 550px;
+    border-radius: 5px;
+    gap: 20px;
+    margin: 5px;
+    flex-direction: column;
+}
+
+#inputAgregarCategoria {
+    display: none;
+}
+
+.cancelar-categoria {
+    background-color: grey;
+}
+
+.guardar-categoria, .cancelar-categoria {
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    color: white;
+    border: 1px solid black;
+}
+
+.guardar-categoria {
+    background-color: dodgerblue;
+    margin-left: auto;
+}
+
+.guardar-categoria:hover {
+    background-color: deepskyblue;
+}
+
+.botonFiltrar {
+    width: 90px;
+    height: 35px;
+    background-color: #cccccc;
+    border-radius: 5px;
+}
+
+.botonEliminarCategoria {
+    background-color: #ef0303;
+    border-radius: 5px;
+    color: white;
+}
+.botonEditarCategoria {
+    background-color: #11be11;
+    border-radius: 5px;
+    color: white;
+}
+.botonEditarCategoria:hover, .botonEliminarCategoria:hover {
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+.botonEditarCategoria:hover {
+    background-color: #0ea227;
+}
+.botonEliminarCategoria:hover {
+    background-color: #BE3017;
+}
+
+.div {
+    display: flex;
+}
+

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Punto de Venta</title>
+  <link rel="stylesheet" th:href="@{/css/General.css}">
+  <link rel="stylesheet" th:href="@{/css/Pdv.css}">
+  <link rel="stylesheet" th:href="@{/css/Inventario.css}">
+  <link rel="stylesheet" th:href="@{/css/Sumistrado.css}">
+  <link rel="stylesheet" th:href="@{/css/Productos.css}">
+  <link rel="stylesheet" th:href="@{/css/categoria.css}">
+  <link rel="stylesheet" th:href="@{/css/Alertas.css}">
+  <link rel="stylesheet" th:href="@{/css/Usuario.css}">
+</head>
+<body>
+<!-- Barra de navegación -->
+<header class="navbar">
+  <nav>
+    <ul class="menu">
+      <li><a href="#" class="menu-link" data-target="pdv">🛒 PDV</a></li> <!-- Cambiado a "pdv" -->
+      <li><a href="#" class="menu-link" data-target="inventario">📝 Inventario</a></li>
+      <li><a href="#" class="menu-link" data-target="suministrado">🚚 Suministrado</a></li>
+      <li><a href="#" class="menu-link" data-target="alertas">🔔 Alertas</a></li>
+      <li><a href="#" class="menu-link" data-target="productos">🏷️ Productos</a></li>
+      <li><a href="#" class="menu-link" data-target="administrador">👤 Usuario</a></li>
+    </ul>
+  </nav>
+
+  <div class="ico ns">
+    <span id="icon-bell" class="icon">🔔</span>
+    <span id="icon-help" class="icon">❓</span>
+    <span id="icon-phone" class="icon">📱</span>
+  </div>
+</header>
+
+<!-- Contenedor principal con las secciones -->
+<main class="container">
+  <!-- Sección de PDV -->
+  <section id="pdv" class="section">
+    <div class="buscador">
+      <input id="buscadorPdv" type="text" placeholder="🔍︎ Buscar">
+      <button class="botonAgregar" id="carritoProducto">Agregar</button>
+    </div>
+
+    <div class="generarVenta">
+      <div class="carrito">
+        <h3>🛒 Carrito de compras</h3>
+        <div class="carrito-scroll">
+          <table>
+            <thead>
+            <tr>
+              <th>No</th>
+              <th>Producto</th>
+              <th>Código barras</th>
+              <th>Precio</th>
+              <th>Cantidad</th>
+              <th>Subtotal</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+
+        <button class="eliminarCarrito">Eliminar Todo</button>
+      </div>
+
+      <div class="resumenPago">
+        <h2>Resumen de Pago</h2>
+        <div class="total-amount">$0.00</div>
+        <input type="number" id="payment" placeholder="Monto de pago">
+        <button class="accept-sale-btn">Aceptar Venta</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de Inventario -->
+  <section id="inventario" class="section" style="display: none;">
+    <div class="divGeneral">
+      <h1>Inventario</h1>
+
+      <div class="buscador">
+        <input class="inputBuscador" type="text" placeholder="🔍︎ Buscar">
+        <button class="botonCalendario">📅</button>
+        <button class="botonInventario">Inventario</button>
+        <button class="botonInventario">Ventas</button>
+        <button class="botonInventario">Suministrado</button>
+      </div>
+
+      <div class="contenedorInventario">
+        <div class="contenedorScrollInventario">
+          <table>
+            <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Código de barras</th>
+              <th>Vendidos</th>
+              <th>Suministrados</th>
+              <th>Stock</th>
+            </tr>
+            </thead>
+            <tbody id="tablaInventario">
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de Suministrado -->
+  <section id="suministrado" class="section" style="display: none;">
+    <div class="divGeneral">
+      <h1>Suministrado</h1>
+      <div class="buscador">
+        <input class="inputBuscador" type="text" placeholder="🔍︎ Buscar" style="width: 55%; height: 28px">
+      </div>
+
+      <div class="contenedorPrincipalS">
+        <div class="contenedorProductosS">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de Alertas -->
+  <section id="alertas" class="section" style="display: none;">
+    <div class="divGeneral">
+      <h1>Alertas</h1>
+      <p>Contenido relacionado con las Alertas...</p>
+    </div>
+  </section>
+
+  <!-- Sección de Productos -->
+  <section id="productos" class="section" style="display: none;">
+    <div class="divGeneral">
+      <h1>Productos</h1>
+
+      <div class="buscador">
+        <input class="inputBuscador" type="text" placeholder="🔍︎ Buscar">
+        <select onchange="ordenarProductos()" class="botonFiltrar" id="SelectFiltrarProductos" required></select>
+        <button onclick="mostrarAgregarProducto()" id="nuevoProducto" class="botonAgregar">Agregar</button>
+      </div>
+
+      <div class="contenedorPrincipalP">
+        <div class="contenedorProductos">
+          <div class="scrollProductos">
+            <table>
+              <thead>
+              <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Código de barras</th>
+                <th>Precio</th>
+                <th>Categoria</th>
+                <th>Marca</th>
+              </tr>
+              </thead>
+              <tbody id="tablaProducto">
+
+              </tbody>
+            </table>
+          </div>
+
+          <button onclick="mostrarSeccionCategorias()" id="botonCategoria" class="botonCategoria">Categorías</button>
+        </div>
+
+        <div class="contenedorInputProductos">
+          <div id="inputAgregarProducto" class="inputProducto">
+            <form id="formAgregarProducto">
+              <div class="divInput">
+                <label>Nombre:</label>
+                <input class="input" id="nombre" name="nombre" required><br>
+              </div>
+              <div class="divInput">
+                <label>Código De Barras:</label>
+                <input class="input" type="text" id="codigoBarras" name="codigoBarras" required><br>
+              </div>
+              <div class="divInput">
+                <label>Precio:</label>
+                <input class="input" type="text" id="precio" name="precio" required><br>
+              </div>
+              <div class="divInput">
+                <label>Categoría:</label>
+                <select  class="DCategorias" id="Categorias" name="categoria" required>
+                  <option value="">Selecciona una categoría</option>
+                </select>
+              </div>
+              <div class="divInput">
+                <label>Marca:</label>
+                <input class="input" type="text" id="marca" name="marca" required><br>
+              </div>
+              <div class="divInput">
+                <label>Descripción</label>
+                <input class="inputDescripcion" type="text" id="descripcion" name="descripcion" required><br>
+              </div>
+              <div class="divBotones">
+                <button onclick="cancelarAgregarProducto()" class="cancelar-producto">Cancelar</button>
+                <button type="button" onclick="crearProducto()" class="guardar-producto">Guardar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección categorías -->
+  <section id="Scategoria" class="categoria" style="display: none">
+    <div class="divGeneral">
+      <h1>Categorías</h1>
+
+      <div class="buscador">
+        <input class="inputBuscador" type="text" placeholder="🔍︎ Buscar">
+        <select onchange="ordenarCategorias()" class="botonFiltrar" id="SelectFiltrarCategorias" required></select>
+        <button onclick="mostrarAgregarCategoria()" id="agregarCategoria" class="botonAgregar">Agregar</button>
+      </div>
+
+      <div class="contenedorPrincipalP">
+        <div class="contenedorProductos">
+          <div class="scrollProductos">
+            <table>
+              <thead>
+              <tr>
+                <th>Nombre</th>
+              </tr>
+              </thead>
+              <tbody id="tablaCategorias">
+
+              </tbody>
+            </table>
+          </div>
+
+          <button onclick="mostrarApartadoProductos()" id="botonProductos" class="botonCat`egoria">Productos</button>
+        </div>
+
+        <div class="contenedorInputProductos">
+          <div id="inputAgregarCategoria" class="inputProducto">
+            <form id="formAgregarCategoria">
+              <div class="divInput">
+                <label>Nombre de la categoría:</label>
+                <input class="input" id="nombreCategoria" name="nombreCategoria" required><br>
+              </div>
+              <div class="divBotones">
+                <button onclick="cancelarAgregarCategoria()" class="cancelar-producto">Cancelar</button>
+                <button type="button" onclick="agregarCategoria()" class="guardar-producto">Guardar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="/js/app.js"></script>
+<script src="/js/Categoria.js"></script>
+
+</body>
+</html>

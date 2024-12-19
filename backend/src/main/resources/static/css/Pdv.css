@@ -1,0 +1,376 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.divPrincipal {
+    background-color: #003366;
+}
+.navbar {
+    background-color: #003366;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 15px;
+}
+
+.menu li {
+    display: inline;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.icons {
+    display: flex;
+    gap: 10px;
+}
+
+.icons span {
+    color: white;
+    font-size: 20px;
+}
+
+/* Main container */
+#pdv {
+    padding: 20px;
+}
+
+/* Barra de busqueda */
+.buscador {
+    margin-bottom: 10px;
+    display: flex;
+    gap: 22px;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.inputBuscador {
+    width: 770px;
+    height: 28px;
+    border-radius: 5px;
+}
+
+.botonAgregar {
+    width: 90px;
+    height: 35px;
+    border-radius: 5px;
+    background-color: mediumspringgreen;
+    border: 1px solid black;
+}
+
+.botonAgregar:hover {
+    background-color: mediumaquamarine;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+#nuevoProducto {
+    display: block;
+}
+
+.generarVenta{
+    margin-bottom: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+/* Contenedor principal del carrito */
+.carrito {
+    width: 85%;
+    height: 640px;
+    border-radius: 5px;
+    background-color: lightgrey;
+    border: 1px solid black;
+}
+
+.carrito-scroll {
+    max-height: 490px; /* Ajusta la altura máxima según tus necesidades */
+    overflow-y: auto; /* Habilita el scroll vertical */
+    margin: 10px;
+    border-bottom: 1px solid black;
+    z-index: 0;
+    border-radius: 5px;
+}
+
+.carrito-scroll table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: lightgrey;
+}
+
+/* Estilo para el encabezado para que sea sticky */
+.carrito-scroll th {
+    position: sticky; /* Mantiene el encabezado en su lugar al hacer scroll */
+    top: 0; /* Fija la posición en la parte superior del contenedor */
+    background-color: #f4f4f4; /* Color de fondo para el encabezado */
+    z-index: 1; /* Asegura que el encabezado esté por encima de otros elementos */
+    box-shadow: 0 2px 2px -2px gray;
+    border: 1px solid black;
+}
+
+.carrito-scroll td {
+    border: 1px solid black;
+}
+
+.carrito-contenido th, .carrito-contenido td {
+    border: 1px solid black; /* Bordes para las celdas */
+    padding: 8px; /* Espaciado interno en celdas */
+    text-align: left; /* Alineación del texto a la izquierda */
+}
+.carrito-scroll tr:hover {
+    background-color: darkgray; /* Cambia el color al pasar el mouse sobre la fila */
+}
+
+.cantidad-input {
+    width: 20px; /* Ajusta el ancho del input si es necesario */
+    height: 25px;
+    padding: 5px;
+    margin: 0;
+}
+
+.cantidad-container {
+    width: 120px ;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.eliminaProducto {
+    width: 60px;
+    height: 25px;
+    padding: 2px;
+    background-color: #ff4b4b;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.eliminaProducto:hover {
+    background-color: #d62828;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.search-bar input {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-bar button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #003366;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #005580;
+}
+/* Main Content */
+
+.main-content {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+
+/* Left Panel */
+
+.cart h3 {
+    margin-bottom: 10px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    margin-bottom: 10px;
+}
+
+.eliminarCarrito {
+    background-color: #ff4b4b;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid black;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+    align-self: flex-start;
+
+
+    position: absolute; /* Posiciona el botón absolutamente */
+    bottom: 40px; /* Mueve el botón 10px desde la parte inferior */
+    right: 540px;
+}
+
+/* Efecto al pasar el cursor por encima */
+.eliminarCarrito:hover {
+    background-color: #e63946;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Efecto al hacer clic */
+.eliminarCarrito:active {
+    background-color: #d62828;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+th, td {
+    border: 1px solid #ccc;
+    padding: 5px;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* Right Panel */
+.resumenPago {
+    width: 40%;
+    height: 600px;
+    background-color: #c0c0c0;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+}
+
+.payment-summary {
+    text-align: center;
+}
+
+.total-amount {
+    font-size: 60px;
+    margin: 20px 0;
+}
+
+input[type="number"] {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.accept-sale-btn {
+    background-color: #003366;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius:5px;
+    font-size: 18px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.accept-sale-btn:hover {
+    background-color: #005580;
+}
+
+/* Recuadro gris en el lado derecho */
+.right-panel-content {
+    background-color: #f0f0f0;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #003366;
+    color: white;
+}
+
+.btn-decrease, .btn-increase {
+    background-color: #e63946;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.btn-decrease:hover, .btn-increase:hover {
+    background-color: #d62828;
+}
+
+/* apartado productos*/
+.contenedorPrincipalP {
+    margin-bottom: 10px;
+    display: flex;
+    gap: 10px;
+}
+.contenedorProductos{
+    width: 70%;
+    height: 580px;
+    display:grid;
+    gap: 10px;
+    background-color: lightgrey;
+    border: 1px solid black;
+    border-radius: 5px;
+
+}
+.scrollProductos {
+    height: 495px;
+    max-height: 495px; /* Ajusta la altura máxima según tus necesidades */
+    overflow-y: auto; /* Habilita el scroll vertical */
+    border-bottom: 1px solid black;
+    z-index: 0;
+    border-radius: 5px;
+    background-color: lightgrey;
+}
+
+.scrollProductos table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: lightgrey;
+}
+
+/* Estilo para el encabezado para que sea sticky */
+.scrollProductos th {
+    position: sticky; /* Mantiene el encabezado en su lugar al hacer scroll */
+    top: 0; /* Fija la posición en la parte superior del contenedor */
+    background-color: #f4f4f4; /* Color de fondo para el encabezado */
+    z-index: 1; /* Asegura que el encabezado esté por encima de otros elementos */
+    box-shadow: 0 2px 2px -2px gray;
+    border: 1px solid black;
+}
+
+.scrollProductos td {
+    border: 1px solid black;
+}
+
+.scrollProductos th, .scrollProductos td {
+    border: 1px solid black; /* Bordes para las celdas */
+    padding: 8px; /* Espaciado interno en celdas */
+    text-align: left; /* Alineación del texto a la izquierda */
+}
+.scrollProductos tr:hover {
+    background-color: darkgray; /* Cambia el color al pasar el mouse sobre la fila */
+}

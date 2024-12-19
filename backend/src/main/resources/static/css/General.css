@@ -1,0 +1,25 @@
+.divGeneral {
+    width: 1500px;
+    height: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.menu-link, .icon {
+    border-radius: 5px;
+}
+.menu-link:hover, .icon:hover {
+    background-color: #1A4D80;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+button {
+    cursor: pointer;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+    transform: translateY(4px);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}
