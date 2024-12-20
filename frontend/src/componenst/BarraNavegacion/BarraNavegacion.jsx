@@ -13,7 +13,6 @@ const BarraNavegacion = () => {
                         <li id="item">🚚 Suministro</li>
                         <li id="item">🔔 Alertas</li>
                         <li id="item">🏷️ Productos</li>
-                        <li id="item">👤 Usuario</li>
                     </ul>
                 </nav>
             </div>
@@ -23,6 +22,8 @@ const BarraNavegacion = () => {
                         <li id="item">🔔</li>
                         <li id="item">📱</li>
                         <li id="item">❓</li>
+                        <button className="login-button">
+                        </button>
                     </ul>
                 </nav>
             </div>
