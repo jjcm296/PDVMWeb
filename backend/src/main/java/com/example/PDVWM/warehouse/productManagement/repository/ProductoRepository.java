@@ -1,13 +1,11 @@
-package com.example.PDVWM.repository;
+package com.example.PDVWM.warehouse.productManagement.repository;
 
-import com.example.PDVWM.model.Producto;
-import org.hibernate.annotations.Parameter;
+import com.example.PDVWM.warehouse.productManagement.model.Producto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.lang.invoke.CallSite;
 import java.util.List;
 
 @Repository

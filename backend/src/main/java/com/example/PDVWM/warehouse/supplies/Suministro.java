@@ -1,5 +1,6 @@
-package com.example.PDVWM.model;
+package com.example.PDVWM.warehouse.supplies;
 
+import com.example.PDVWM.warehouse.productManagement.model.Producto;
 import jakarta.persistence.*;
 
 import java.time.LocalTime;

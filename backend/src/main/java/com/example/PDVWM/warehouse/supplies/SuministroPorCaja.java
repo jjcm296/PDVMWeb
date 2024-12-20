@@ -1,6 +1,6 @@
-package com.example.PDVWM.model;
+package com.example.PDVWM.warehouse.supplies;
 
-public class SuministroPorCaja extends Suministro{
+public class SuministroPorCaja extends Suministro {
     private int unidadPorCaja;
     private int cantidadDeCajas;
 

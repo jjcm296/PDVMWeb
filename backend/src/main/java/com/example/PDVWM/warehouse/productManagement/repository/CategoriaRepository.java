@@ -1,7 +1,6 @@
-package com.example.PDVWM.repository;
+package com.example.PDVWM.warehouse.productManagement.repository;
 
-import com.example.PDVWM.model.Categoria;
-import com.example.PDVWM.model.Producto;
+import com.example.PDVWM.warehouse.productManagement.model.Categoria;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

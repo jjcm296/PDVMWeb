@@ -1,4 +1,6 @@
-package com.example.PDVWM.model;
+package com.example.PDVWM.warehouse.pdv;
+
+import com.example.PDVWM.warehouse.productManagement.model.Producto;
 
 import java.time.LocalDate;
 import java.util.Date;

@@ -1,7 +1,7 @@
-package com.example.PDVWM.controller;
+package com.example.PDVWM.warehouse.productManagement.controller;
 
-import com.example.PDVWM.model.Categoria;
-import com.example.PDVWM.service.CategoriaService;
+import com.example.PDVWM.warehouse.productManagement.service.CategoriaService;
+import com.example.PDVWM.warehouse.productManagement.model.Categoria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

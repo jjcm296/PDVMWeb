@@ -1,4 +1,4 @@
-package com.example.PDVWM.model;
+package com.example.PDVWM.notofications;
 
 import java.time.LocalTime;
 import java.util.Date;

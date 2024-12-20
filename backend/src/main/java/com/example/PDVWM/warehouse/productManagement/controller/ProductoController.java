@@ -1,13 +1,12 @@
-package com.example.PDVWM.controller;
+package com.example.PDVWM.warehouse.productManagement.controller;
 
-import com.example.PDVWM.model.Categoria;
-import com.example.PDVWM.model.Producto;
-import com.example.PDVWM.repository.CategoriaRepository;
-import com.example.PDVWM.repository.ProductoRepository;
-import com.example.PDVWM.service.ProductoService;
+import com.example.PDVWM.warehouse.productManagement.service.ProductoService;
+import com.example.PDVWM.warehouse.productManagement.model.Categoria;
+import com.example.PDVWM.warehouse.productManagement.model.Producto;
+import com.example.PDVWM.warehouse.productManagement.repository.CategoriaRepository;
+import com.example.PDVWM.warehouse.productManagement.repository.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 

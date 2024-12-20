@@ -1,7 +1,7 @@
-package com.example.PDVWM.service;
+package com.example.PDVWM.warehouse.productManagement.service;
 
-import com.example.PDVWM.model.Producto;
-import com.example.PDVWM.repository.ProductoRepository;
+import com.example.PDVWM.warehouse.productManagement.model.Producto;
+import com.example.PDVWM.warehouse.productManagement.repository.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
