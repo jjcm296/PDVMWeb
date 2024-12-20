@@ -1,0 +1,43 @@
+button {
+    cursor: pointer;
+}
+
+.BarraNavegacion {
+    display: flex;
+    height: 45px;
+    background-color: darkblue;
+    justify-content: space-between;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    height: 100%;
+}
+.menu span {
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0 10px;
+}
+.items {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap: 30px;
+    cursor: pointer;
+    font-family: 'Arial', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    color: white;
+}
+#item {
+    padding: 5px 10px;
+}
+#item:hover {
+    border-radius: 5px;
+    background-color: blue;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
