@@ -1,10 +1,10 @@
-package com.example.PDVWM.warehouse.accountManagement;
+package com.example.PDVWM.accountManagement;
 
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="Comerciante")
-public class Comerciante {
+@Table(name="Cuenta")
+public class Cuenta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -13,12 +13,15 @@ public class Comerciante {
     @Column(name="correoElectronico")
     private String correoElectronico;
 
+    @Column(name="userName")
+    private String userName;
+
     @Column(name="contrasena")
     private String contrasena;
 
-    public Comerciante() {}
+    public Cuenta() {}
 
-    public Comerciante(String correoElectronico, String contrasena) {
+    public Cuenta(String correoElectronico, String contrasena) {
         this.correoElectronico = correoElectronico;
         this.contrasena = contrasena;
     }
