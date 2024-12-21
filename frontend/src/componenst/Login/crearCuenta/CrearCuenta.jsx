@@ -19,40 +19,12 @@ const CrearCuenta = () => {
     };
 
     return (
-        <header className="registrarse">
+        <header className="crear-cuenta">
             <div className="div-text">
                 <h1 className="titulo">crear cuenta</h1>
                 <p className="texto">Ingresa tus datos para que seas parte de PDVW</p>
             </div>
             <form action="" className="datos-usuario">
-                <div className="campo-entrada">
-                    <input className="input-campo" type="text" id="nombre" required/>
-                    <label htmlFor="nombre">Nombre</label>
-                </div>
-                <div className="campo-entrada">
-                    <input className="input-campo" type="text" id="apellido-paterno" required/>
-                    <label htmlFor="nombre">Apellido paterno</label>
-                </div>
-                <div className="campo-entrada">
-                    <input className="input-campo" type="text" id="apellido-materno" required/>
-                    <label htmlFor="nombre">Apellido materno</label>
-                </div>
-                <div className="campo-entrada">
-                    <select className="input-campo" id="genero" required>
-                        <option value="" disabled selected hidden></option>
-                        <option value="masculino">Masculino</option>
-                        <option value="femenino">Femenino</option>
-                        <option value="otro">Mayate</option>
-                        <option value="otro">Otro/Prefiero no decirlo</option>
-                    </select>
-                    <label htmlFor="genero">Género</label>
-                </div>
-
-                <div className="campo-entrada">
-                    <input className="input-campo" type="text" id="telefono" required/>
-                    <label htmlFor="telefono">Télefono</label>
-                </div>
-
                 <div className="campo-entrada">
                     <input className="input-campo" type="text" id="user-name" required/>
                     <label htmlFor="nombre">User name</label>
@@ -112,7 +84,7 @@ const CrearCuenta = () => {
                     <p>Deseo recibir promociones exclusivas por correo electrónico</p>
                 </div>
 
-                <button className="boton-registrarse">Crear cuenta</button>
+                <button onClick={() => navigate("/register-user")} className="boton-registrarse">Crear cuenta</button>
                 <h4 className="h4">¿Ya tienes cuenta?</h4>
                 <button
                     onClick={() => navigate("/login")} className="boton-iniciar-sesion">Iniciar sesión
