@@ -1,4 +1,4 @@
-package com.example.PDVWM.accountManagement;
+package com.example.PDVWM.accountManagement.model;
 
 import jakarta.persistence.*;
 
