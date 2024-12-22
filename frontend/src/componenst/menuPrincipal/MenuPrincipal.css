@@ -1,0 +1,31 @@
+.menu-principal {
+
+    display: grid;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.contenedor {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.apartado, .apartado-pdv {
+    background-color: grey;
+    border-radius: 5px;
+}
+.apartado{
+    height: 150px;
+    width: 200px;
+}
+.apartado-pdv {
+    height: 150px;
+    width: 620px;
+}
+.apartado:hover, .apartado-pdv:hover {
+    background-color: grey;
+    transform: scale(1.06);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
