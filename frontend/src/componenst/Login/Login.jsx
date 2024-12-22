@@ -11,7 +11,7 @@ const Login = () => {
             <div className="login">
                 <h1>ENTRA EN TU CUENTA</h1>
                 <div className="input-div">
-                    <input type="text" placeholder="Correo electrónico" />
+                    <input type="text" placeholder="Correo o username" />
                     <input type="password" placeholder="Password" />
                 </div>
                 <div className="botones-login">
@@ -29,7 +29,7 @@ const Login = () => {
                     ¿No tienes cuenta?. <span>Regístrate y haz tus compras más rápido.</span>
                 </h1>
                 <div>
-                    <button onClick={() => navigate ("/register")} className="iniciar-sesion" id="crear-cuenta">crear cuenta</button>
+                    <button onClick={() => navigate ("/register-account")} className="iniciar-sesion" id="crear-cuenta">crear cuenta</button>
                 </div>
             </div>
         </header>
