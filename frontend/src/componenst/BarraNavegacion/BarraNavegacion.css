@@ -5,7 +5,7 @@ button {
 .BarraNavegacion {
     display: flex;
     height: 50px;
-    background-color: #002952 ;
+    background-color: #002952;
     justify-content: space-between;
 }
 
@@ -16,11 +16,14 @@ button {
     height: 100%;
     margin-right: 10px;
 }
-.menu span {
-    font-size: 20px;
-    cursor: pointer;
-    padding: 0 10px;
+
+.home {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-left: 0;
 }
+
 .items {
     list-style: none;
     display: flex;
@@ -33,9 +36,11 @@ button {
     font-size: 15px;
     color: white;
 }
+
 #item {
     padding: 5px 10px;
 }
+
 #item:hover {
     border-radius: 5px;
     background-color: #003D7A;
@@ -51,12 +56,9 @@ button {
     align-items: center;
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease;  /* Transición para el cambio de color */
+    transition: background-color 0.3s ease;
 }
 
 .login-button:hover {
     background-color: #357AE8;
 }
-
-
-
