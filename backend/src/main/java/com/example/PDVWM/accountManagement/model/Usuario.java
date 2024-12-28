@@ -8,7 +8,7 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idUsuario;
+    private Long idUsuario;
 
     @Column(name="nombre")
     private String nombre;
@@ -19,7 +19,39 @@ public class Usuario {
     @Column(name="apellidoMaterno")
     private String apellidoMaterno;
 
-    @ManyToOne
-    @JoinColumn(name="idCuenta")
-    private Cuenta cuenta;
+    @Column(name="idCuenta", nullable = false)
+    private Long idCuenta;
+
+    public Usuario(){}
+
+    public Usuario( String nombre, String apellidoPaterno, String apellidoMaterno, Long idCuenta) {
+        this.nombre = nombre;
+        this.apellidoPaterno = apellidoPaterno;
+        this.apellidoMaterno = apellidoMaterno;
+        this.idCuenta = idCuenta;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellidoPaterno() {
+        return apellidoPaterno;
+    }
+
+    public void setApellidoPaterno(String apellidoPaterno) {
+        this.apellidoPaterno = apellidoPaterno;
+    }
+
+    public String getApellidoMaterno() {
+        return apellidoMaterno;
+    }
+
+    public void setApellidoMaterno(String apellidoMaterno) {
+        this.apellidoMaterno = apellidoMaterno;
+    }
 }

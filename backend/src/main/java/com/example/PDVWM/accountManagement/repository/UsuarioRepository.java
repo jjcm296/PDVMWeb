@@ -1,4 +1,4 @@
 package com.example.PDVWM.accountManagement.repository;
 
-public class UsuarioRepository {
+public interface UsuarioRepository {
 }
