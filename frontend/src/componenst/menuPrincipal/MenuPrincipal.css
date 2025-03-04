@@ -1,5 +1,4 @@
 .menu-principal {
-
     display: grid;
     flex-wrap: wrap;
     gap: 10px;
@@ -12,20 +11,34 @@
     justify-content: center;
     gap: 10px;
 }
-.apartado, .apartado-pdv {
-    background-color: grey;
-    border-radius: 5px;
+.apartado, .apartado-pdv, .apartado-producto {
+    background-color: darkgrey;
+    border-radius: 8px;
 }
 .apartado{
     height: 150px;
     width: 200px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
 }
-.apartado-pdv {
+.apartado-pdv, .apartado-producto {
     height: 150px;
-    width: 620px;
+    width: 410px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
 }
-.apartado:hover, .apartado-pdv:hover {
+
+.apartado:hover {
     background-color: grey;
-    transform: scale(1.06);
+    transform: scale(1.08);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+.apartado-pdv:hover, .apartado-producto:hover {
+    background-color: grey;
+    transform: scale(1.04);
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
 }
