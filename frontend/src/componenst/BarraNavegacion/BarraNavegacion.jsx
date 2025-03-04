@@ -1,8 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import "./BarraNavegacion.css";
 import ModalIniciarSesion from "../modals/modalIniciarSesion/ModalIniciarSesion";
+import {Navigate, useNavigate} from "react-router-dom";
 
 const BarraNavegacion = () => {
+    const navigate = useNavigate();
+
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
     const loginButtonRef = useRef(null);
@@ -15,7 +18,7 @@ const BarraNavegacion = () => {
             setIsModalOpen(false);
         } else {
             if (loginButtonRef.current) {
-                const rect = loginButtonRef.current.getBoundingClientRect(); // Obtener las coordenadas del botón
+                const rect = loginButtonRef.current.getBoundingClientRect();
                 setModalPosition({
                     top: rect.bottom + window.scrollY + 5,
                     left: rect.left + window.scrollX - 150,
@@ -45,7 +48,7 @@ const BarraNavegacion = () => {
             <div className="menu">
                 <nav className="home">
                     <ul className="items">
-                        <li id="item">HOME</li>
+                        <li id="item" onClick={() => navigate("/")}>LOGO</li>
                     </ul>
                 </nav>
             </div>
