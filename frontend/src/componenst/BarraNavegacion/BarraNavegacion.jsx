@@ -1,13 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
 import "./BarraNavegacion.css";
 import ModalIniciarSesion from "../modals/modalIniciarSesion/ModalIniciarSesion";
-import {Navigate, useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Bars3Icon, UserIcon, BellIcon, DevicePhoneMobileIcon } from "@heroicons/react/24/solid";
 
 const BarraNavegacion = () => {
     const navigate = useNavigate();
-
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
+
     const loginButtonRef = useRef(null);
     const modalRef = useRef(null);
 
@@ -27,46 +29,57 @@ const BarraNavegacion = () => {
             setIsModalOpen(true);
         }
     };
-    // Cerrar el modal si el clic es fuera del modal
+
     useEffect(() => {
         const handleClickOutside = (event) => {
-            if (modalRef.current && !modalRef.current.contains(event.target) && !loginButtonRef.current.contains(event.target)) {
-                setIsModalOpen(false); // Cerrar el modal
+            if (
+                modalRef.current &&
+                !modalRef.current.contains(event.target) &&
+                !loginButtonRef.current.contains(event.target)
+            ) {
+                setIsModalOpen(false);
             }
         };
-        // Agregar el evento de clic al documento
-        document.addEventListener("mousedown", handleClickOutside);
-        // Limpiar el evento al desmontar el modal
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, []);
 
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
 
     return (
         <div className="BarraNavegacion">
             <div className="menu">
-                <nav className="home">
-                    <ul className="items">
-                        <li id="item" onClick={() => navigate("/")}>LOGO</li>
-                    </ul>
-                </nav>
+                <div className="logo" onClick={() => navigate("/")}>
+                    PDVW
+                </div>
             </div>
+
             <div className="menu">
-                <nav>
-                    <ul className="items">
-                        <li id="item">🔔</li>
-                        <li id="item">📱</li>
-                        <li id="item">❓</li>
-                        <button
-                            ref={loginButtonRef}
-                            onClick={handleButtonClick}
-                            className="login-button">
-                        </button>
-                    </ul>
-                </nav>
+                <button className="hamburger-button" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+                    <Bars3Icon className="icon-nav" />
+                </button>
+
+                <ul className={`items ${isMobileMenuOpen ? "open" : ""}`}>
+                    <li className="item"><BellIcon className="icon-nav" /></li>
+                    <li className="item"><DevicePhoneMobileIcon className="icon-nav" /></li>
+                </ul>
+
+                <button
+                    ref={loginButtonRef}
+                    onClick={handleButtonClick}
+                    className="login-button"
+                    aria-label="Abrir login"
+                >
+                    <UserIcon className="icon-nav user-icon" />
+                </button>
             </div>
-            {isModalOpen && <ModalIniciarSesion ref={modalRef} position={modalPosition} onClose={closeModal} />}
+
+            {isModalOpen && (
+                <ModalIniciarSesion
+                    ref={modalRef}
+                    position={modalPosition}
+                    onClose={closeModal}
+                />
+            )}
         </div>
     );
 };

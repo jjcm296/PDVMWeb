@@ -1,64 +1,133 @@
-button {
-    cursor: pointer;
-}
-
 .BarraNavegacion {
     display: flex;
-    height: 55px;
-    background-color: #002952;
     justify-content: space-between;
+    align-items: center;
+    background-color: #000C8F;
+    padding: 0 30px;
+    height: 60px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    flex-wrap: wrap;
 }
 
 .menu {
     display: flex;
     align-items: center;
-    gap: 50px;
-    height: 100%;
-    margin-right: 30px;
+    gap: 20px;
 }
 
-.home {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-left: 0;
+.logo {
+    font-family: 'Impact', sans-serif;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .items {
     list-style: none;
     display: flex;
     align-items: center;
-    height: 100%;
-    gap: 30px;
-    cursor: pointer;
-    font-family: 'Arial', sans-serif;
-    font-weight: 900;
-    font-size: 18px;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.item {
+    padding: 6px 12px;
+    border-radius: 8px;
     color: white;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-#item {
-    padding: 5px 10px;
-}
-
-#item:hover {
-    border-radius: 5px;
+.item:hover {
     background-color: #003D7A;
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .login-button {
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: white;
     border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .login-button:hover {
-    background-color: #357AE8;
+    background-color: #e0e8ff;
+}
+
+.login-button .user-icon {
+    width: 22px;
+    height: 22px;
+    color: #000C8F;
+}
+
+.icon-nav {
+    width: 26px;
+    height: 26px;
+    color: white;
+}
+
+/* Hamburguesa oculta en escritorio */
+.hamburger-button {
+    background: none;
+    border: none;
+    display: none;
+    cursor: pointer;
+}
+
+/* ✅ RESPONSIVE */
+@media (max-width: 768px) {
+    .items {
+        display: none;
+        flex-direction: column;
+        background-color: #000C8F;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        z-index: 999;
+    }
+
+    .items.open {
+        display: flex;
+    }
+
+    .hamburger-button {
+        display: block;
+    }
+
+    .item {
+        font-size: 16px;
+        padding: 8px 12px;
+    }
+
+    .icon-nav {
+        width: 24px;
+        height: 24px;
+    }
+
+    .login-button {
+        width: 36px;
+        height: 36px;
+    }
+
+    .login-button .user-icon {
+        width: 20px;
+        height: 20px;
+    }
 }
