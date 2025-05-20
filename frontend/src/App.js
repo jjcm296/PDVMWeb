@@ -5,8 +5,9 @@ import MenuPrincipal from "./componenst/menuPrincipal/MenuPrincipal";
 import CrearCuenta from "./componenst/Login/crearCuenta/CrearCuenta";
 import Login from "./componenst/Login/Login";
 import CodigoVerificacion from "./componenst/Login/codigoVerificacion/CodigoVerificacion";
-import TarjetaProducto from "./componenst/menuPrincipal/components/TarjetaProducto";
+import TarjetaProducto from "./componenst/pdv/components/tarjetasProducto/TarjetaProducto";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import PDV from "./componenst/pdv/PDV";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
                   <Route path={"/register"} element={<CrearCuenta/>}/>
                   <Route path={"/verification"} element={<CodigoVerificacion/>}/>
                   <Route path={"/products"} element={<TarjetaProducto/>}/>
+                  <Route path={"/pdv"} element={<PDV/>}/>
 
               </Routes>
           </header>

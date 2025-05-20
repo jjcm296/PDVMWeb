@@ -1,0 +1,70 @@
+:root {
+    --color-principal: #000C8F;
+    --color-hover: #244876;
+    --color-fondo: #ffffff;
+    --borde-radius: 14px;
+}
+
+.vista-toggle {
+    position: relative;
+    display: flex;
+    width: 80px;
+    height: 36px;
+    border: 2px solid var(--color-principal);
+    border-radius: var(--borde-radius);
+    background-color: var(--color-fondo);
+    overflow: hidden;
+    transition: border-color 0.3s;
+}
+
+/* Fondo deslizante */
+.switch-slider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    background-color: var(--color-principal);
+    border-radius: var(--borde-radius);
+    transition: transform 0.3s ease;
+    z-index: 0;
+}
+
+.switch-slider.left {
+    transform: translateX(0%);
+}
+
+.switch-slider.right {
+    transform: translateX(100%);
+}
+
+/* Botones */
+.vista-btn {
+    flex: 1;
+    z-index: 1;
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.3s ease;
+}
+
+/* Íconos */
+.vista-btn .icono-toggle {
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+    color: var(--color-principal);
+}
+
+/* Ícono activo: blanco */
+.vista-btn.activo .icono-toggle {
+    color: white;
+}
+
+/* Ícono inactivo hover: azul oscuro */
+.vista-btn:not(.activo):hover .icono-toggle {
+    color: var(--color-hover);
+}

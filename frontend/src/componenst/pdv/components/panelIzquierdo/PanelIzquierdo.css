@@ -1,0 +1,71 @@
+:root {
+    --borde-panel: 2px solid #ddd;
+    --fondo-panel: #ffffff;
+    --radio-panel: 10px;
+    --padding-panel: 12px;
+}
+
+/* 🧱 Contenedor principal del panel izquierdo */
+.panel-izquierdo-contenedor {
+    display: flex;
+    flex-direction: column;
+    height: 89vh;
+    width: 850px;                /* Se mantiene fijo en desktop */
+    max-width: 100%;             /* Permite contraerse en pantallas pequeñas */
+    padding: var(--padding-panel);
+    border: var(--borde-panel);
+    border-radius: var(--radio-panel);
+    background-color: var(--fondo-panel);
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* 🔍 Buscador arriba */
+.barra-superior {
+    margin-bottom: 5px;
+}
+
+/* 🧩 Productos con scroll y columnas */
+.productos-scroll {
+    padding-top: 5px;
+    flex: 1;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);  /* 5 columnas en escritorio */
+    gap: 10px;
+}
+
+/* 🔄 VistaToggle abajo a la derecha */
+.switch-inferior {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 10px;
+}
+
+/* 📱 Responsive: ajustar columnas en pantallas más pequeñas */
+@media (max-width: 1024px) {
+    .productos-scroll {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .panel-izquierdo-contenedor {
+        width: 100%; /* ocupa todo el ancho en móvil */
+        height: auto;
+    }
+
+    .productos-scroll {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .productos-scroll {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .switch-inferior {
+        justify-content: center; /* centrado en móvil */
+    }
+}
