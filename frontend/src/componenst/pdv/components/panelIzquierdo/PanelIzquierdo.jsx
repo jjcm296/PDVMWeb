@@ -21,21 +21,22 @@ const PanelIzquierdo = () => {
     return (
         <div className="panel-izquierdo-contenedor">
             <div className="barra-superior">
-                <Buscador onBuscar={setBusqueda} />
+                <Buscador onBuscar={setBusqueda}/>
             </div>
 
-            <div className="productos-scroll">
+            <div className={`productos-scroll ${vista === 'list' ? 'modo-lista' : ''}`}>
                 {productosFiltrados.map(producto =>
                     vista === 'grid' ? (
-                        <TarjetaProducto key={producto.id} nombre={producto.nombre} />
+                        <TarjetaProducto key={producto.id} nombre={producto.nombre}/>
                     ) : (
-                        <TarjetaProductoBarra key={producto.id} nombre={producto.nombre} />
+                        <TarjetaProductoBarra key={producto.id} nombre={producto.nombre}/>
                     )
                 )}
             </div>
 
+
             <div className="switch-inferior">
-                <VistaToggle vista={vista} onCambiarVista={setVista} />
+                <VistaToggle vista={vista} onCambiarVista={setVista}/>
             </div>
         </div>
     );
