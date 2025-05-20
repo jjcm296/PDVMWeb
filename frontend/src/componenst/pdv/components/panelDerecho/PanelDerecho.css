@@ -1,0 +1,99 @@
+:root {
+    --borde-panel: 2px solid #ddd;
+    --fondo-panel: #ffffff;
+    --radio-panel: 10px;
+    --padding-panel: 12px;
+}
+
+.panel-derecho {
+    flex: 1;
+    height: 89vh;
+    padding: var(--padding-panel);
+    border: var(--borde-panel);
+    border-radius: var(--radio-panel);
+    background-color: var(--fondo-panel);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', sans-serif;
+    position: relative;
+    max-width: 100%;
+}
+
+.lista-productos {
+    flex: 1;
+    overflow-y: auto;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* 💵 Contenedor total + botones */
+.total-y-acciones {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 10px;
+    align-items: flex-start;
+}
+
+/* 💰 Total */
+.total-box {
+    flex: 1;
+    border: 2px solid #000c8f;
+    border-radius: var(--radio-panel);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+}
+
+.total-label {
+    font-size: 12px;
+    color: #333;
+}
+
+.total-monto {
+    font-size: 28px;
+    font-weight: bold;
+    color: #000;
+}
+
+/* ✅ Botones */
+.botones-acciones {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-pagar,
+.btn-cancelar {
+    padding: 10px;
+    font-size: 14px;
+    border-radius: var(--radio-panel);
+    font-weight: bold;
+    border: 2px solid #000c8f;
+    cursor: pointer;
+}
+
+.btn-pagar {
+    background-color: #000c8f;
+    color: white;
+}
+
+.btn-pagar:hover {
+    background-color: #001070;
+}
+
+.btn-cancelar {
+    background-color: white;
+    color: #000c8f;
+}
+
+.btn-cancelar:hover {
+    background-color: #f0f0f0;
+}
