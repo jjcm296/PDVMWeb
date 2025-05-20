@@ -8,10 +8,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 60px 20px;
+    padding: 10px;
     background: linear-gradient(to right, #e6ecf7, #f5f7fa);
     min-height: 100vh;
 }
+
 
 .datos-usuario {
     background-color: white;

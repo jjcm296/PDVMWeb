@@ -20,7 +20,7 @@ const ModalIniciarSesion = forwardRef(({ position, onClose }, ref) => {
             }}
         >
             <button onClick={()=>handleNavigate("/login")} className="boton-cuenta">Iniciar Sesion</button>
-            <button onClick={()=>handleNavigate("/register-account")} className="boton-cuenta">Crear cuenta</button>
+            <button onClick={()=>handleNavigate("/register")} className="boton-cuenta">Crear cuenta</button>
         </div>
     );
 });

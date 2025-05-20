@@ -4,30 +4,47 @@ body {
     background: #f5f7fa;
 }
 
+/* Contenedor general */
 .menu-login {
     display: flex;
-    padding: 60px 100px;
     justify-content: center;
     align-items: center;
     background: linear-gradient(to right, #e6ecf7, #f5f7fa);
+    min-height: calc(100vh - 150px);
 }
 
+/* Tarjeta de login */
 .login {
     background-color: white;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 12, 143, 0.15);
     padding: 40px;
-    width: 420px;
+    width: 100%;
+    max-width: 420px;
     display: flex;
     flex-direction: column;
     gap: 25px;
+    box-sizing: border-box;
 }
 
-h1 {
+/* Título */
+.header-text {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.header-text h1 {
     text-transform: uppercase;
-    font-size: 24px;
+    font-size: 30px;
     color: #000C8F;
-    margin-bottom: 20px;
+    font-family: 'Impact', sans-serif;
+    margin: 0;
+}
+
+.header-text p {
+    font-size: 16px;
+    color: #555;
+    margin: 0;
 }
 
 .input-div {
@@ -77,6 +94,7 @@ label {
     color: #000C8F;
 }
 
+/* Icono de mostrar contraseña */
 .input-contrasena-container {
     position: relative;
     width: 100%;
@@ -92,6 +110,7 @@ label {
     color: #003D7A;
 }
 
+/* Botones */
 .botones-login {
     display: flex;
     flex-direction: column;
@@ -140,21 +159,24 @@ label {
     padding: 0;
 }
 
-.header-text {
-    text-align: center;
-    margin-bottom: 15px;
-}
+/* 📱 Responsive para móviles */
+@media (max-width: 480px) {
+    .menu-login {
+        padding: 10px 15px;
+    }
 
-.header-text h1 {
-    text-transform: uppercase;
-    font-size: 35px;
-    color: #000C8F;
-    font-family: 'Impact', sans-serif;
-    margin-bottom: 5px;
-}
+    .header-text h1 {
+        font-size: 22px;
+    }
 
-.header-text p {
-    font-size: 16px;
-    color: #555;
-    margin: 0;
+    .input-campo {
+        height: 44px;
+        font-size: 15px;
+    }
+
+    .boton-login,
+    .boton-crear-cuenta {
+        height: 42px;
+        font-size: 15px;
+    }
 }
