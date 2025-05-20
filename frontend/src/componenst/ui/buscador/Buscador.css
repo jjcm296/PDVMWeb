@@ -1,0 +1,59 @@
+:root {
+    --color-principal: #000C8F;
+    --color-fondo: #ffffff;
+    --color-hover: #244876;
+    --borde-radio: 10px;
+    --fuente: 'Segoe UI', sans-serif;
+}
+
+.contenedor-buscador {
+    display: flex;
+    width: 100%;
+    max-width: 800px;
+    height: 30px;
+    border: 2px solid var(--color-principal);
+    border-radius: var(--borde-radio);
+    background-color: var(--color-fondo);
+    overflow: hidden;
+}
+
+.input-buscador {
+    flex: 1;
+    padding: 10px 14px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: var(--color-principal);
+    background-color: transparent;
+}
+
+.input-buscador::placeholder {
+    color: #999;
+}
+
+.boton-buscador {
+    width: 40px;
+    border: none;
+    background-color: var(--color-principal);
+    color: var(--color-fondo);
+    border-left: 2px solid var(--color-principal);
+    border-top-right-radius: var(--borde-radio);
+    border-bottom-right-radius: var(--borde-radio);
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.boton-buscador:hover {
+    background-color: #ffffff;
+    color:  var(--color-hover);;
+}
+
+.icono-busqueda {
+    width: 20px;
+    height: 20px;
+    color: inherit;
+}
