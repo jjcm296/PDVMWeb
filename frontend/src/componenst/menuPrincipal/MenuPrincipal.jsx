@@ -1,6 +1,7 @@
 import React from 'react';
-import "./MenuPrincipal.css"
-import {useNavigate} from "react-router-dom";
+import './MenuPrincipal.css';
+import { useNavigate } from 'react-router-dom';
+import MenuButton from './components/MenuButton';
 
 const MenuPrincipal = () => {
     const navigate = useNavigate();
@@ -8,24 +9,23 @@ const MenuPrincipal = () => {
     return (
         <header className="menu-principal">
             <div className="contenedor">
-                <div onClick={() => navigate("/category")} className="apartado">Categoría</div>
-                <div onClick={() => navigate("/barcode-generator")} className="apartado">Barras</div>
-                <div onClick={() => navigate("/alerts")} className="apartado">Alertas</div>
+                <MenuButton label="Categoría" onClick={() => navigate('/category')} />
+                <MenuButton label="Barras" onClick={() => navigate('/barcode-generator')} />
+                <MenuButton label="Alertas" onClick={() => navigate('/alerts')} />
             </div>
             <div className="contenedor">
-                <div onClick={() => navigate("/inventory")} className="apartado">Inventario</div>
-                <div onClick={() => navigate("/pdv")} className="apartado-pdv">PDV</div>
+                <MenuButton label="Inventario" onClick={() => navigate('/inventory')} />
+                <MenuButton label="PDV" onClick={() => navigate('/pdv')} fullWidth />
             </div>
             <div className="contenedor">
-                <div onClick={() => navigate("/supply-per-unit")} className="apartado">Suministrado por unidad</div>
-                <div onClick={() => navigate("/settings")} className="apartado">Ajustes</div>
-                <div onClick={() => navigate("/supply-per-box")} className="apartado">Suministrado por caja</div>
+                <MenuButton label="Suministrado por unidad" onClick={() => navigate('/supply-per-unit')} />
+                <MenuButton label="Ajustes" onClick={() => navigate('/settings')} />
+                <MenuButton label="Suministrado por caja" onClick={() => navigate('/supply-per-box')} />
             </div>
             <div className="contenedor">
-                <div onClick={() => navigate("/products")} className="apartado-producto">Productos</div>
-                <div onClick={() => navigate("/account")} className="apartado">Cuenta</div>
+                <MenuButton label="Productos" onClick={() => navigate('/products')} fullWidth />
+                <MenuButton label="Cuenta" onClick={() => navigate('/account')} />
             </div>
-
         </header>
     );
 };

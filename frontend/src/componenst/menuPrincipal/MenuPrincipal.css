@@ -1,44 +1,31 @@
 .menu-principal {
-    display: grid;
-    gap: 10px;
-    justify-content: center;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-top: 50px;
-    margin-left: 30px;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px 20px;
+    min-height: calc(100vh - 60px);
+    box-sizing: border-box;
 }
+
 .contenedor {
     display: flex;
     justify-content: center;
-    gap: 10px;
-}
-.apartado, .apartado-pdv, .apartado-producto {
-    background-color: darkgrey;
-    border-radius: 8px;
-}
-.apartado{
-    height: 150px;
-    width: 200px;
-    display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-}
-.apartado-pdv, .apartado-producto {
-    height: 150px;
-    width: 410px;
-    display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 800px;
 }
 
-.apartado:hover {
-    background-color: grey;
-    transform: scale(1.08);
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-}
-.apartado-pdv:hover, .apartado-producto:hover {
-    background-color: grey;
-    transform: scale(1.04);
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+@media (max-width: 768px) {
+    .menu-principal {
+        padding: 20px 10px;
+        min-height: calc(100vh - 150px);
+    }
+
+    .contenedor {
+        gap: 10px;
+        justify-content: center;
+    }
 }

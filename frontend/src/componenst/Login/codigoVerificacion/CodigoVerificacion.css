@@ -4,7 +4,7 @@ body {
 }
 
 .contenedor-verificacion {
-    min-height: calc(100vh - 150px);
+    min-height: calc(100vh - 180px);
     display: flex;
     justify-content: center;
     align-items: center;

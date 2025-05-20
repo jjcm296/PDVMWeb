@@ -5,7 +5,7 @@ import MenuPrincipal from "./componenst/menuPrincipal/MenuPrincipal";
 import CrearCuenta from "./componenst/Login/crearCuenta/CrearCuenta";
 import Login from "./componenst/Login/Login";
 import CodigoVerificacion from "./componenst/Login/codigoVerificacion/CodigoVerificacion";
-import TarjetaProducto from "./componenst/tarjetasProductos/tarjetaProducto/TarjetaProducto";
+import TarjetaProducto from "./componenst/menuPrincipal/components/TarjetaProducto";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 function App() {
