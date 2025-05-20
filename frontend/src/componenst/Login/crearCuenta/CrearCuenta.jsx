@@ -6,7 +6,6 @@ import axios from "axios";
 const CrearCuenta = () => {
     const navigate = useNavigate();
 
-    // Estados para manejar los valores del formulario
     const [formData, setFormData] = useState({
         userName: "",
         correo: "",
@@ -59,11 +58,11 @@ const CrearCuenta = () => {
 
     return (
         <header className="crear-cuenta">
-            <div className="div-text">
-                <h1 className="titulo">Crear cuenta</h1>
-                <p className="texto">Ingresa tus datos para que seas parte de PDVW</p>
-            </div>
             <form onSubmit={handleSubmit} className="datos-usuario">
+                <div className="header-text">
+                    <h1 className="titulo">Crear cuenta</h1>
+                    <p className="texto">Ingresa tus datos para que seas parte de PDVW</p>
+                </div>
                 <div className="campo-entrada">
                     <input
                         className="input-campo"
@@ -140,7 +139,7 @@ const CrearCuenta = () => {
                     />
                     <p>Deseo recibir promociones exclusivas por correo electrónico</p>
                 </div>
-                <button type="submit" className="boton-registrarse">
+                <button onClick={() => navigate("/verification")} type="submit" className="boton-registrarse">
                     Crear cuenta
                 </button>
                 <h4 className="h4">¿Ya tienes cuenta?</h4>

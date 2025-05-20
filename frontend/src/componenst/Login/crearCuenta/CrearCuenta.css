@@ -1,30 +1,44 @@
-.crear-cuenta {
-    margin-top: 10px;
-    display: grid;
-    justify-content: center;
-    margin-bottom: 20px;
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: #f5f7fa;
 }
 
-.titulo {
-    font-family: 'Impact', sans-serif;
-    font-size: 30px;
-    font-weight: 100;
-    margin-bottom: 5px;
-}
-.texto {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-.texto-contrasena {
-    margin-top: -5px;
-    margin-bottom: -5px;
+.crear-cuenta {
+    display: grid;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, #e6ecf7, #f5f7fa);
 }
 
 .datos-usuario {
-    width: 600px;
-    display: grid;
-    grid-template-rows: repeat(6, auto);
-    gap: 15px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 12, 143, 0.15);
+    padding: 40px;
+    width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.div-text {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.titulo {
+    text-transform: uppercase;
+    font-size: 24px;
+    color: #000C8F;
+    font-family: 'Impact', sans-serif;
+}
+
+.texto {
+    font-size: 16px;
+    color: #555;
+    margin-top: 5px;
 }
 
 .campo-entrada {
@@ -32,58 +46,37 @@
 }
 
 .input-campo {
-    height: 50px;
-    box-sizing: border-box;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
     font-size: 16px;
     width: 100%;
-    padding-left: 10px;
-    padding-right: 40px;
-    padding-top: 10px;
-    appearance: none;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
 }
+
+.input-campo:focus {
+    border-color: #000C8F;
+    outline: none;
+}
+
 label {
     position: absolute;
-    top: 14PX;
-    left: 10px;
+    top: 14px;
+    left: 12px;
     font-size: 16px;
     color: #aaa;
     pointer-events: none;
     transition: 0.3s ease;
+    background-color: white;
+    padding: 0 4px;
 }
 
 .input-campo:focus + label,
 .input-campo:valid + label {
-    top: 4px;
+    top: -8px;
     font-size: 12px;
-    color: #333;
-}
-
-.boton-iniciar-sesion, .boton-registrarse {
-    height: 50px;
-    font-family: 'Impact', sans-serif;
-    font-weight: normal;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-.boton-registrarse {
-    background-color: #0A0A0A;
-    border: 1px solid white;
-    color: white;
-}
-
-.boton-iniciar-sesion {
-    background-color: white;
-    border: 1px solid #0A0A0A;
-    color: #0A0A0A;
-
-}
-
-.h4 {
-    justify-self: center;
-    margin-bottom: 1px;
-    margin-top: 1px;
-
+    color: #000C8F;
 }
 
 .input-contrasena-container {
@@ -91,32 +84,91 @@ label {
     width: 100%;
 }
 
-.input-campo {
-    height: 50px;
-    box-sizing: border-box;
-    font-size: 16px;
-    width: 100%;
-    padding-left: 10px;
-    padding-right: 40px;  /* Espacio para el ícono */
-    padding-top: 10px;
-    appearance: none;
-}
-
 .input-contrasena-container i {
     position: absolute;
-    right: 10px;
+    right: 12px;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
-    color: #0A0A0A;
-    font-size: 20px;
+    color: #003D7A;
+    font-size: 18px;
+}
+
+.texto-contrasena {
+    font-size: 14px;
+    color: #444;
+    margin: 0;
+    padding-left: 5px;
+}
+
+.texto-contrasena li {
+    margin-left: 20px;
 }
 
 .checkbox-container {
     display: flex;
-    margin-top: -20px;
-    margin-bottom: -20px;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #333;
 }
-#genero {
+
+.boton-registrarse {
+    background-color: #000C8F;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    height: 45px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.boton-registrarse:hover {
+    background-color: #003D7A;
+}
+
+.boton-iniciar-sesion {
     background-color: white;
+    color: #000C8F;
+    border: 2px solid #000C8F;
+    border-radius: 10px;
+    height: 45px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.boton-iniciar-sesion:hover {
+    background-color: #f0f4ff;
+}
+
+.h4 {
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+    margin: 0;
+}
+
+.header-text {
+    text-align: center;
+    margin-bottom: 15px;
+    margin-top: 0;
+}
+
+.header-text h1 {
+    margin-top: 0;
+    text-transform: uppercase;
+    font-size: 24px;
+    color: #000C8F;
+    font-family: 'Impact', sans-serif;
+    margin-bottom: 5px;
+}
+
+.header-text p {
+    font-size: 16px;
+    color: #555;
+    margin: 0;
 }
