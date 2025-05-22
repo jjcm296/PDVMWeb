@@ -1,3 +1,3 @@
 async function agregarProductoPdv() {
-    const productoBuscar = document.getElementById('BuscadorPdv').;
+    const productoBuscar = document.getElementById('BuscadorPdv');
 }

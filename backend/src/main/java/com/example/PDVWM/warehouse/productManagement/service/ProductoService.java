@@ -3,76 +3,50 @@ package com.example.PDVWM.warehouse.productManagement.service;
 import com.example.PDVWM.warehouse.productManagement.model.Producto;
 import com.example.PDVWM.warehouse.productManagement.repository.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
 public class ProductoService {
 
-    @Autowired
-    private ProductoRepository productoRepository;
+    private final ProductoRepository productoRepository;
 
-    public ProductoService (ProductoRepository productoRepository) {
+    @Autowired
+    public ProductoService(ProductoRepository productoRepository) {
         this.productoRepository = productoRepository;
     }
 
-    // Método para obtener todos los productos
     public List<Producto> getAllProductos() {
         return productoRepository.findAll();
     }
 
-    // Método para guardar un producto con categoria
     public Producto saveProducto(Producto producto) {
         return productoRepository.save(producto);
     }
 
-    // Método para buscar un producto por su ID
     public Producto getProductoById(Long id) {
         return productoRepository.findById(id).orElse(null);
     }
 
-    // Método para eliminar un producto
     public void deleteProducto(Long id) {
         productoRepository.deleteById(id);
     }
 
-    //Metodos para obtener un producto por diferente parametro
     public Producto findByBarCode(String barCode) {
         return productoRepository.findByCodigo(barCode);
     }
 
+    public List<Producto> findSortedProductos(String sortField, String order) {
+        List<String> camposPermitidos = Arrays.asList("nombre", "marca", "idProducto", "categoria.nombre");
 
-    //Métodos para obtener todos los productos
-    public List<Producto> findAllByNameAsc() {
-        return productoRepository.findAllByNameAsc();
-    }
+        if (sortField == null || sortField.isEmpty() || !camposPermitidos.contains(sortField)) {
+            return productoRepository.findAll();
+        }
 
-    public List<Producto> findAllByNameDesc() {
-        return productoRepository.findAllByNameDesc();
-    }
-
-    public List<Producto> findAllByCategory() {
-        return productoRepository.findAllByCategoryName();
-    }
-
-    public List<Producto> findAllByCategoryDesc() {
-        return productoRepository.findAllByCategoryNameDesc();
-    }
-
-    public List<Producto> findAllByBrand() {
-        return productoRepository.findAllByBrandAsc();
-    }
-
-    public List<Producto> findAllByBrandDesc() {
-        return productoRepository.findAllByBrandDes();
-    }
-
-    public List<Producto> findAllById() {
-        return productoRepository.findAllByProductIdAsc();
-    }
-
-    public List<Producto> findAllByProductIdDesc() {
-        return productoRepository.findAllByProductIdDesc();
+        Sort.Direction direction = order.equalsIgnoreCase("desc") ? Sort.Direction.DESC : Sort.Direction.ASC;
+        return productoRepository.findAll(Sort.by(direction, sortField));
     }
 }
