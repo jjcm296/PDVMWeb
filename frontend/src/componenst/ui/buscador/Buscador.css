@@ -9,6 +9,7 @@
 .contenedor-buscador {
     display: flex;
     width: 100%;
+    max-width: 855px;
     height: 30px;
     border: 2px solid var(--color-principal);
     border-radius: var(--borde-radio);

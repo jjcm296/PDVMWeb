@@ -24,7 +24,9 @@
 }
 
 .btn-pagar:hover {
-    background-color: #001070;
+    background-color: white;
+    color: var(--color-principal, #000c8f);
+    border: 2px solid var(--color-principal, #000c8f);
 }
 
 .btn-cancelar {
@@ -33,5 +35,7 @@
 }
 
 .btn-cancelar:hover {
-    background-color: #f0f0f0;
+    background-color: var(--color-principal, #000c8f);
+    color: white;
+    border: 2px solid white;
 }

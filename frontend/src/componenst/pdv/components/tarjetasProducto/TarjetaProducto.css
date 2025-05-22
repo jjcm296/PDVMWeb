@@ -6,6 +6,22 @@
     --fuente: 'Segoe UI', sans-serif;
 }
 
+/* Contenedor principal */
+.productos-scroll-contenedor {
+    flex: 1;
+    border: 2px solid var(--color-principal);
+    border-radius: var(--borde-radio);
+    background-color: var(--color-fondo);
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    font-family: var(--fuente);
+}
+
+/* TARJETA CUADRADA */
 .tarjeta-producto {
     width: 130px;
     height: 180px;
@@ -14,10 +30,13 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     background-color: var(--color-fondo);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease;
     font-family: var(--fuente);
+    box-sizing: border-box;
+    margin-left: 3px;
 }
 
 .tarjeta-producto:hover {
@@ -25,9 +44,7 @@
 }
 
 .imagen-producto {
-    flex: 1;
-    background-color: var(--color-fondo);
-    border-bottom: 1px solid #ccc;
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -43,12 +60,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--color-fondo);
     padding: 0 6px;
 }
 
-/* BOTÓN COMPARTIDO (por defecto, como en tarjeta) */
-/* BOTÓN COMPARTIDO */
+/* BOTONES */
 .boton-agregar,
 .boton-barra {
     height: 34px;
@@ -59,117 +74,66 @@
     font-size: 22px;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-/* Tarjeta: igual estilo que el botón de la barra */
-.tarjeta-producto .boton-agregar {
-    height: 34px;
-    min-width: 34px;
-    border: none;
-    background-color: var(--color-principal);
-    color: var(--color-fondo);
-    font-size: 22px;
-    font-weight: bold;
-    border-top: 2px solid var(--color-principal);
-    border-radius: 0 0 var(--borde-radio) var(--borde-radio);
-    cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* Hover del botón de la tarjeta */
+.tarjeta-producto .boton-agregar {
+    border-top: 2px solid var(--color-principal);
+    border-radius: 0 0 var(--borde-radio) var(--borde-radio);
+}
+
 .tarjeta-producto .boton-agregar:hover {
     background-color: var(--color-fondo);
     color: var(--color-principal);
 }
 
-
-/* Barra: redondeo igual que la tarjeta */
-.tarjeta-barra .boton-barra {
-    border-top: 2px solid var(--color-principal);
-    border-radius: 0 0 var(--borde-radio) var(--borde-radio);
-    width: 100%;
-}
-
-/* Hover (compartido) */
-.boton-agregar:hover,
-.boton-barra:hover {
-    background-color: var(--color-hover);
-}
-
-/* BARRA TIPO LISTA */
+/* TARJETA BARRA */
 .tarjeta-barra {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 320px;
-    height: 40px;
-    padding-left: 12px;
+    width: 100%;
+    height: 45px;
     border: 2px solid var(--color-principal);
     border-radius: var(--borde-radio);
     background-color: var(--color-fondo);
-    font-family: var(--fuente);
     box-sizing: border-box;
-    overflow: hidden;
+    transition: transform 0.3s ease;
+    gap: 10px;
 }
 
-/* Texto alineado a la izquierda */
+.tarjeta-barra:hover {
+    transform: scale(1.01);
+}
+
 .nombre-barra {
+    flex: 1;
     font-size: 14px;
     color: var(--color-principal);
     font-weight: bold;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    flex: 1;
-    padding-right: 8px;
 }
 
-/* BOTÓN DE LA BARRA */
+/* Botón barra */
 .tarjeta-barra .boton-barra {
     height: 100%;
     width: 40px;
-    border: none;
     background-color: var(--color-principal);
     color: var(--color-fondo);
     font-size: 20px;
     font-weight: bold;
+    border: none;
     border-left: 2px solid var(--color-principal);
     border-top-right-radius: var(--borde-radio);
     border-bottom-right-radius: var(--borde-radio);
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
-/* Hover del botón */
 .tarjeta-barra .boton-barra:hover {
     background-color: var(--color-fondo);
     color: var(--color-principal);
 }
-
-.tarjeta-barra {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 620px;
-    height: 40px;
-    padding-left: 12px;
-    border: 2px solid var(--color-principal);
-    border-radius: var(--borde-radio);
-    background-color: var(--color-fondo);
-    font-family: var(--fuente);
-    box-sizing: border-box;
-    overflow: hidden;
-    transition: transform 0.3s ease; /* Animación suave */
-}
-
-.tarjeta-barra:hover {
-    transform: scale(1.05); /* Mismo efecto que la tarjeta */
-}
-

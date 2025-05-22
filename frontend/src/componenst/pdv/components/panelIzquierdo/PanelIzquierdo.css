@@ -2,14 +2,10 @@
     --borde-panel: 2px solid #ddd;
     --fondo-panel: #ffffff;
     --radio-panel: 10px;
-    --padding-panel: 12px;
-}
-.ancho-estandar {
-    width: 100%;
-    max-width: 950px; /* mismo valor que las tarjetas barra */
-    box-sizing: border-box;
+    --padding-panel: 15px;
 }
 
+/* Contenedor principal */
 .panel-izquierdo-contenedor {
     display: flex;
     flex-direction: column;
@@ -24,11 +20,13 @@
     position: relative;
 }
 
+/* Buscador */
 .barra-superior {
     margin-bottom: 5px;
 }
+
+/* Vista de tarjetas (grid) */
 .productos-scroll {
-    padding: 10px 40px 0 20px; /* top, right, bottom, left */
     flex: 1;
     overflow-y: auto;
     display: grid;
@@ -36,28 +34,29 @@
     gap: 10px;
 }
 
+/* Vista de lista (barra horizontal) */
+.productos-scroll.modo-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.productos-scroll.modo-lista > * {
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Toggle de vista abajo a la derecha */
 .switch-inferior {
     display: flex;
     justify-content: flex-end;
     padding-top: 10px;
 }
 
-.productos-scroll.modo-lista {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px 20px;
-    justify-content: center;
-    align-items: center;
-}
-
-
-.productos-scroll.modo-lista > * {
-    width: 100%;
-    max-width: 950px;
-    height: 30px;
-}
-
+/* Responsivo */
 @media (max-width: 1024px) {
     .productos-scroll {
         grid-template-columns: repeat(4, 1fr);
@@ -66,7 +65,7 @@
 
 @media (max-width: 768px) {
     .panel-izquierdo-contenedor {
-        width: 100%; /* ocupa todo el ancho en móvil */
+        width: 100%;
         height: auto;
     }
 
@@ -81,8 +80,7 @@
     }
 
     .switch-inferior {
-        justify-content: center; /* centrado en móvil */
+        justify-content: center;
+        padding-bottom: 10px;
     }
 }
-
-

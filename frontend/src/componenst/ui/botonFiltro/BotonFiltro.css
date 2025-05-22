@@ -1,0 +1,19 @@
+.boton-filtro-global {
+    height: 40px;
+    width: 130px;
+    padding: 10px 40px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: var(--color-principal, #000c8f);
+    color: white;
+    border: none;
+    border-radius: var(--radio-panel, 10px);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.boton-filtro-global:hover {
+    background-color: white;
+    color: var(--color-principal, #000c8f);
+    border: 2px solid var(--color-principal, #000c8f);
+}

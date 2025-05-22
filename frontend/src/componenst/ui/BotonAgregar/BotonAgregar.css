@@ -1,0 +1,18 @@
+.boton-agregar-global {
+    height: 40px;
+    width: 130px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: var(--color-principal, #000c8f);
+    color: white;
+    border: none;
+    border-radius: var(--radio-panel, 10px);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.boton-agregar-global:hover {
+    background-color: white;
+    color: var(--color-principal, #000c8f);
+    border: 2px solid var(--color-principal, #000c8f);
+}
