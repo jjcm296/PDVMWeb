@@ -2,7 +2,13 @@ import React, { useState, useRef, useEffect } from 'react';
 import "./BarraNavegacion.css";
 import ModalIniciarSesion from "../modals/modalIniciarSesion/ModalIniciarSesion";
 import { useNavigate } from "react-router-dom";
-import { Bars3Icon, UserIcon, BellIcon, DevicePhoneMobileIcon } from "@heroicons/react/24/solid";
+import {
+    Bars3Icon,
+    UserIcon,
+    BellIcon,
+    DevicePhoneMobileIcon
+} from "@heroicons/react/24/solid";
+import Migajas from './components/migajas/Migajas';
 
 const BarraNavegacion = () => {
     const navigate = useNavigate();
@@ -47,12 +53,17 @@ const BarraNavegacion = () => {
 
     return (
         <div className="BarraNavegacion">
-            <div className="menu">
-                <div className="logo" onClick={() => navigate("/")}>
-                    PDVW
-                </div>
+            {/* Migajas a la izquierda */}
+            <div className="menu migajas-container">
+                <Migajas />
             </div>
 
+            {/* Logo centrado */}
+            <div className="menu logo-centro" onClick={() => navigate("/")}>
+                PDVW
+            </div>
+
+            {/* Botones a la derecha */}
             <div className="menu">
                 <button className="hamburger-button" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
                     <Bars3Icon className="icon-nav" />

@@ -10,21 +10,34 @@
     top: 0;
     z-index: 1000;
     flex-wrap: wrap;
+    position: relative;
 }
 
-.menu {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.logo {
+/* === NUEVAS CLASES === */
+.logo-centro {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     font-family: 'Impact', sans-serif;
     font-size: 24px;
     color: white;
     cursor: pointer;
     text-transform: uppercase;
     letter-spacing: 1px;
+    z-index: 1;
+}
+
+.migajas-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+/* === BOTONES Y DISEÑO ORIGINAL === */
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 .items {
@@ -88,7 +101,7 @@
     cursor: pointer;
 }
 
-/* ✅ RESPONSIVE */
+/* === RESPONSIVE === */
 @media (max-width: 768px) {
     .items {
         display: none;
@@ -129,5 +142,13 @@
     .login-button .user-icon {
         width: 20px;
         height: 20px;
+    }
+
+    .logo-centro {
+        font-size: 20px;
+    }
+
+    .migajas {
+        font-size: 12px;
     }
 }
