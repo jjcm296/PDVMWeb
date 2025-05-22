@@ -9,6 +9,7 @@ import TarjetaProducto from "./componenst/pdv/components/tarjetasProducto/Tarjet
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import PDV from "./componenst/pdv/PDV";
 import Productos from "./componenst/productos/Productos";
+import Categorias from "./componenst/categorias/Categorias";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
                   <Route path={"/verification"} element={<CodigoVerificacion/>}/>
                   <Route path={"/pdv"} element={<PDV/>}/>
                   <Route path={"/products"} element={<Productos/>}/>
+                  <Route path={"category"} element={<Categorias/>}/>
               </Routes>
           </header>
       </Router>

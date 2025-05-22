@@ -5,10 +5,9 @@ import { useLocation, Link } from 'react-router-dom';
 const aliasRuta = {
     'products': 'Productos',
     'profile': 'Perfil',
-    'orders': 'Órdenes',
     'settings': 'Configuración',
     'pdv': 'PDV',
-    // Puedes agregar más alias aquí
+    'category': 'Categorías',
 };
 
 const formatear = (segmento) => {
