@@ -102,7 +102,7 @@
 
 .botones-superior {
     display: flex;
-    gap: 15px;
+    gap: 10px;
 }
 
 .boton-agregar {

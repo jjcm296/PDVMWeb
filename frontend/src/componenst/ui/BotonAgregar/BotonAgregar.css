@@ -3,7 +3,7 @@
     width: 130px;
     font-size: 18px;
     font-weight: bold;
-    background-color: var(--color-principal, #000c8f);
+    background-color: var(--color-principal, #ffffff);
     color: white;
     border: none;
     border-radius: var(--radio-panel, 10px);
@@ -20,11 +20,12 @@
 .icono-agregar {
     width: 22px;
     height: 22px;
-    stroke-width: 3;
-    color: white;
+    stroke-width: 2;
     margin-top: 4px;
+    fill: white;
 }
 
 .boton-agregar-global:hover .icono-agregar {
     color: var(--color-principal, #000c8f);
+    fill: #000c8f; /* ahora también se rellena de blanco */
 }

@@ -1,11 +1,15 @@
 import React from 'react';
 import './BotonAgregar.css';
-import { PlusIcon } from '@heroicons/react/24/outline';
+import { PlusIcon, Squares2X2Icon } from '@heroicons/react/24/outline';
 
-const BotonAgregar = ({ onClick }) => {
+const BotonAgregar = ({ onClick, esProducto = true }) => {
     return (
         <button className="boton-agregar-global" onClick={onClick}>
-            <PlusIcon className="icono-agregar" />
+            {esProducto ? (
+                <PlusIcon className="icono-agregar" />
+            ) : (
+                <Squares2X2Icon className="icono-agregar" />
+            )}
         </button>
     );
 };

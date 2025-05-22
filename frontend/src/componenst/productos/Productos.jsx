@@ -27,6 +27,7 @@ const Productos = () => {
                     <Buscador onBuscar={setBusqueda}/>
                     <div className="botones-superior">
                         <BotonFiltro/>
+                        <BotonAgregar esProducto={false}/>
                         <BotonAgregar/>
                     </div>
                 </div>

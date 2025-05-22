@@ -61,7 +61,7 @@
 
 .botones-superior {
     display: flex;
-    gap: 15px;
+    gap: 10px;
 }
 
 @media (max-width: 768px) {
