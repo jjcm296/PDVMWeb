@@ -16,3 +16,15 @@
     color: var(--color-principal, #000c8f);
     border: 2px solid var(--color-principal, #000c8f);
 }
+
+.icono-agregar {
+    width: 22px;
+    height: 22px;
+    stroke-width: 3;
+    color: white;
+    margin-top: 4px;
+}
+
+.boton-agregar-global:hover .icono-agregar {
+    color: var(--color-principal, #000c8f);
+}

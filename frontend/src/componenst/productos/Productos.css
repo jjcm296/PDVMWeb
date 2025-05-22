@@ -16,6 +16,7 @@
 }
 
 .productos-scroll-contenedor {
+    border: var(--borde-panel);
     flex: 1;
     height: 90vh;
     width: 100%;
