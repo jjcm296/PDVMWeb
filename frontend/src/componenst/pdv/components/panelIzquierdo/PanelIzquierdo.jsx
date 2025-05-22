@@ -4,6 +4,7 @@ import VistaToggle from '../switchVista/VistaToggle';
 import TarjetaProducto from '../tarjetasProducto/TarjetaProducto';
 import TarjetaProductoBarra from '../tarjetasProducto/TarjetaProductoBarra';
 import './PanelIzquierdo.css';
+import BotonFiltro from "../../../ui/botonFiltro/BotonFiltro";
 
 const productosMock = Array.from({ length: 16 }, (_, i) => ({
     id: i + 1,
@@ -22,7 +23,9 @@ const PanelIzquierdo = () => {
         <div className="panel-izquierdo-contenedor">
             <div className="barra-superior">
                 <Buscador onBuscar={setBusqueda}/>
+                <BotonFiltro/>
             </div>
+
 
             <div className={`productos-scroll ${vista === 'list' ? 'modo-lista' : ''}`}>
                 {productosFiltrados.map(producto =>

@@ -5,7 +5,6 @@
     --padding-panel: 15px;
 }
 
-/* Contenedor principal */
 .panel-izquierdo-contenedor {
     display: flex;
     flex-direction: column;
@@ -18,23 +17,28 @@
     background-color: var(--fondo-panel);
     box-sizing: border-box;
     position: relative;
+    gap: 2px;
 }
 
-/* Buscador */
 .barra-superior {
     margin-bottom: 5px;
 }
 
-/* Vista de tarjetas (grid) */
 .productos-scroll {
     flex: 1;
+    width: 100%;
     overflow-y: auto;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 10px;
+    box-sizing: border-box;
+
+    border: var(--borde-panel);
+    border-radius: var(--radio-panel);
+    padding: 10px;
+    background-color: var(--fondo-panel);
 }
 
-/* Vista de lista (barra horizontal) */
 .productos-scroll.modo-lista {
     display: flex;
     flex-direction: column;
@@ -49,14 +53,13 @@
     max-width: 100%;
 }
 
-/* Toggle de vista abajo a la derecha */
 .switch-inferior {
     display: flex;
     justify-content: flex-end;
     padding-top: 10px;
 }
 
-/* Responsivo */
+
 @media (max-width: 1024px) {
     .productos-scroll {
         grid-template-columns: repeat(4, 1fr);
