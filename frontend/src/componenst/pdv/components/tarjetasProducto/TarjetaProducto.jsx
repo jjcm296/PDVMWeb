@@ -5,7 +5,7 @@ const TarjetaProducto = ({ nombre = "Producto", onAgregar }) => {
     return (
         <div className="tarjeta-producto">
             <div className="imagen-producto">📦</div>
-            <div className="nombre-producto">Producto A</div>
+            <div className="nombre-producto">{nombre}</div>
             <button className="boton-agregar">+</button>
         </div>
 

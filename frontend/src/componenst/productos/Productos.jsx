@@ -19,7 +19,7 @@ const Productos = () => {
             try {
                 const response = await apiGetAllProductos();
                 console.log('Productos:', response);
-                setProductos(response.data);
+                setProductos(response);
             } catch (error) {
                 console.error('Error al obtener productos:', error);
             }
@@ -47,9 +47,9 @@ const Productos = () => {
                 <div className={`productos-scroll ${vista === 'list' ? 'modo-lista' : ''}`}>
                     {productosFiltrados.map(producto =>
                         vista === 'grid' ? (
-                            <TarjetaProducto key={producto.id_producto} nombre={producto.nombre}/>
+                            <TarjetaProducto key={producto.idProducto} nombre={producto.nombre}/>
                         ) : (
-                            <TarjetaProductoBarra key={producto.id_producto} nombre={producto.nombre}/>
+                            <TarjetaProductoBarra key={producto.idProducto} nombre={producto.nombre}/>
                         )
                     )}
                 </div>
