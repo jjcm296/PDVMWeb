@@ -22,6 +22,7 @@ function App() {
                   <Route path={"/register"} element={<CrearCuenta/>}/>
                   <Route path={"/verification"} element={<CodigoVerificacion/>}/>
                   <Route path={"/pdv"} element={<PDV/>}/>
+                  <Route path={"/products"} element={<Productos/>}/>
                   <Route path={"category"} element={<Categorias/>}/>
               </Routes>
           </header>
