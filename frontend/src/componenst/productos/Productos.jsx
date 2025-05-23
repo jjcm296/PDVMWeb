@@ -9,8 +9,10 @@ import BotonAgregar from "../ui/BotonAgregar/BotonAgregar";
 import BotonFiltro from "../ui/botonFiltro/BotonFiltro";
 
 import { useProductos } from '../../context/productosContext';
+import {useNavigate} from "react-router-dom";
 
 const Productos = () => {
+    const navigate = useNavigate();
     const [vista, setVista] = useState('grid');
     const [busqueda, setBusqueda] = useState('');
     const [mostrarModal, setMostrarModal] = useState(false);
@@ -42,7 +44,7 @@ const Productos = () => {
                     <Buscador onBuscar={setBusqueda} />
                     <div className="botones-superior">
                         <BotonFiltro />
-                        <BotonAgregar esProducto={false} />
+                        <BotonAgregar esProducto={false} onClick={()=> navigate('/category')} />
                         <BotonAgregar onClick={abrirModal} />
                     </div>
                 </div>
