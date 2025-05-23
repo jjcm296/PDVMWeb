@@ -10,7 +10,7 @@ import { apiAddCategoria } from "../../api/apiCategorias";
 
 const Categorias = () => {
     const [busqueda, setBusqueda] = useState('');
-    const { categoriesOriginal, loadingCategories, loadCategories } = useCategorias();
+    const { categoriesOriginal, loadingCategories, loadCategories, setCategoriesOriginal } = useCategorias();
     const [categorias, setCategorias] = useState([]);
     const [mostrarModal, setMostrarModal] = useState(false);
 
@@ -32,12 +32,15 @@ const Categorias = () => {
         try {
             const response = await apiAddCategoria({ nombre: nuevaCategoria });
             setMostrarModal(false);
-            
+
             setCategorias(prev => [...prev, response]);
+
+            setCategoriesOriginal(prev => [...(prev || []), response]);
         } catch (error) {
             console.error("Error al agregar categoría:", error);
         }
     };
+
 
 
     return (
