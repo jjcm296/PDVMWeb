@@ -4,12 +4,15 @@ import Buscador from '../ui/buscador/Buscador';
 import BotonFiltro from '../ui/botonFiltro/BotonFiltro';
 import BotonAgregar from '../ui/BotonAgregar/BotonAgregar';
 import TarjetaCategoria from './components/tarjetaCategoria/TarjetaCategoria';
+import ModalAgregarCategoria from './modalAgregarCategoria/ModalAgregarCategoria';
 import { useCategorias } from "../../context/categoriaContext";
+import { apiAddCategoria } from "../../api/apiCategorias";
 
 const Categorias = () => {
     const [busqueda, setBusqueda] = useState('');
     const { categoriesOriginal, loadingCategories, loadCategories } = useCategorias();
     const [categorias, setCategorias] = useState([]);
+    const [mostrarModal, setMostrarModal] = useState(false);
 
     useEffect(() => {
         loadCategories();
@@ -25,6 +28,16 @@ const Categorias = () => {
         c.nombre.toLowerCase().includes(busqueda.toLowerCase())
     );
 
+    const handleAgregarCategoria = async (nuevaCategoria) => {
+        try {
+            await apiAddCategoria({ nombre: nuevaCategoria });
+            setMostrarModal(false);
+            loadCategories(); // Refrescar lista
+        } catch (error) {
+            console.error("Error al agregar categoría:", error);
+        }
+    };
+
     return (
         <div className="pantalla-categorias">
             <div className="categorias-scroll-contenedor">
@@ -33,7 +46,7 @@ const Categorias = () => {
                         <Buscador onBuscar={setBusqueda} />
                         <div className="botones-superior">
                             <BotonFiltro />
-                            <BotonAgregar />
+                            <BotonAgregar onClick={() => setMostrarModal(true)} />
                         </div>
                     </div>
 
@@ -48,6 +61,13 @@ const Categorias = () => {
                     </div>
                 </div>
             </div>
+
+            {mostrarModal && (
+                <ModalAgregarCategoria
+                    onClose={() => setMostrarModal(false)}
+                    onSubmit={handleAgregarCategoria}
+                />
+            )}
         </div>
     );
 };
