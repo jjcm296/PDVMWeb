@@ -1,7 +1,7 @@
 package com.example.PDVWM.warehouse.productManagement.service;
 
-import com.example.PDVWM.warehouse.productManagement.repository.CategoriaRepository;
 import com.example.PDVWM.warehouse.productManagement.model.Categoria;
+import com.example.PDVWM.warehouse.productManagement.repository.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,19 +13,18 @@ public class CategoriaService {
     @Autowired
     private CategoriaRepository categoriaRepository;
 
-    public Categoria guardarCategoria(Categoria categoria) {
-        System.out.println("Guardando categoria: " + categoria.getNombre());
+    public Categoria saveCategory(Categoria categoria) {
         return categoriaRepository.save(categoria);
     }
 
-    //Métodos para obtener las categorias
-    public List<Categoria> getAllCategorias() {
+    public List<Categoria> getAllCategories() {
         return categoriaRepository.findAll();
     }
 
     public List<Categoria> getAllCategoriesByNameAsc() {
         return categoriaRepository.findAllByNameAsc();
     }
+
     public List<Categoria> getAllCategoriesByNameDesc() {
         return categoriaRepository.findAllByNameDesc();
     }

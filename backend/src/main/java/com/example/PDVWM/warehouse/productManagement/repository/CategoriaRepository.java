@@ -8,13 +8,11 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CategoriaRepository extends JpaRepository<Categoria, Long>{
-    // Obtener por nombre ascendente
+public interface CategoriaRepository extends JpaRepository<Categoria, Long> {
+
     @Query("SELECT c FROM Categoria c ORDER BY c.nombre ASC")
     List<Categoria> findAllByNameAsc();
 
-    // Obtener por nombre descendente
     @Query("SELECT c FROM Categoria c ORDER BY c.nombre DESC")
     List<Categoria> findAllByNameDesc();
-
 }
