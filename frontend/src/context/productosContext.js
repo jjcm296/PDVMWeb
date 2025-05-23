@@ -1,4 +1,4 @@
-// src/context/ProductosContext.js
+// src/context/productosContext.js
 import { createContext, useContext, useState } from "react";
 import { apiGetAllProductos } from "../api/apiProductos";
 

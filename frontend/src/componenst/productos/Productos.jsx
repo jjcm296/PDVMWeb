@@ -8,7 +8,7 @@ import './Productos.css';
 import BotonAgregar from "../ui/BotonAgregar/BotonAgregar";
 import BotonFiltro from "../ui/botonFiltro/BotonFiltro";
 
-import { useProductos } from '../../context/ProductosContext';
+import { useProductos } from '../../context/productosContext';
 
 const Productos = () => {
     const [vista, setVista] = useState('grid');

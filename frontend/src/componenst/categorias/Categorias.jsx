@@ -1,19 +1,27 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import './Categorias.css';
 import Buscador from '../ui/buscador/Buscador';
 import BotonFiltro from '../ui/botonFiltro/BotonFiltro';
 import BotonAgregar from '../ui/BotonAgregar/BotonAgregar';
 import TarjetaCategoria from './components/tarjetaCategoria/TarjetaCategoria';
-
-const categoriasMock = Array.from({ length: 50 }, (_, i) => ({
-    id: i + 1,
-    nombre: 'Productos de limpieza para el hogar'
-}));
+import { useCategorias } from "../../context/categoriaContext";
 
 const Categorias = () => {
     const [busqueda, setBusqueda] = useState('');
+    const { categoriesOriginal, loadingCategories, loadCategories } = useCategorias();
+    const [categorias, setCategorias] = useState([]);
 
-    const categoriasFiltradas = categoriasMock.filter(c =>
+    useEffect(() => {
+        loadCategories();
+    }, []);
+
+    useEffect(() => {
+        if (categoriesOriginal) {
+            setCategorias(categoriesOriginal);
+        }
+    }, [categoriesOriginal]);
+
+    const categoriasFiltradas = categorias.filter(c =>
         c.nombre.toLowerCase().includes(busqueda.toLowerCase())
     );
 

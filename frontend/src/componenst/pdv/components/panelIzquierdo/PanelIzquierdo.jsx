@@ -5,7 +5,7 @@ import TarjetaProducto from '../tarjetasProducto/TarjetaProducto';
 import TarjetaProductoBarra from '../tarjetasProducto/TarjetaProductoBarra';
 import './PanelIzquierdo.css';
 import BotonFiltro from "../../../ui/botonFiltro/BotonFiltro";
-import { useProductos } from "../../../../context/ProductosContext";
+import { useProductos } from "../../../../context/productosContext";
 
 const PanelIzquierdo = () => {
     const [vista, setVista] = useState('grid');
