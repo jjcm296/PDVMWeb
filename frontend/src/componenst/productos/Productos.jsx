@@ -8,39 +8,32 @@ import './Productos.css';
 import BotonAgregar from "../ui/BotonAgregar/BotonAgregar";
 import BotonFiltro from "../ui/botonFiltro/BotonFiltro";
 
-import { apiGetAllProductos } from "../../api/apiProductos";
+import { useProductos } from '../../context/ProductosContext';
 
 const Productos = () => {
     const [vista, setVista] = useState('grid');
     const [busqueda, setBusqueda] = useState('');
-    const [productos, setProductos] = useState([]);
     const [mostrarModal, setMostrarModal] = useState(false);
 
-    useEffect(() => {
-        const fetchProductos = async () => {
-            try {
-                const response = await apiGetAllProductos();
-                console.log('Productos:', response);
-                setProductos(response);
-            } catch (error) {
-                console.error('Error al obtener productos:', error);
-            }
-        };
+    const { productosOriginales, loadProductos } = useProductos();
+    const [productosOrdenados, setProductosOrdenados] = useState([]);
 
-        fetchProductos();
+    useEffect(() => {
+        loadProductos();
     }, []);
 
-    const productosFiltrados = productos.filter(p =>
+    useEffect(() => {
+        if (productosOriginales) {
+            setProductosOrdenados([...productosOriginales]);
+        }
+    }, [productosOriginales]);
+
+    const productosFiltrados = productosOrdenados.filter(p =>
         p.nombre.toLowerCase().includes(busqueda.toLowerCase())
     );
 
-    const abrirModal = () => {
-        setMostrarModal(true);
-    };
-
-    const cerrarModal = () => {
-        setMostrarModal(false);
-    };
+    const abrirModal = () => setMostrarModal(true);
+    const cerrarModal = () => setMostrarModal(false);
 
     return (
         <div className="pantalla-productos">
@@ -55,11 +48,11 @@ const Productos = () => {
                 </div>
 
                 <div className={`productos-scroll ${vista === 'list' ? 'modo-lista' : ''}`}>
-                    {productosFiltrados.map(producto =>
+                    {productosFiltrados.map((producto, index) =>
                         vista === 'grid' ? (
-                            <TarjetaProducto key={producto.idProducto} nombre={producto.nombre} />
+                            <TarjetaProducto key={producto.idProducto || index} nombre={producto.nombre} />
                         ) : (
-                            <TarjetaProductoBarra key={producto.idProducto} nombre={producto.nombre} />
+                            <TarjetaProductoBarra key={producto.idProducto || index} nombre={producto.nombre} />
                         )
                     )}
                 </div>
