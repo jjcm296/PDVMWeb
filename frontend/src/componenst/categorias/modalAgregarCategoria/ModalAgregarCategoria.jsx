@@ -11,7 +11,7 @@ const ModalAgregarCategoria = ({ onClose, onSubmit }) => {
             return;
         }
 
-        onSubmit({ nombre });
+        onSubmit( nombre);
         onClose();
     };
 

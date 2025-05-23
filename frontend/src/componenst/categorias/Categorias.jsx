@@ -30,13 +30,15 @@ const Categorias = () => {
 
     const handleAgregarCategoria = async (nuevaCategoria) => {
         try {
-            await apiAddCategoria({ nombre: nuevaCategoria });
+            const response = await apiAddCategoria({ nombre: nuevaCategoria });
             setMostrarModal(false);
-            loadCategories(); // Refrescar lista
+            
+            setCategorias(prev => [...prev, response]);
         } catch (error) {
             console.error("Error al agregar categoría:", error);
         }
     };
+
 
     return (
         <div className="pantalla-categorias">
