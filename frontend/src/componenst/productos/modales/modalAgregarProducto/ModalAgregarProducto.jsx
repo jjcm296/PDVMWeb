@@ -1,12 +1,7 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './ModalAgregarProducto.css';
 import CustomInput from "../../../ui/customInput/CustomInput";
-
-const categoriasMock = [
-    { id: 1, nombre: 'Bebidas' },
-    { id: 2, nombre: 'Limpieza' },
-    { id: 3, nombre: 'Snacks' },
-];
+import { useCategorias } from "../../../../context/categoriaContext";
 
 const ModalAgregarProducto = ({ onClose, onSubmit }) => {
     const [form, setForm] = useState({
@@ -21,12 +16,18 @@ const ModalAgregarProducto = ({ onClose, onSubmit }) => {
     const [previewUrl, setPreviewUrl] = useState(null);
     const inputFileRef = useRef(null);
 
+    const { categoriesOriginal, loadCategories } = useCategorias();
+
+    useEffect(() => {
+        loadCategories();
+    }, []);
+
     const handleChange = e => {
         const { name, value, files } = e.target;
         if (name === "imagen") {
             const file = files[0];
             setImagen(file);
-            setForm(prev => ({ ...prev}));
+            setForm(prev => ({ ...prev }));
             setPreviewUrl(URL.createObjectURL(file));
         } else {
             setForm(prev => ({ ...prev, [name]: value }));
@@ -49,40 +50,40 @@ const ModalAgregarProducto = ({ onClose, onSubmit }) => {
                 <h2 className="modal-titulo">Agregar <span>Producto</span></h2>
 
                 <div className="campo-entrada">
-                    <CustomInput name="nombre" value={form.nombre} onChange={handleChange} required/>
+                    <CustomInput name="nombre" value={form.nombre} onChange={handleChange} required />
                     <label htmlFor="nombre">Nombre</label>
                 </div>
 
                 <div className="campo-entrada">
-                    <CustomInput type="number" name="precio" value={form.precio} onChange={handleChange} required/>
+                    <CustomInput type="number" name="precio" value={form.precio} onChange={handleChange} required />
                     <label htmlFor="precio">Precio</label>
                 </div>
 
                 <div className="campo-entrada">
                     <select name="categoriaId" value={form.categoriaId} onChange={handleChange} required>
                         <option value="">Selecciona categoría</option>
-                        {categoriasMock.map(cat => (
-                            <option key={cat.id} value={cat.id}>{cat.nombre}</option>
+                        {categoriesOriginal?.map(cat => (
+                            <option key={cat.idCategoria} value={cat.idCategoria}>{cat.nombre}</option>
                         ))}
                     </select>
                 </div>
 
                 <div className="campo-entrada">
-                    <CustomInput name="descripcion" value={form.descripcion} onChange={handleChange} required/>
+                    <CustomInput name="descripcion" value={form.descripcion} onChange={handleChange} />
                     <label htmlFor="descripcion">Descripción</label>
                 </div>
 
                 <div className="campo-entrada">
-                    <CustomInput name="marca" value={form.marca} onChange={handleChange} required/>
+                    <CustomInput name="marca" value={form.marca} onChange={handleChange} />
                     <label htmlFor="marca">Marca</label>
                 </div>
 
                 <div className="campo-entrada">
-                    <CustomInput name="codigoBarra" value={form.codigoBarra} onChange={handleChange} required/>
+                    <CustomInput name="codigoBarra" value={form.codigoBarra} onChange={handleChange} />
                     <label htmlFor="codigoBarra">Código de barras</label>
                 </div>
 
-                {/* Zona de imagen */}
+                {/* Imagen */}
                 <div
                     className="drop-area"
                     onClick={() => inputFileRef.current?.click()}
@@ -90,20 +91,20 @@ const ModalAgregarProducto = ({ onClose, onSubmit }) => {
                     onDrop={(e) => {
                         e.preventDefault();
                         const file = e.dataTransfer.files[0];
-                        setForm(prev => ({...prev, imagen: file}));
+                        setForm(prev => ({ ...prev, imagen: file }));
                         setPreviewUrl(URL.createObjectURL(file));
                     }}
                 >
                     {previewUrl ? (
                         <div className="preview-wrapper">
-                            <img src={previewUrl} alt="Vista previa" className="preview-imagen"/>
+                            <img src={previewUrl} alt="Vista previa" className="preview-imagen" />
                             <button
                                 type="button"
                                 className="boton-eliminar-imagen"
                                 onClick={(e) => {
                                     e.stopPropagation();
                                     setPreviewUrl(null);
-                                    setForm(prev => ({...prev, imagen: null}));
+                                    setForm(prev => ({ ...prev, imagen: null }));
                                 }}
                             >
                                 ✕
