@@ -50,12 +50,12 @@ const ModalAgregarProducto = ({ onClose, onSubmit }) => {
                 <h2 className="modal-titulo">Agregar <span>Producto</span></h2>
 
                 <div className="campo-entrada">
-                    <CustomInput name="nombre" value={form.nombre} onChange={handleChange} required />
+                    <CustomInput name="nombre" value={form.nombre} onChange={handleChange} required/>
                     <label htmlFor="nombre">Nombre</label>
                 </div>
 
                 <div className="campo-entrada">
-                    <CustomInput type="number" name="precio" value={form.precio} onChange={handleChange} required />
+                    <CustomInput type="number" name="precio" value={form.precio} onChange={handleChange} required/>
                     <label htmlFor="precio">Precio</label>
                 </div>
 
@@ -91,20 +91,20 @@ const ModalAgregarProducto = ({ onClose, onSubmit }) => {
                     onDrop={(e) => {
                         e.preventDefault();
                         const file = e.dataTransfer.files[0];
-                        setForm(prev => ({ ...prev, imagen: file }));
+                        setForm(prev => ({...prev, imagen: file}));
                         setPreviewUrl(URL.createObjectURL(file));
                     }}
                 >
                     {previewUrl ? (
                         <div className="preview-wrapper">
-                            <img src={previewUrl} alt="Vista previa" className="preview-imagen" />
+                            <img src={previewUrl} alt="Vista previa" className="preview-imagen"/>
                             <button
                                 type="button"
                                 className="boton-eliminar-imagen"
                                 onClick={(e) => {
                                     e.stopPropagation();
                                     setPreviewUrl(null);
-                                    setForm(prev => ({ ...prev, imagen: null }));
+                                    setForm(prev => ({...prev, imagen: null}));
                                 }}
                             >
                                 ✕
@@ -124,8 +124,8 @@ const ModalAgregarProducto = ({ onClose, onSubmit }) => {
                 </div>
 
                 <div className="modal-botones">
-                    <button onClick={handleSubmit}>Guardar</button>
                     <button onClick={onClose}>Cancelar</button>
+                    <button onClick={handleSubmit}>Guardar</button>
                 </div>
             </div>
         </div>

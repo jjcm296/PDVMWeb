@@ -59,11 +59,12 @@
 }
 
 .modal-botones button:first-child {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.modal-botones button:last-child {
     background-color: #000c8f;
     color: white;
 }
 
-.modal-botones button:last-child {
-    background-color: #e0e0e0;
-    color: #333;
-}

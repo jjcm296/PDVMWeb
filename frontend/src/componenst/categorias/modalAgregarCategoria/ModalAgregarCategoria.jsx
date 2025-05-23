@@ -26,8 +26,8 @@ const ModalAgregarCategoria = ({ onClose, onSubmit }) => {
                 </div>
 
                 <div className="modal-botones">
-                    <button onClick={handleSubmit}>Guardar</button>
                     <button onClick={onClose}>Cancelar</button>
+                    <button onClick={handleSubmit}>Guardar</button>
                 </div>
             </div>
         </div>
