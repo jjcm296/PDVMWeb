@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import Buscador from '../ui/buscador/Buscador';
 import VistaToggle from '../pdv/components/switchVista/VistaToggle';
 import TarjetaProducto from '../pdv/components/tarjetasProducto/TarjetaProducto';
@@ -7,16 +7,28 @@ import './Productos.css';
 import BotonAgregar from "../ui/BotonAgregar/BotonAgregar";
 import BotonFiltro from "../ui/botonFiltro/BotonFiltro";
 
-const productosMock = Array.from({ length: 100 }, (_, i) => ({
-    id: i + 1,
-    nombre: `Producto ${i + 1}`
-}));
+import {apiGetAllProductos} from "../../api/apiProductos";
 
 const Productos = () => {
     const [vista, setVista] = useState('grid');
     const [busqueda, setBusqueda] = useState('');
+    const [productos, setProductos] = useState([]);
 
-    const productosFiltrados = productosMock.filter(p =>
+    useEffect(() => {
+        const fetchProductos = async () => {
+            try {
+                const response = await apiGetAllProductos();
+                console.log('Productos:', response);
+                setProductos(response.data);
+            } catch (error) {
+                console.error('Error al obtener productos:', error);
+            }
+        };
+
+        fetchProductos();
+    }, []);
+
+    const productosFiltrados = productos.filter(p =>
         p.nombre.toLowerCase().includes(busqueda.toLowerCase())
     );
 
@@ -35,9 +47,9 @@ const Productos = () => {
                 <div className={`productos-scroll ${vista === 'list' ? 'modo-lista' : ''}`}>
                     {productosFiltrados.map(producto =>
                         vista === 'grid' ? (
-                            <TarjetaProducto key={producto.id} nombre={producto.nombre}/>
+                            <TarjetaProducto key={producto.id_producto} nombre={producto.nombre}/>
                         ) : (
-                            <TarjetaProductoBarra key={producto.id} nombre={producto.nombre}/>
+                            <TarjetaProductoBarra key={producto.id_producto} nombre={producto.nombre}/>
                         )
                     )}
                 </div>

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { API_BASE_URL } from '../config/config.js';
 
-const apiGetAllProductos = async () => {
+export const apiGetAllProductos = async () => {
     try {
          const response = await axios.get(`${API_BASE_URL}/productos`);
          return response.data;
@@ -11,7 +11,7 @@ const apiGetAllProductos = async () => {
     }
 }
 
-const apiAddProductos = async (producto) => {
+export const apiAddProductos = async (producto) => {
    try {
        const response = await axios.post( `${API_BASE_URL}/productos`, producto);
        return response.data;
