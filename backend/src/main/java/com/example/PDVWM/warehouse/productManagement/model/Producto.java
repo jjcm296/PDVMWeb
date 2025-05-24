@@ -24,6 +24,9 @@ public class Producto {
     @Column(name = "marca")
     private String marca;
 
+    @Column(name = "imagenUrl", nullable = true)
+    private String imagenUrl;
+
     @ManyToOne
     @JoinColumn(name="idCategoria")
     private Categoria categoria;
@@ -75,4 +78,7 @@ public class Producto {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
+
+    public String getImagenUrl() { return imagenUrl; }
+    public void setImagenUrl(String imagenUrl) { this.imagenUrl = imagenUrl; }
 }
