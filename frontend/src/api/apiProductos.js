@@ -12,11 +12,26 @@ export const apiGetAllProductos = async () => {
 }
 
 export const apiAddProductos = async (producto) => {
-   try {
-       const response = await axios.post( `${API_BASE_URL}/productos`, producto);
-       return response.data;
-   } catch (error) {
-         console.error('Error al agregar el producto:', error);
-         return null;
-   }
-}
+    try {
+        const formData = new FormData();
+        formData.append("nombre", producto.nombre);
+        formData.append("precio", producto.precio);
+        formData.append("categoriaId", producto.categoriaId);
+
+        if (producto.descripcion) formData.append("descripcion", producto.descripcion);
+        if (producto.marca) formData.append("marca", producto.marca);
+        if (producto.codigoBarra) formData.append("codigoBarra", producto.codigoBarra);
+        if (producto.imagen) formData.append("imagen", producto.imagen);
+
+        const response = await axios.post(`${API_BASE_URL}/productos`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        });
+
+        return response.data;
+    } catch (error) {
+        console.error('Error al agregar el producto:', error);
+        return null;
+    }
+};

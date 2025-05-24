@@ -11,8 +11,9 @@ const ModalAgregarProducto = ({ onClose, onSubmit }) => {
         codigoBarra: '',
         marca: '',
         categoriaId: '',
+        imagen: null
     });
-    const [imagen, setImagen] = useState(null);
+
     const [previewUrl, setPreviewUrl] = useState(null);
     const inputFileRef = useRef(null);
 
@@ -24,25 +25,26 @@ const ModalAgregarProducto = ({ onClose, onSubmit }) => {
 
     const handleChange = e => {
         const { name, value, files } = e.target;
+
         if (name === "imagen") {
             const file = files[0];
-            setImagen(file);
-            setForm(prev => ({ ...prev }));
+            setForm(prev => ({ ...prev, imagen: file }));
             setPreviewUrl(URL.createObjectURL(file));
         } else {
             setForm(prev => ({ ...prev, [name]: value }));
         }
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if (!form.nombre || !form.precio || !form.categoriaId) {
             alert("Nombre, precio y categoría son obligatorios.");
             return;
         }
 
-        onSubmit(form);
-        onClose();
+        const ok = await onSubmit(form);
+        if (ok) onClose();
     };
+
 
     return (
         <div className="modal-agregar-producto">
@@ -50,12 +52,12 @@ const ModalAgregarProducto = ({ onClose, onSubmit }) => {
                 <h2 className="modal-titulo">Agregar <span>Producto</span></h2>
 
                 <div className="campo-entrada">
-                    <CustomInput name="nombre" value={form.nombre} onChange={handleChange} required/>
+                    <CustomInput name="nombre" value={form.nombre} onChange={handleChange} required />
                     <label htmlFor="nombre">Nombre</label>
                 </div>
 
                 <div className="campo-entrada">
-                    <CustomInput type="number" name="precio" value={form.precio} onChange={handleChange} required/>
+                    <CustomInput type="number" name="precio" value={form.precio} onChange={handleChange} required />
                     <label htmlFor="precio">Precio</label>
                 </div>
 
@@ -69,17 +71,17 @@ const ModalAgregarProducto = ({ onClose, onSubmit }) => {
                 </div>
 
                 <div className="campo-entrada">
-                    <CustomInput name="descripcion" value={form.descripcion} onChange={handleChange} required/>
+                    <CustomInput name="descripcion" value={form.descripcion} onChange={handleChange} />
                     <label htmlFor="descripcion">Descripción</label>
                 </div>
 
                 <div className="campo-entrada">
-                    <CustomInput name="marca" value={form.marca} onChange={handleChange} required/>
+                    <CustomInput name="marca" value={form.marca} onChange={handleChange} />
                     <label htmlFor="marca">Marca</label>
                 </div>
 
                 <div className="campo-entrada">
-                    <CustomInput name="codigoBarra" value={form.codigoBarra} onChange={handleChange} required/>
+                    <CustomInput name="codigoBarra" value={form.codigoBarra} onChange={handleChange} />
                     <label htmlFor="codigoBarra">Código de barras</label>
                 </div>
 
@@ -91,20 +93,20 @@ const ModalAgregarProducto = ({ onClose, onSubmit }) => {
                     onDrop={(e) => {
                         e.preventDefault();
                         const file = e.dataTransfer.files[0];
-                        setForm(prev => ({...prev, imagen: file}));
+                        setForm(prev => ({ ...prev, imagen: file }));
                         setPreviewUrl(URL.createObjectURL(file));
                     }}
                 >
                     {previewUrl ? (
                         <div className="preview-wrapper">
-                            <img src={previewUrl} alt="Vista previa" className="preview-imagen"/>
+                            <img src={previewUrl} alt="Vista previa" className="preview-imagen" />
                             <button
                                 type="button"
                                 className="boton-eliminar-imagen"
                                 onClick={(e) => {
                                     e.stopPropagation();
                                     setPreviewUrl(null);
-                                    setForm(prev => ({...prev, imagen: null}));
+                                    setForm(prev => ({ ...prev, imagen: null }));
                                 }}
                             >
                                 ✕

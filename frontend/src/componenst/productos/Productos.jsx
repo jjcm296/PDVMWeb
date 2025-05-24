@@ -10,6 +10,7 @@ import BotonFiltro from "../ui/botonFiltro/BotonFiltro";
 
 import { useProductos } from '../../context/productosContext';
 import {useNavigate} from "react-router-dom";
+import {apiAddProductos} from "../../api/apiProductos";
 
 const Productos = () => {
     const navigate = useNavigate();
@@ -36,6 +37,18 @@ const Productos = () => {
 
     const abrirModal = () => setMostrarModal(true);
     const cerrarModal = () => setMostrarModal(false);
+
+    const handleAgregarProducto = async (form) => {
+        const resultado = await apiAddProductos(form);
+        if (resultado) {
+            await loadProductos();
+            return true;
+        } else {
+            alert("Hubo un error al guardar el producto.");
+            return false;
+        }
+    };
+
 
     return (
         <div className="pantalla-productos">
@@ -64,7 +77,7 @@ const Productos = () => {
                 </div>
             </div>
 
-            {mostrarModal && <ModalAgregarProducto onClose={cerrarModal} />}
+            {mostrarModal && <ModalAgregarProducto onClose={cerrarModal} onSubmit={handleAgregarProducto}/>}
         </div>
     );
 };

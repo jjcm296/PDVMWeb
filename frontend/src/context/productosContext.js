@@ -11,18 +11,17 @@ export const ProductosProvider = ({ children }) => {
     const [cargandoProductos, setCargandoProductos] = useState(false);
 
     const loadProductos = async () => {
-        if (!productosOriginales && !cargandoProductos) {
-            try {
-                setCargandoProductos(true);
-                const response = await apiGetAllProductos();
-                setProductosOriginales(response);
-            } catch (error) {
-                console.error("Error cargando productos:", error);
-            } finally {
-                setCargandoProductos(false);
-            }
+        try {
+            setCargandoProductos(true);
+            const response = await apiGetAllProductos();
+            setProductosOriginales(response);
+        } catch (error) {
+            console.error("Error cargando productos:", error);
+        } finally {
+            setCargandoProductos(false);
         }
     };
+
 
     return (
         <ProductosContext.Provider
