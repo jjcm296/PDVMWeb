@@ -9,8 +9,8 @@ import BotonAgregar from "../ui/BotonAgregar/BotonAgregar";
 import BotonFiltro from "../ui/botonFiltro/BotonFiltro";
 
 import { useProductos } from '../../context/productosContext';
-import {useNavigate} from "react-router-dom";
-import {apiAddProductos} from "../../api/apiProductos";
+import { useNavigate } from "react-router-dom";
+import { apiAddProductos } from "../../api/apiProductos";
 
 const Productos = () => {
     const navigate = useNavigate();
@@ -20,6 +20,7 @@ const Productos = () => {
 
     const { productosOriginales, loadProductos } = useProductos();
     const [productosOrdenados, setProductosOrdenados] = useState([]);
+    const [productosFiltrados, setProductosFiltrados] = useState([]);
 
     useEffect(() => {
         loadProductos();
@@ -31,9 +32,12 @@ const Productos = () => {
         }
     }, [productosOriginales]);
 
-    const productosFiltrados = productosOrdenados.filter(p =>
-        p.nombre.toLowerCase().includes(busqueda.toLowerCase())
-    );
+    useEffect(() => {
+        const filtrados = productosOrdenados.filter(p =>
+            p.nombre.toLowerCase().includes(busqueda.toLowerCase())
+        );
+        setProductosFiltrados(filtrados);
+    }, [busqueda, productosOrdenados]);
 
     const abrirModal = () => setMostrarModal(true);
     const cerrarModal = () => setMostrarModal(false);
@@ -49,7 +53,6 @@ const Productos = () => {
         }
     };
 
-
     return (
         <div className="pantalla-productos">
             <div className="productos-scroll-contenedor">
@@ -57,7 +60,7 @@ const Productos = () => {
                     <Buscador onBuscar={setBusqueda} />
                     <div className="botones-superior">
                         <BotonFiltro />
-                        <BotonAgregar esProducto={false} onClick={()=> navigate('/category')} />
+                        <BotonAgregar esProducto={false} onClick={() => navigate('/category')} />
                         <BotonAgregar onClick={abrirModal} />
                     </div>
                 </div>
@@ -77,7 +80,7 @@ const Productos = () => {
                 </div>
             </div>
 
-            {mostrarModal && <ModalAgregarProducto onClose={cerrarModal} onSubmit={handleAgregarProducto}/>}
+            {mostrarModal && <ModalAgregarProducto onClose={cerrarModal} onSubmit={handleAgregarProducto} />}
         </div>
     );
 };

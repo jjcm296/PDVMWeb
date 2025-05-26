@@ -11,6 +11,7 @@ const Buscador = ({ placeholder = "Buscar...", onBuscar = () => {} }) => {
         onBuscar(value);
     };
 
+
     const handleClick = () => {
         onBuscar(inputValue);
     };
