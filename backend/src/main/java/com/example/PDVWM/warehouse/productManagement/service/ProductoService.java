@@ -1,5 +1,7 @@
 package com.example.PDVWM.warehouse.productManagement.service;
 
+import com.example.PDVWM.warehouse.inventory.model.Inventario;
+import com.example.PDVWM.warehouse.inventory.repository.InventarioRepository;
 import com.example.PDVWM.warehouse.productManagement.model.Producto;
 import com.example.PDVWM.warehouse.productManagement.repository.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +15,13 @@ import java.util.List;
 public class ProductoService {
 
     private final ProductoRepository productoRepository;
+    private final InventarioRepository inventarioRepository;
 
     @Autowired
-    public ProductoService(ProductoRepository productoRepository) {
+    public ProductoService(ProductoRepository productoRepository,
+                           InventarioRepository inventarioRepository) {
         this.productoRepository = productoRepository;
+        this.inventarioRepository = inventarioRepository;
     }
 
     public List<Producto> getAllProductos() {
@@ -24,7 +29,17 @@ public class ProductoService {
     }
 
     public Producto saveProducto(Producto producto) {
-        return productoRepository.save(producto);
+        Producto saved = productoRepository.save(producto);
+
+        // Crear inventario asociado automáticamente
+        Inventario inventario = new Inventario();
+        inventario.setProducto(saved);
+        inventario.setStockActual(0);
+        inventario.setStockMinimo(10);
+
+        inventarioRepository.save(inventario);
+
+        return saved;
     }
 
     public Producto getProductoById(Long id) {

@@ -1,4 +1,4 @@
-package com.example.PDVWM.warehouse.supplies;
+package com.example.PDVWM.warehouse.supplies.model;
 
 public class SuministroPorUnidad extends Suministro {
 

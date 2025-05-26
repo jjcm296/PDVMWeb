@@ -1,4 +1,4 @@
-package com.example.PDVWM.warehouse.supplies;
+package com.example.PDVWM.warehouse.supplies.model;
 
 import com.example.PDVWM.warehouse.productManagement.model.Producto;
 import jakarta.persistence.*;
@@ -23,7 +23,7 @@ public abstract class Suministro {
     private int cantidadSuministrada;
 
     @ManyToOne
-    @JoinColumn(name="idCategoria")
+    @JoinColumn(name="producto_id", nullable = false)
     private Producto productoSuministrado;
 
     public abstract void suministrar();
