@@ -7,11 +7,13 @@ import java.time.LocalTime;
 import java.util.Date;
 
 @Entity
-@Table(name="Suministro")
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "Suministro")
 public abstract class Suministro {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idSuministro;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idSuministro")
+    private Long idSuministro;
 
     @Column(name="fechaSuministro")
     private Date fechaSuministro;
@@ -28,11 +30,11 @@ public abstract class Suministro {
 
     public abstract void suministrar();
 
-    public int getIdSuministro() {
+    public Long getIdSuministro() {
         return idSuministro;
     }
 
-    public void setIdSuministro(int idSuministro) {
+    public void setIdSuministro(Long idSuministro) {
         this.idSuministro = idSuministro;
     }
 

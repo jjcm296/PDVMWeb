@@ -2,6 +2,7 @@ package com.example.PDVWM.warehouse.productManagement.service;
 
 import com.example.PDVWM.warehouse.inventory.model.Inventario;
 import com.example.PDVWM.warehouse.inventory.repository.InventarioRepository;
+import com.example.PDVWM.warehouse.productManagement.dto.ProductoConStockDTO;
 import com.example.PDVWM.warehouse.productManagement.model.Producto;
 import com.example.PDVWM.warehouse.productManagement.repository.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,5 +64,23 @@ public class ProductoService {
 
         Sort.Direction direction = order.equalsIgnoreCase("desc") ? Sort.Direction.DESC : Sort.Direction.ASC;
         return productoRepository.findAll(Sort.by(direction, sortField));
+    }
+
+    public List<ProductoConStockDTO> getProductosConStock() {
+        List<Producto> productos = productoRepository.findAll();
+
+        return productos.stream().map(producto -> {
+            int stock = 0;
+            Inventario inventario = inventarioRepository.findByProducto_IdProducto(producto.getIdProducto());
+            if (inventario != null) {
+                stock = inventario.getStockActual();
+            }
+
+            return new ProductoConStockDTO(
+                    producto.getIdProducto(),
+                    producto.getNombre(),
+                    stock
+            );
+        }).toList();
     }
 }

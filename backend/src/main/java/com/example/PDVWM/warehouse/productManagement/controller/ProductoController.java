@@ -1,5 +1,6 @@
 package com.example.PDVWM.warehouse.productManagement.controller;
 
+import com.example.PDVWM.warehouse.productManagement.dto.ProductoConStockDTO;
 import com.example.PDVWM.warehouse.productManagement.model.Categoria;
 import com.example.PDVWM.warehouse.productManagement.model.Producto;
 import com.example.PDVWM.warehouse.productManagement.repository.CategoriaRepository;
@@ -108,5 +109,10 @@ public class ProductoController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Producto no encontrado");
         }
         productoService.deleteProducto(id);
+    }
+
+    @GetMapping("/con-stock")
+    public List<ProductoConStockDTO> getProductosConStock() {
+        return productoService.getProductosConStock();
     }
 }
