@@ -34,10 +34,12 @@ const Productos = () => {
 
     useEffect(() => {
         const filtrados = productosOrdenados.filter(p =>
-            p.nombre.toLowerCase().includes(busqueda.toLowerCase())
+            p.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
+            (p.codigoBarra && p.codigoBarra.toLowerCase().includes(busqueda.toLowerCase()))
         );
         setProductosFiltrados(filtrados);
     }, [busqueda, productosOrdenados]);
+
 
     const abrirModal = () => setMostrarModal(true);
     const cerrarModal = () => setMostrarModal(false);

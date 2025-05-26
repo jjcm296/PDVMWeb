@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import './Categorias.css';
 import Buscador from '../ui/buscador/Buscador';
 import BotonFiltro from '../ui/botonFiltro/BotonFiltro';
@@ -24,9 +24,16 @@ const Categorias = () => {
         }
     }, [categoriesOriginal]);
 
-    const categoriasFiltradas = categorias.filter(c =>
-        c.nombre.toLowerCase().includes(busqueda.toLowerCase())
-    );
+    useEffect(() => {
+        if (busqueda.trim() === '') {
+            setCategorias(categoriesOriginal || []);
+        } else {
+            const filtradas = categoriesOriginal?.filter(c =>
+                c.nombre.toLowerCase().includes(busqueda.toLowerCase())
+            ) || [];
+            setCategorias(filtradas);
+        }
+    }, [busqueda, categoriesOriginal]);
 
     const handleAgregarCategoria = async (nuevaCategoria) => {
         try {
@@ -34,14 +41,11 @@ const Categorias = () => {
             setMostrarModal(false);
 
             setCategorias(prev => [...prev, response]);
-
             setCategoriesOriginal(prev => [...(prev || []), response]);
         } catch (error) {
             console.error("Error al agregar categoría:", error);
         }
     };
-
-
 
     return (
         <div className="pantalla-categorias">
@@ -56,7 +60,7 @@ const Categorias = () => {
                     </div>
 
                     <div className="categorias-scroll">
-                        {categoriasFiltradas.map((categoria, index) => (
+                        {categorias.map((categoria, index) => (
                             <TarjetaCategoria
                                 key={categoria.id}
                                 nombre={categoria.nombre}
