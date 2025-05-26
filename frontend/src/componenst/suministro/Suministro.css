@@ -1,0 +1,123 @@
+:root {
+    --azul-principal: #000C8F;
+    --azul-claro: #A3C8FF;
+    --verde-lima: #20D408;
+    --fondo-blanco: #ffffff;
+    --gris-claro: #f4f6f8;
+    --borde-gris: #ddd;
+}
+
+.pantalla-productos {
+    height: 92vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.productos-scroll-contenedor {
+    border: 2px solid var(--borde-gris);
+    flex: 1;
+    height: 90vh;
+    width: 100%;
+    max-width: 1520px;
+    min-height: 500px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    background-color: var(--fondo-blanco);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.fila-superior {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.tabla-suministro {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.tabla-suministro th,
+.tabla-suministro td {
+    border: 1px solid #ccc;
+    padding: 12px 10px;
+    text-align: left;
+    font-size: 15px;
+}
+
+.tabla-suministro th {
+    background-color: var(--gris-claro);
+    color: var(--azul-principal);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tabla-suministro tr:hover {
+    background-color: #f0f8ff;
+}
+
+.tabla-suministro button {
+    background-color: var(--verde-lima);
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.tabla-suministro button:hover {
+    background-color: #189b06;
+}
+
+.form-suministro {
+    margin-top: 20px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.form-suministro input {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    flex: 1;
+    min-width: 180px;
+}
+
+.form-suministro button {
+    background-color: var(--azul-principal);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-suministro button:hover {
+    background-color: #001a5f;
+}
+
+.mensaje {
+    margin-top: 16px;
+    font-weight: bold;
+    color: var(--azul-principal);
+    font-size: 15px;
+    text-align: center;
+}

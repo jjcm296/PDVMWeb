@@ -35,3 +35,13 @@ export const apiAddProductos = async (producto) => {
         return null;
     }
 };
+
+export const apiGetProductosConStock = async () => {
+    try {
+        const response = await axios.get(`${API_BASE_URL}/productos/con-stock`);
+        return response.data;
+    } catch (error) {
+        console.error('Error al obtener productos con stock:', error);
+        return [];
+    }
+};
