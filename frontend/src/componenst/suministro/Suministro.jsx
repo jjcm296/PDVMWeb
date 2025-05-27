@@ -5,8 +5,8 @@ import TarjetaProducto from '../pdv/components/tarjetasProducto/TarjetaProducto'
 import TarjetaProductoBarra from '../pdv/components/tarjetasProducto/TarjetaProductoBarra';
 import ModalRegistrarSuministro from '../suministro/modalSuministrarProducto/ModalRegistrarSuministro';
 import './Suministro.css';
-import { apiGetProductosConStock } from '../../api/apiProductos';
 import {ApiAddSuministro} from "../../api/apiSuministro";
+import {useProductos} from "../../context/productosContext";
 
 const Suministro = () => {
     const [vista, setVista] = useState('grid');
@@ -14,17 +14,17 @@ const Suministro = () => {
     const [mostrarModal, setMostrarModal] = useState(false);
     const [productoSeleccionado, setProductoSeleccionado] = useState(null);
     const [productos, setProductos] = useState([]);
+    const { productosOriginales, loadProductos } = useProductos();
 
     useEffect(() => {
-        const cargar = async () => {
-            const data = await apiGetProductosConStock();
-            console.log(data)
-            setProductos(data);
-        };
-        cargar();
-    }, []);
+        if (!productosOriginales || productosOriginales.length === 0) {
+            loadProductos();
+        } else {
+            setProductos(productosOriginales);
+        }
+    }, [productosOriginales]);
 
-    const productosFiltrados = productos.filter(p =>
+    const productosFiltrados = (productosOriginales || []).filter (p =>
         p.nombre.toLowerCase().includes(busqueda.toLowerCase())
     );
 
@@ -44,11 +44,11 @@ const Suministro = () => {
 
         if (response) {
             cerrarModal();
-            const data = await apiGetProductosConStock();
-            setProductos(data);
+            await loadProductos();
         } else {
             alert("No se pudo registrar el suministro.");
         }
+
     };
 
     return (
