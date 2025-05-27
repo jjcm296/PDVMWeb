@@ -30,18 +30,26 @@ public class ProductoService {
     }
 
     public Producto saveProducto(Producto producto) {
-        Producto saved = productoRepository.save(producto);
+        Producto saved = productoRepository.saveAndFlush(producto);
+        System.out.println("✅ Producto guardado con ID: " + saved.getIdProducto());
 
-        // Crear inventario asociado automáticamente
-        Inventario inventario = new Inventario();
-        inventario.setProducto(saved);
-        inventario.setStockActual(0);
-        inventario.setStockMinimo(10);
+        try {
+            Inventario inventario = new Inventario();
+            inventario.setProducto(saved);
+            inventario.setStockActual(0);
+            inventario.setStockMinimo(10);
 
-        inventarioRepository.save(inventario);
-
+            inventarioRepository.save(inventario);
+            System.out.println("✅ Inventario creado para producto ID: " + saved.getIdProducto());
+        } catch (Exception e) {
+            System.err.println("❌ Error al crear inventario: " + e.getMessage());
+            e.printStackTrace();
+        }
         return saved;
     }
+
+
+
 
     public Producto getProductoById(Long id) {
         return productoRepository.findById(id).orElse(null);

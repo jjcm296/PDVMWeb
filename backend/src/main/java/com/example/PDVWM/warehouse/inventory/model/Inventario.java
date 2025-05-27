@@ -8,7 +8,7 @@ import jakarta.persistence.*;
 public class Inventario {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idInventario;
 
     @Column(name = "stockActual", nullable = false)
@@ -18,7 +18,7 @@ public class Inventario {
     private int stockMinimo;
 
     @OneToOne
-    @JoinColumn(name = "producto_id", nullable = false)
+    @JoinColumn(name = "idProducto", nullable = false, unique = true)
     private Producto producto;
 
     public Inventario() {}
