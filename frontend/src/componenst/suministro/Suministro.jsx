@@ -24,7 +24,7 @@ const Suministro = () => {
         }
     }, [productosOriginales]);
 
-    const productosFiltrados = (productosOriginales || []).filter (p =>
+    const productosFiltrados = (productos || []).filter (p =>
         p.nombre.toLowerCase().includes(busqueda.toLowerCase())
     );
 
