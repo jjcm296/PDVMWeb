@@ -8,6 +8,8 @@ const aliasRuta = {
     'settings': 'Configuración',
     'pdv': 'PDV',
     'category': 'Categorías',
+    'supply-per-box': 'suminitrar',
+    'supply-per-unit': 'suminitrar',
 };
 
 const formatear = (segmento) => {
