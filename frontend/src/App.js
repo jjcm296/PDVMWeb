@@ -11,6 +11,7 @@ import PDV from "./componenst/pdv/PDV";
 import Productos from "./componenst/productos/Productos";
 import Categorias from "./componenst/categorias/Categorias";
 import Suministro from "./componenst/suministro/Suministro";
+import Inventario from "./componenst/invetario/Inventario";
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
                   <Route path={"/category"} element={<Categorias/>}/>
                   <Route path={"/supply-per-unit"} element={<Suministro modo="unidad"/>}/>
                   <Route path={"/supply-per-box"} element={<Suministro modo="caja"/>}/>
-
+                  <Route path={"/inventory"} element={<Inventario/>}/>
               </Routes>
           </header>
       </Router>
