@@ -8,7 +8,7 @@ import './Suministro.css';
 import {ApiAddSuministro} from "../../api/apiSuministro";
 import {useProductos} from "../../context/productosContext";
 
-const Suministro = () => {
+const Suministro = ({modo}) => {
     const [vista, setVista] = useState('grid');
     const [busqueda, setBusqueda] = useState('');
     const [mostrarModal, setMostrarModal] = useState(false);
@@ -38,9 +38,12 @@ const Suministro = () => {
         setMostrarModal(false);
     };
 
-    const handleSubmit = async ({ productoId, cantidad }) => {
-        console.log("Suministro a registrar:", { productoId, cantidad });
-        const response = await ApiAddSuministro({ productoId, cantidad });
+    const handleSubmit = async ({ productoId, cantidad, productosPorCaja }) => {
+        const response = await ApiAddSuministro({
+            productoId,
+            cantidad,
+            ...(productosPorCaja ? { productosPorCaja } : {})
+        });
 
         if (response) {
             cerrarModal();
@@ -48,7 +51,6 @@ const Suministro = () => {
         } else {
             alert("No se pudo registrar el suministro.");
         }
-
     };
 
     return (
@@ -85,6 +87,7 @@ const Suministro = () => {
             {mostrarModal && productoSeleccionado && (
                 <ModalRegistrarSuministro
                     producto={productoSeleccionado}
+                    modoFijo={modo}
                     onClose={cerrarModal}
                     onSubmit={handleSubmit}
                 />

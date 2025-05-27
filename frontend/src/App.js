@@ -25,7 +25,8 @@ function App() {
                   <Route path={"/pdv"} element={<PDV/>}/>
                   <Route path={"/products"} element={<Productos/>}/>
                   <Route path={"/category"} element={<Categorias/>}/>
-                  <Route path={"/supply-per-unit"} element={<Suministro/>}/>
+                  <Route path={"/supply-per-unit"} element={<Suministro modo="unidad"/>}/>
+                  <Route path={"/supply-per-box"} element={<Suministro modo="caja"/>}/>
 
               </Routes>
           </header>

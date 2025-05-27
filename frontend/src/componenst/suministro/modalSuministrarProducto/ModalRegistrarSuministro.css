@@ -13,45 +13,11 @@
     box-sizing: border-box;
 }
 
-/* pestañas afuera del modal blanco */
-.tabs-navegador-real {
-    display: flex;
-    width: 100%;
-    max-width: 440px;
-    margin-bottom: -10px;
-    border-radius: 20px 20px 0 0;
-    overflow: hidden;
-    background: transparent;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-}
-
-.pestana {
-    width: 50%;
-    text-align: center;
-    padding: 12px 0;
-    font-weight: bold;
-    border: 1px solid #ccc;
-    border-bottom: none;
-    color: #000C8F;
-    background-color: #e6f0ff;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.pestana.activa {
-    background-color: #ffffff;
-    color: #000C8F;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    border-color: #ccc;
-    border-bottom: 2px solid white;
-    z-index: 12;
-}
-
-/* modal blanco */
+/* ------------------- Modal blanco ------------------ */
 .modal-contenido {
     background: #ffffff;
     padding: 25px 20px 20px;
-    border-radius: 0 0 20px 20px;
+    border-radius: 20px;
     width: 90%;
     max-width: 400px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
@@ -61,62 +27,24 @@
     z-index: 1;
 }
 
-/* ------------------- Pestañas tipo navegador ------------------ */
-.tabs-navegador-real {
-    display: flex;
-    position: relative;
-    top: -30px;
-    margin-bottom: -35px;
-    z-index: 10;
-    width: 100%;
-}
-
-.pestana {
-    width: 50%;
-    text-align: center;
-    padding: 12px 0;
-    font-weight: bold;
-    background-color: #e6f0ff;
-    border: 1px solid #ccc;
-    border-bottom: none;
-    border-radius: 14px 14px 0 0;
-    color: #000C8F;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: inset 0 -2px 3px rgba(0, 0, 0, 0.05);
-}
-
-
-.pestana.activa {
-    background-color: #ffffff;
-    color: #000C8F;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    z-index: 12;
-    border-color: #ccc;
-    border-bottom: 2px solid white;
-}
-
-/* ------------------- Contenido ------------------ */
-
-.contenido-tab {
-    background-color: #f9f9f9;
-    padding: 16px;
-    border-radius: 12px;
-    border: 1px solid #ddd;
-    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.04);
-}
-
 .modal-titulo {
     font-size: 22px;
     font-weight: 800;
     color: #000C8F;
     text-transform: uppercase;
     text-align: center;
-    margin-bottom: 8px;
+    margin-bottom: 0;
 }
 
 .modal-titulo span {
     color: #2faaf6;
+}
+
+/* ------------------- Contenido del formulario ------------------ */
+.contenido-tab {
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.04);
 }
 
 .campo-entrada {
@@ -150,7 +78,6 @@
 }
 
 /* ------------------- Botones ------------------ */
-
 .modal-botones {
     display: flex;
     justify-content: space-between;

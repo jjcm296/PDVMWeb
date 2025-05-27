@@ -2,18 +2,11 @@ import React, { useState } from 'react';
 import './ModalRegistrarSuministro.css';
 import CustomInput from "../../ui/customInput/CustomInput";
 
-const ModalRegistrarSuministro = ({ producto, onClose, onSubmit }) => {
-    const [modoActivo, setModoActivo] = useState('unidad'); // 'unidad' o 'caja'
+const ModalRegistrarSuministro = ({ producto, onClose, onSubmit, modoFijo }) => {
+    const [modoActivo, setModoActivo] = useState(modoFijo || 'unidad');
     const [cantidadUnidad, setCantidadUnidad] = useState('');
     const [cajas, setCajas] = useState('');
     const [productosPorCaja, setProductosPorCaja] = useState('');
-
-    const handleTabChange = (modo) => {
-        setModoActivo(modo);
-        setCantidadUnidad('');
-        setCajas('');
-        setProductosPorCaja('');
-    };
 
     const handleSubmit = async () => {
         if (modoActivo === 'unidad') {
@@ -48,24 +41,8 @@ const ModalRegistrarSuministro = ({ producto, onClose, onSubmit }) => {
 
     return (
         <div className="modal-agregar-producto">
-            <div className="tabs-navegador-real">
-                <div
-                    className={`pestana ${modoActivo === 'unidad' ? 'activa' : ''}`}
-                    onClick={() => handleTabChange('unidad')}
-                >
-                    🧊 Por Unidad
-                </div>
-                <div
-                    className={`pestana ${modoActivo === 'caja' ? 'activa' : ''}`}
-                    onClick={() => handleTabChange('caja')}
-                >
-                    📦 Por Caja
-                </div>
-            </div>
-
             <div className="modal-contenido">
                 <h2 className="modal-titulo">Registrar <span>Suministro</span></h2>
-
                 <div className="contenido-tab">
                     <p><strong>Producto:</strong> {producto.nombre}</p>
 
@@ -74,6 +51,7 @@ const ModalRegistrarSuministro = ({ producto, onClose, onSubmit }) => {
                             <CustomInput
                                 name="cantidad"
                                 type="number"
+                                required
                                 value={cantidadUnidad}
                                 onChange={(e) => setCantidadUnidad(e.target.value)}
                             />
@@ -85,6 +63,7 @@ const ModalRegistrarSuministro = ({ producto, onClose, onSubmit }) => {
                                 <CustomInput
                                     name="cajas"
                                     type="number"
+                                    required
                                     value={cajas}
                                     onChange={(e) => setCajas(e.target.value)}
                                 />
@@ -95,6 +74,7 @@ const ModalRegistrarSuministro = ({ producto, onClose, onSubmit }) => {
                                 <CustomInput
                                     name="productosPorCaja"
                                     type="number"
+                                    required
                                     value={productosPorCaja}
                                     onChange={(e) => setProductosPorCaja(e.target.value)}
                                 />
