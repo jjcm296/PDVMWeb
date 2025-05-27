@@ -6,24 +6,121 @@
     height: 100%;
     background-color: rgba(0, 12, 143, 0.3);
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     z-index: 999;
-    padding: 0;
-    margin-top: 0;
     box-sizing: border-box;
 }
 
+/* pestañas afuera del modal blanco */
+.tabs-navegador-real {
+    display: flex;
+    width: 100%;
+    max-width: 440px;
+    margin-bottom: -10px;
+    border-radius: 20px 20px 0 0;
+    overflow: hidden;
+    background: transparent;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.pestana {
+    width: 50%;
+    text-align: center;
+    padding: 12px 0;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    color: #000C8F;
+    background-color: #e6f0ff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pestana.activa {
+    background-color: #ffffff;
+    color: #000C8F;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border-color: #ccc;
+    border-bottom: 2px solid white;
+    z-index: 12;
+}
+
+/* modal blanco */
 .modal-contenido {
     background: #ffffff;
-    padding: 20px;
-    border-radius: 16px;
+    padding: 25px 20px 20px;
+    border-radius: 0 0 20px 20px;
     width: 90%;
-    max-width: 360px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    max-width: 400px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 16px;
+    z-index: 1;
+}
+
+/* ------------------- Pestañas tipo navegador ------------------ */
+.tabs-navegador-real {
+    display: flex;
+    position: relative;
+    top: -30px;
+    margin-bottom: -35px;
+    z-index: 10;
+    width: 100%;
+}
+
+.pestana {
+    width: 50%;
+    text-align: center;
+    padding: 12px 0;
+    font-weight: bold;
+    background-color: #e6f0ff;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    border-radius: 14px 14px 0 0;
+    color: #000C8F;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 -2px 3px rgba(0, 0, 0, 0.05);
+}
+
+
+.pestana.activa {
+    background-color: #ffffff;
+    color: #000C8F;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    z-index: 12;
+    border-color: #ccc;
+    border-bottom: 2px solid white;
+}
+
+/* ------------------- Contenido ------------------ */
+
+.contenido-tab {
+    background-color: #f9f9f9;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.04);
+}
+
+.modal-titulo {
+    font-size: 22px;
+    font-weight: 800;
+    color: #000C8F;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.modal-titulo span {
+    color: #2faaf6;
+}
+
+.campo-entrada {
+    margin-bottom: 10px;
 }
 
 .modal-contenido input {
@@ -32,6 +129,8 @@
     border-radius: 10px;
     font-size: 15px;
     background-color: #fafafa;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .modal-contenido input:focus {
@@ -50,18 +149,7 @@
     margin: 0;
 }
 
-.modal-titulo {
-    font-size: 22px;
-    font-weight: 800;
-    color: #000C8F;
-    text-transform: uppercase;
-    text-align: center;
-    margin-bottom: 8px;
-}
-
-.modal-titulo span {
-    color: #2faaf6;
-}
+/* ------------------- Botones ------------------ */
 
 .modal-botones {
     display: flex;
@@ -78,14 +166,23 @@
     cursor: pointer;
     font-weight: bold;
     font-size: 15px;
+    transition: background-color 0.2s;
 }
 
 .modal-botones button:first-child {
-    background-color: #e0e0e0;
+    background-color: #f0f0f0;
     color: #333;
+}
+
+.modal-botones button:first-child:hover {
+    background-color: #d6d6d6;
 }
 
 .modal-botones button:last-child {
     background-color: #000c8f;
     color: white;
+}
+
+.modal-botones button:last-child:hover {
+    background-color: #002f96;
 }
