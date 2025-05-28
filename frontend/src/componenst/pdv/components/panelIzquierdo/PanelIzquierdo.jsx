@@ -6,6 +6,7 @@ import TarjetaProductoBarra from '../tarjetasProducto/TarjetaProductoBarra';
 import './PanelIzquierdo.css';
 import BotonFiltro from "../../../ui/botonFiltro/BotonFiltro";
 import { useProductos } from "../../../../context/productosContext";
+import {useCarrito} from "../../../../context/carritoContext";
 
 const PanelIzquierdo = () => {
     const [vista, setVista] = useState('grid');
@@ -13,6 +14,8 @@ const PanelIzquierdo = () => {
 
     const { productosOriginales, loadProductos } = useProductos();
     const [productosOrdenados, setProductosOrdenados] = useState([]);
+
+    const { agregarProducto } = useCarrito();
 
     useEffect(() => {
         loadProductos();
@@ -38,9 +41,27 @@ const PanelIzquierdo = () => {
             <div className={`productos-scroll ${vista === 'list' ? 'modo-lista' : ''}`}>
                 {productosFiltrados.map((producto, index) =>
                     vista === 'grid' ? (
-                        <TarjetaProducto key={producto.idProducto || index} nombre={producto.nombre} />
+                        <TarjetaProducto
+                            key={producto.idProducto || index}
+                            nombre={producto.nombre}
+                            precio={producto.precio}
+                            onAgregar={() => agregarProducto({
+                                id: producto.idProducto,
+                                nombre: producto.nombre,
+                                precio: producto.precio
+                            })}
+                        />
                     ) : (
-                        <TarjetaProductoBarra key={producto.idProducto || index} nombre={producto.nombre} />
+                        <TarjetaProductoBarra
+                            key={producto.idProducto || index}
+                            nombre={producto.nombre}
+                            precio={producto.precio}
+                            onAgregar={() => agregarProducto({
+                                id: producto.idProducto,
+                                nombre: producto.nombre,
+                                precio: producto.precio
+                            })}
+                        />
                     )
                 )}
             </div>

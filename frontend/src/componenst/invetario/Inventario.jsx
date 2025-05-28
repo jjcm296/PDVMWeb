@@ -53,10 +53,10 @@ const Inventario = () => {
         <div className="pantalla-productos">
             <div className="productos-scroll-contenedor">
                 <div className="barra-superior">
-                    <Buscador onBuscar={setBusqueda} />
+                    <Buscador onBuscar={setBusqueda}/>
                 </div>
 
-                <div className={`productos-scroll ${vista === 'list' ? 'modo-lista' : ''}`}>
+                <div className={`inventario-scroll ${vista === 'list' ? 'modo-lista' : ''}`}>
                     {inventarioFiltrado.map((item, i) =>
                         vista === 'grid' ? (
                             <TarjetaInventario key={i} {...item} />
@@ -67,7 +67,7 @@ const Inventario = () => {
                 </div>
 
                 <div className="switch-inferior">
-                    <VistaToggle vista={vista} onCambiarVista={setVista} />
+                    <VistaToggle vista={vista} onCambiarVista={setVista}/>
                 </div>
             </div>
         </div>

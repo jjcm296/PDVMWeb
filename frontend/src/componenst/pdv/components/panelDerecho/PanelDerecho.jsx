@@ -1,18 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './PanelDerecho.css';
 import ProductoSeleccionado from './components/productoSeleccionado/ProductoSeleccionado';
 import TotalAPagar from './components/totalAPagar/TotalAPagar';
 import BotonesPago from './components/botonesPago/BotonesPago';
 import { ShoppingCartIcon } from "@heroicons/react/24/solid";
-
-const productosMock = Array.from({ length: 12 }, (_, i) => ({
-    id: i + 1,
-    nombre: `Producto ${i + 1}`,
-    precio: (Math.random() * 100).toFixed(2)
-}));
+import Modal from '../modal/Modal';
+import { useCarrito } from '../../../../context/carritoContext';
 
 const PanelDerecho = () => {
-    const total = productosMock.reduce((acc, p) => acc + parseFloat(p.precio), 0).toFixed(2);
+    const [mostrarModal, setMostrarModal] = useState(false);
+    const { productosCarrito } = useCarrito();
+
+    const total = productosCarrito.reduce((acc, p) => acc + parseFloat(p.precio), 0).toFixed(2);
+
+    const handleConfirmarPago = (importeRecibido) => {
+        alert(`¡Venta registrada!\nImporte recibido: $${importeRecibido.toFixed(2)}\nCambio: $${(importeRecibido - total).toFixed(2)}`);
+        setMostrarModal(false);
+    };
 
     return (
         <div className="panel-derecho">
@@ -22,7 +26,7 @@ const PanelDerecho = () => {
             </h2>
 
             <div className="lista-productos">
-                {productosMock.map((producto) => (
+                {productosCarrito.map((producto) => (
                     <ProductoSeleccionado
                         key={producto.id}
                         nombre={producto.nombre}
@@ -33,8 +37,14 @@ const PanelDerecho = () => {
 
             <div className="total-y-acciones">
                 <TotalAPagar total={total}/>
-                <BotonesPago/>
+                <BotonesPago onPagar={() => setMostrarModal(true)} />
             </div>
+
+            <Modal
+                isOpen={mostrarModal}
+                onClose={() => setMostrarModal(false)}
+                onConfirm={handleConfirmarPago}
+            />
         </div>
     );
 };

@@ -1,0 +1,85 @@
+.modal-agregar-producto {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 12, 143, 0.3); /* azul oscuro semitransparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.modal-contenido {
+    background-color: #ffffff;
+    padding: 25px 20px 20px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+    z-index: 1000;
+}
+
+/* Título del modal */
+.modal-titulo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #000c8f;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+/* Input de número */
+.input-importe-modal {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #000c8f;
+    border-radius: 12px;
+    box-sizing: border-box;
+}
+
+/* Botones */
+.botones-modal {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.boton-cancelar,
+.boton-confirmar {
+    flex: 1;
+    padding: 10px 0;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.boton-cancelar {
+    background-color: #dc3545;
+    color: white;
+}
+
+.boton-cancelar:hover {
+    background-color: #b52d3a;
+}
+
+.boton-confirmar {
+    background-color: #000c8f;
+    color: white;
+}
+
+.boton-confirmar:hover {
+    background-color: #001fbd;
+}

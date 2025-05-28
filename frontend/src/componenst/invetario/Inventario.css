@@ -1,5 +1,5 @@
 /* Tarjetas en vista grid */
-.productos-scroll {
+.inventario-scroll {
     flex: 1;
     overflow-y: auto;
     display: grid;
@@ -9,7 +9,7 @@
 }
 
 /* Tarjetas en vista lista */
-.productos-scroll.modo-lista {
+.inventario-scroll.modo-lista {
     display: flex;
     flex-direction: column;
     gap: 24px;
