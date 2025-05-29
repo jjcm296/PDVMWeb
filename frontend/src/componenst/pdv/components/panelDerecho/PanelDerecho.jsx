@@ -6,16 +6,33 @@ import BotonesPago from './components/botonesPago/BotonesPago';
 import { ShoppingCartIcon } from "@heroicons/react/24/solid";
 import Modal from '../modal/Modal';
 import { useCarrito } from '../../../../context/carritoContext';
+import {apiAddVenta} from "../../../../api/apiPdv";
 
 const PanelDerecho = () => {
     const [mostrarModal, setMostrarModal] = useState(false);
-    const { productosCarrito } = useCarrito();
+    const { productosCarrito, eliminarProducto, vaciarCarrito } = useCarrito();
 
-    const total = productosCarrito.reduce((acc, p) => acc + parseFloat(p.precio), 0).toFixed(2);
+    const total = productosCarrito.reduce((acc, p) => acc + parseFloat(p.precio) * p.cantidad, 0).toFixed(2);
 
-    const handleConfirmarPago = (importeRecibido) => {
-        alert(`¡Venta registrada!\nImporte recibido: $${importeRecibido.toFixed(2)}\nCambio: $${(importeRecibido - total).toFixed(2)}`);
-        setMostrarModal(false);
+    const handleConfirmarPago = async (importeRecibido) => {
+        const venta = {
+            importeRecibido: parseFloat(importeRecibido),
+            productos: productosCarrito.map((p) => ({
+                idProducto: p.id,
+                cantidad: p.cantidad
+            }))
+        };
+
+        try {
+            const respuesta = await apiAddVenta(venta);
+            console.log("Venta creada:", respuesta);
+            alert(`¡Venta registrada!\nImporte recibido: $${importeRecibido.toFixed(2)}\nCambio: $${(importeRecibido - total).toFixed(2)}`);
+            vaciarCarrito();
+        } catch (error) {
+            alert("Hubo un error al registrar la venta.");
+        } finally {
+            setMostrarModal(false);
+        }
     };
 
     return (
@@ -31,13 +48,18 @@ const PanelDerecho = () => {
                         key={producto.id}
                         nombre={producto.nombre}
                         precio={producto.precio}
+                        cantidad={producto.cantidad}
+                        onEliminar={() => eliminarProducto(producto.id)}
                     />
                 ))}
             </div>
 
             <div className="total-y-acciones">
                 <TotalAPagar total={total}/>
-                <BotonesPago onPagar={() => setMostrarModal(true)} />
+                <BotonesPago
+                    onPagar={() => setMostrarModal(true)}
+                    onVaciarCarrito={vaciarCarrito}
+                />
             </div>
 
             <Modal

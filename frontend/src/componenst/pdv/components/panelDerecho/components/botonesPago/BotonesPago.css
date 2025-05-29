@@ -1,5 +1,7 @@
 .botones-acciones {
     display: flex;
+    width: 100%;
+    max-width: 210px;
     flex-direction: column;
     gap: 10px;
     justify-content: center;
@@ -13,29 +15,31 @@
     font-size: 16px;
     border-radius: 10px;
     font-weight: bold;
-    border: 2px solid #000c8f;
     cursor: pointer;
     padding: 0 18px;
+    border: 2px solid;
 }
 
 .btn-pagar {
     background-color: #000c8f;
     color: white;
+    border-color: #000c8f;
 }
 
 .btn-pagar:hover {
     background-color: white;
-    color: var(--color-principal, #000c8f);
-    border: 2px solid var(--color-principal, #000c8f);
+    color: #000c8f;
+    border-color: #000c8f;
 }
 
 .btn-cancelar {
-    background-color: white;
-    color: #000c8f;
+    background-color: #cc0000;
+    color: white;
+    border-color: white;
 }
 
 .btn-cancelar:hover {
-    background-color: var(--color-principal, #000c8f);
-    color: white;
-    border: 2px solid white;
+    background-color: white;
+    color: #cc0000;
+    border-color: #cc0000;
 }

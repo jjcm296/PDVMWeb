@@ -17,7 +17,7 @@ public class VentaController {
     }
 
     @PostMapping
-    public ResponseEntity<Venta> registrarVenta(@RequestBody VentaRequestDTO request) {
+    public ResponseEntity<Venta> createVenta(@RequestBody VentaRequestDTO request) {
         Venta venta = ventaService.crearVenta(request);
         return ResponseEntity.ok(venta);
     }
