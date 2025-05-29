@@ -1,12 +1,10 @@
 package com.example.PDVWM.warehouse.supplies.repository;
 
 import com.example.PDVWM.warehouse.supplies.model.Suministro;
-import com.example.PDVWM.warehouse.supplies.model.SuministroPorUnidad;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.Query;
 
-@Repository
-public interface SuministroRepository extends JpaRepository<Suministro, Integer> {
-
+public interface SuministroRepository extends JpaRepository<Suministro, Long> {
+    @Query("SELECT COALESCE(SUM(s.cantidadSuministrada), 0) FROM Suministro s WHERE s.productoSuministrado.idProducto = :idProducto")
+    int sumByProducto(Long idProducto);
 }
-

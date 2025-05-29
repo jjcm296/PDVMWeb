@@ -1,18 +1,18 @@
 import React from 'react';
 import './TarjetaInventarioBarra.css';
-import {FaBoxOpen, FaTag} from 'react-icons/fa';
+import { FaBoxOpen } from 'react-icons/fa';
 
-const TarjetaInventarioBarra = ({ nombre, stockMinimo, stockActual, ventasTotales, suministrosTotales }) => {
+const TarjetaInventarioBarra = ({ nombreProducto, stockMinimo, stockActual, totalVentas, totalSuministros }) => {
     return (
         <div className="tarjeta-inventario-barra">
             <div className="icono-nombre">
                 <FaBoxOpen size={28} color="#000C8F"/>
-                <span className="titulo">{nombre}</span>
+                <span className="titulo">{nombreProducto}</span>
             </div>
             <div className="detalle">Stock: {stockActual}</div>
             <div className="detalle">Mínimo: {stockMinimo}</div>
-            <div className="detalle">Ventas: {ventasTotales}</div>
-            <div className="detalle">Suministros: {suministrosTotales}</div>
+            <div className="detalle">Ventas: {totalVentas}</div>
+            <div className="detalle">Suministros: {totalSuministros}</div>
         </div>
     );
 };

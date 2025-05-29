@@ -2,11 +2,11 @@ import React from 'react';
 import './TarjetaInventario.css';
 import { FaBoxOpen } from 'react-icons/fa';
 
-const TarjetaInventario = ({ nombre, stockMinimo, stockActual, ventasTotales, suministrosTotales }) => {
+const TarjetaInventario = ({ nombreProducto, stockMinimo, stockActual, totalVentas, totalSuministros }) => {
     return (
         <div className="tarjeta-inventario">
             <div className="encabezado-tarjeta">
-                <h3 className="nombre-producto">{nombre}</h3>
+                <h3 className="nombre-producto">{nombreProducto}</h3>
                 <div className="icono">
                     <FaBoxOpen size={28} color="#000C8F"/>
                 </div>
@@ -14,8 +14,8 @@ const TarjetaInventario = ({ nombre, stockMinimo, stockActual, ventasTotales, su
             <div className="info">
                 <p><strong>Stock actual:</strong> {stockActual}</p>
                 <p><strong>Stock mínimo:</strong> {stockMinimo}</p>
-                <p><strong>Ventas:</strong> {ventasTotales}</p>
-                <p><strong>Suministros:</strong> {suministrosTotales}</p>
+                <p><strong>Ventas:</strong> {totalVentas}</p>
+                <p><strong>Suministros:</strong> {totalSuministros}</p>
             </div>
         </div>
     );
