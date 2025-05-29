@@ -20,13 +20,13 @@ public class Venta {
     private double importeRecibido;
     private double cambio;
 
+    private int totalProductosVendidos;
+
     @ElementCollection
     @CollectionTable(name = "venta_productos", joinColumns = @JoinColumn(name = "venta_id"))
     @MapKeyJoinColumn(name = "producto_id")
     @Column(name = "cantidad")
     private Map<Producto, Integer> productosVendidos = new HashMap<>();
-
-    // Getters y setters
 
     public Long getIdVenta() {
         return idVenta;
@@ -70,5 +70,13 @@ public class Venta {
 
     public void setProductosVendidos(Map<Producto, Integer> productosVendidos) {
         this.productosVendidos = productosVendidos;
+    }
+
+    public int getTotalProductosVendidos() {
+        return totalProductosVendidos;
+    }
+
+    public void setTotalProductosVendidos(int totalProductosVendidos) {
+        this.totalProductosVendidos = totalProductosVendidos;
     }
 }

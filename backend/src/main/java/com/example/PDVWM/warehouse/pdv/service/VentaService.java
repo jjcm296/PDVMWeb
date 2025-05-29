@@ -60,6 +60,12 @@ public class VentaService {
         venta.setImporteRecibido(request.getImporteRecibido());
         venta.setCambio(request.getImporteRecibido() - totalCalculado);
 
+        int total = productosVendidos.values().stream()
+                .mapToInt(Integer::intValue)
+                .sum();
+
+        venta.setTotalProductosVendidos(total);
+
         return ventaRepository.save(venta);
     }
 }
