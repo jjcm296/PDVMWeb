@@ -2,13 +2,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 24px;
-    border-radius: 12px;
+    padding: 20px 28px;
+    border-radius: 16px;
     background-color: #ffffff;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-    width: 95%;
-    max-width: 1000px;
-    margin: 0 auto;
+    border: 2px solid #000c8f;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+    width: 91%;
+    max-width: 1500px;
     transition: transform 0.2s ease;
 }
 
@@ -16,15 +16,22 @@
     transform: scale(1.01);
 }
 
-.tarjeta-inventario-barra .titulo {
-    font-weight: 600;
-    color: #000C8F;
+.icono-nombre {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     flex: 2;
 }
 
-.tarjeta-inventario-barra .detalle {
+.titulo {
+    font-weight: 600;
+    font-size: 16px;
+    color: #000C8F;
+}
+
+.detalle {
     flex: 1;
     text-align: center;
     font-size: 14px;
-    color: #333;
+    color: #444;
 }

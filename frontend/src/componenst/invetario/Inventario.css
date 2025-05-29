@@ -1,23 +1,21 @@
-/* Tarjetas en vista grid */
 .inventario-scroll {
     flex: 1;
     overflow-y: auto;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 23px; /* MÁS separación */
-    padding: 30px 24px; /* MÁS espacio alrededor */
+    gap: 10px;
+    padding: 30px 24px;
+    width: 100%;
 }
 
-/* Tarjetas en vista lista */
 .inventario-scroll.modo-lista {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 10px;
     width: 100%;
     padding: 30px;
 }
 
-/* Estilo general de las tarjetas verticales */
 .tarjeta-inventario {
     border: 1px solid #ddd;
     border-radius: 12px;
@@ -27,12 +25,10 @@
     transition: transform 0.2s ease;
 }
 
-/* Hover animación */
 .tarjeta-inventario:hover {
     transform: scale(1.03);
 }
 
-/* Solo 100% en modo lista */
 .productos-scroll.modo-lista .tarjeta-inventario {
     width: 100%;
 }
