@@ -5,9 +5,7 @@ import './Inventario.css';
 
 import TarjetaInventario from './components/TarjetaInventario';
 import TarjetaInventarioBarra from './components/TarjetaInventarioBarra';
-import {useInventario} from "./components/invetarioContext";
-
-;
+import {useInventario} from "../../context/invetarioContext";
 
 const Inventario = () => {
     const [vista, setVista] = useState('grid');
