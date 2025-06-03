@@ -7,6 +7,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import {ProductosProvider} from "./context/productosContext";
 import {CategoriasProvider} from "./context/categoriaContext";
 import {CarritoProvider} from "./context/carritoContext";
+import {InventarioProvider} from "./context/invetarioContext";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -14,9 +15,9 @@ root.render(
       <ProductosProvider>
           <CategoriasProvider>
               <CarritoProvider>
-                  <InvenatiorioProvider>
-                      <App />
-                  </InvenatiorioProvider>
+                <InventarioProvider>
+                    <App />
+                </InventarioProvider>
               </CarritoProvider>
           </CategoriasProvider>
       </ProductosProvider>
