@@ -1,27 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Buscador from '../ui/buscador/Buscador';
 import VistaToggle from '../pdv/components/switchVista/VistaToggle';
 import './Inventario.css';
 
 import TarjetaInventario from './components/TarjetaInventario';
 import TarjetaInventarioBarra from './components/TarjetaInventarioBarra';
-import { apiGetInventario } from '../../api/apiInventario';
+import { useInventario } from '../context/carritoContext';
 
 const Inventario = () => {
     const [vista, setVista] = useState('grid');
     const [busqueda, setBusqueda] = useState('');
-    const [inventario, setInventario] = useState([]);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const data = await apiGetInventario();
-            setInventario(data);
-        };
-        fetchData();
-    }, []);
+    const { inventario, cargando } = useInventario();
 
     const inventarioFiltrado = inventario.filter(item =>
-        item.nombreProducto.toLowerCase().includes(busqueda.toLowerCase())
+        item.nombreProducto?.toLowerCase().includes(busqueda.toLowerCase())
     );
 
     return (
@@ -31,15 +23,21 @@ const Inventario = () => {
                     <Buscador onBuscar={setBusqueda} />
                 </div>
 
-                <div className={`inventario-scroll ${vista === 'list' ? 'modo-lista' : ''}`}>
-                    {inventarioFiltrado.map((item, i) =>
-                        vista === 'grid' ? (
-                            <TarjetaInventario key={i} {...item} />
-                        ) : (
-                            <TarjetaInventarioBarra key={i} {...item} />
-                        )
-                    )}
-                </div>
+                {cargando ? (
+                    <p style={{ textAlign: 'center' }}>Cargando inventario...</p>
+                ) : inventarioFiltrado.length === 0 ? (
+                    <p style={{ textAlign: 'center' }}>No se encontraron productos.</p>
+                ) : (
+                    <div className={`inventario-scroll ${vista === 'list' ? 'modo-lista' : ''}`}>
+                        {inventarioFiltrado.map((item, i) =>
+                            vista === 'grid' ? (
+                                <TarjetaInventario key={i} {...item} />
+                            ) : (
+                                <TarjetaInventarioBarra key={i} {...item} />
+                            )
+                        )}
+                    </div>
+                )}
 
                 <div className="switch-inferior">
                     <VistaToggle vista={vista} onCambiarVista={setVista} />
