@@ -1,16 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Buscador from '../ui/buscador/Buscador';
 import VistaToggle from '../pdv/components/switchVista/VistaToggle';
 import './Inventario.css';
 
 import TarjetaInventario from './components/TarjetaInventario';
 import TarjetaInventarioBarra from './components/TarjetaInventarioBarra';
-import {useInventario} from "../../context/invetarioContext";
+import { apiGetInventario } from '../../api/apiInventario';
 
 const Inventario = () => {
     const [vista, setVista] = useState('grid');
     const [busqueda, setBusqueda] = useState('');
-    const { inventario, cargando } = useInventario();
+    const [inventario, setInventario] = useState([]);
+    const [cargando, setCargando] = useState(true);
+
+    useEffect(() => {
+        const fetchInventario = async () => {
+            setCargando(true);
+            const data = await apiGetInventario();
+            setInventario(data);
+            setCargando(false);
+        };
+
+        fetchInventario();
+    }, []);
 
     const inventarioFiltrado = inventario.filter(item =>
         item.nombreProducto?.toLowerCase().includes(busqueda.toLowerCase())
@@ -23,11 +35,7 @@ const Inventario = () => {
                     <Buscador onBuscar={setBusqueda} />
                 </div>
 
-                {cargando ? (
-                    <p style={{ textAlign: 'center' }}>Cargando inventario...</p>
-                ) : inventarioFiltrado.length === 0 ? (
-                    <p style={{ textAlign: 'center' }}>No se encontraron productos.</p>
-                ) : (
+                {!cargando && inventarioFiltrado.length > 0 && (
                     <div className={`inventario-scroll ${vista === 'list' ? 'modo-lista' : ''}`}>
                         {inventarioFiltrado.map((item, i) =>
                             vista === 'grid' ? (
