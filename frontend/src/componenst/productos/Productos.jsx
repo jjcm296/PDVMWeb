@@ -76,6 +76,7 @@ const Productos = () => {
                             <TarjetaProducto
                                 key={producto.idProducto || index}
                                 nombre={producto.nombre}
+                                precio={producto.precio}
                                 onAgregar={() => agregarProducto({
                                     id: producto.idProducto,
                                     nombre: producto.nombre,
@@ -86,6 +87,7 @@ const Productos = () => {
                             <TarjetaProductoBarra
                                 key={producto.idProducto || index}
                                 nombre={producto.nombre}
+                                precio={producto.precio}
                                 onAgregar={() => agregarProducto({
                                     id: producto.idProducto,
                                     nombre: producto.nombre,

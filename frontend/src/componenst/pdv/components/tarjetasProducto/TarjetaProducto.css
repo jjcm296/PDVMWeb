@@ -24,7 +24,7 @@
 /* TARJETA CUADRADA */
 .tarjeta-producto {
     width: 130px;
-    height: 180px;
+    height: 200px;
     border: 2px solid var(--color-principal);
     border-radius: var(--borde-radio);
     overflow: hidden;
@@ -61,6 +61,14 @@
     align-items: center;
     justify-content: center;
     padding: 0 6px;
+}
+
+/* Nuevo: precio en tarjeta cuadrada */
+.precio-producto {
+    text-align: center;
+    font-size: 14px;
+    color: #444;
+    font-weight: bold;
 }
 
 /* BOTONES */
@@ -102,6 +110,7 @@
     background-color: var(--color-fondo);
     box-sizing: border-box;
     transition: transform 0.3s ease;
+    padding: 0 10px;
     gap: 10px;
 }
 
@@ -117,6 +126,15 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+/* Nuevo: precio en tarjeta barra */
+.precio-barra {
+    font-size: 14px;
+    color: #444;
+    font-weight: bold;
+    white-space: nowrap;
+    margin-right: 8px;
 }
 
 /* Botón barra */
