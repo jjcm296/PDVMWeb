@@ -9,7 +9,12 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("http://localhost:3000","https://pdv-web-psi.vercel.app","http://192.168.1.*:3000")
+                .allowedOrigins(
+                    "http://localhost:3000",
+                    "https://pdv-web-psi.vercel.app",
+                    "http://192.168.1.*:3000",
+                    "https://*.app.github.dev"
+                    )
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*");
     }
