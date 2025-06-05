@@ -3,7 +3,6 @@ import "./BarraNavegacion.css";
 import ModalIniciarSesion from "../modals/modalIniciarSesion/ModalIniciarSesion";
 import { useNavigate } from "react-router-dom";
 import {
-    Bars3Icon,
     UserIcon,
     BellIcon,
     DevicePhoneMobileIcon
@@ -25,13 +24,27 @@ const BarraNavegacion = () => {
         if (isModalOpen) {
             setIsModalOpen(false);
         } else {
-            if (loginButtonRef.current) {
+            const modalWidth = 250;
+            const screenWidth = window.innerWidth;
+
+            if (screenWidth <= 768) {
+                // Centrado en móviles
+                setModalPosition({
+                    top: window.innerHeight / 2 - 120,
+                    left: screenWidth / 2 - modalWidth / 2,
+                });
+            } else if (loginButtonRef.current) {
                 const rect = loginButtonRef.current.getBoundingClientRect();
+                const estimatedLeft = rect.left + window.scrollX - 220;
+                const maxLeft = screenWidth - modalWidth - 10;
+                const finalLeft = Math.max(Math.min(estimatedLeft, maxLeft), 10);
+
                 setModalPosition({
                     top: rect.bottom + window.scrollY + 5,
-                    left: rect.left + window.scrollX - 150,
+                    left: finalLeft,
                 });
             }
+
             setIsModalOpen(true);
         }
     };
@@ -46,42 +59,36 @@ const BarraNavegacion = () => {
                 setIsModalOpen(false);
             }
         };
-
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
     return (
         <div className="BarraNavegacion">
-            {/* Migajas a la izquierda */}
             <div className="menu migajas-container">
                 <Migajas />
             </div>
 
-            {/* Logo centrado */}
             <div className="menu logo-centro" onClick={() => navigate("/")}>
                 PDVW
             </div>
 
-            {/* Botones a la derecha */}
             <div className="menu">
-                <button className="hamburger-button" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-                    <Bars3Icon className="icon-nav" />
+                <button
+                    className={`hamburger-button ${isMobileMenuOpen ? "open" : ""}`}
+                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                >
+                    <span className="hamburger-line"></span>
+                    <span className="hamburger-line"></span>
                 </button>
 
                 <ul className={`items ${isMobileMenuOpen ? "open" : ""}`}>
                     <li className="item"><BellIcon className="icon-nav" /></li>
                     <li className="item"><DevicePhoneMobileIcon className="icon-nav" /></li>
+                    <li className="item" ref={loginButtonRef} onClick={handleButtonClick}>
+                        <UserIcon className="icon-nav" />
+                    </li>
                 </ul>
-
-                <button
-                    ref={loginButtonRef}
-                    onClick={handleButtonClick}
-                    className="login-button"
-                    aria-label="Abrir login"
-                >
-                    <UserIcon className="icon-nav user-icon" />
-                </button>
             </div>
 
             {isModalOpen && (

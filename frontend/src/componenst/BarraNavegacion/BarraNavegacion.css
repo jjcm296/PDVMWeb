@@ -13,7 +13,7 @@
     position: relative;
 }
 
-/* === NUEVAS CLASES === */
+/* Logo centrado */
 .logo-centro {
     position: absolute;
     left: 50%;
@@ -33,7 +33,7 @@
     align-items: center;
 }
 
-/* === BOTONES Y DISEÑO ORIGINAL === */
+/* Ítems normales */
 .menu {
     display: flex;
     align-items: center;
@@ -64,44 +64,62 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.login-button {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background-color: white;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.login-button:hover {
-    background-color: #e0e8ff;
-}
-
-.login-button .user-icon {
-    width: 22px;
-    height: 22px;
-    color: #000C8F;
-}
-
 .icon-nav {
     width: 26px;
     height: 26px;
     color: white;
 }
 
-/* Hamburguesa oculta en escritorio */
+/* Botón hamburguesa */
 .hamburger-button {
     background: none;
     border: none;
     display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
     cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+    position: relative;
 }
 
-/* === RESPONSIVE === */
+/* Hamburguesa básica */
+.hamburger-line {
+  position: absolute;
+  width: 24px;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  left: 0;
+  transform-origin: center;
+}
+
+/* Línea superior */
+.hamburger-line:first-child {
+  top: 10px;
+}
+
+/* Línea inferior */
+.hamburger-line:last-child {
+  bottom: 10px;
+}
+
+/* Animación al abrir (rotar en cruz sin desplazamiento) */
+.hamburger-button.open .hamburger-line:first-child {
+  transform: rotate(45deg);
+  top: 18px;
+}
+
+.hamburger-button.open .hamburger-line:last-child {
+  transform: rotate(-45deg);
+  bottom: 18px;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
     .items {
         display: none;
@@ -121,7 +139,7 @@
     }
 
     .hamburger-button {
-        display: block;
+        display: flex;
     }
 
     .item {
@@ -134,21 +152,23 @@
         height: 24px;
     }
 
-    .login-button {
-        width: 36px;
-        height: 36px;
-    }
-
-    .login-button .user-icon {
-        width: 20px;
-        height: 20px;
-    }
-
     .logo-centro {
         font-size: 20px;
     }
 
     .migajas {
         font-size: 12px;
+    }
+}
+
+/* Animación suave */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
     }
 }

@@ -1,24 +1,99 @@
 .modal-iniciar-sesion {
-    position: absolute; /* Usamos absolute para colocar el modal con top/left */
-    height: 100px;
-    width: 200px;
-    border-radius: 10px;
-    border: 1px solid grey;
-    background-color: #002952;
+    position: absolute;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 12, 143, 0.15);
+    padding: 20px 18px;
+    width: 260px;
+    max-width: 90vw;
+    z-index: 1000;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    z-index: 1000; /* Asegura que el modal esté por encima de otros elementos */
+    gap: 14px;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 4px;
+}
+
+.modal-avatar {
+    width: 28px;
+    height: 28px;
+    color: #000C8F;
+}
+
+.modal-titulo {
+    font-weight: bold;
+    color: #000C8F;
+    font-size: 18px;
+    font-family: 'Impact', sans-serif;
+    text-transform: uppercase;
+}
+
+.modal-texto {
+    font-size: 14px;
+    color: #444;
+    text-align: center;
+    margin: 0;
+    padding: 0 4px;
 }
 
 .boton-cuenta {
-    margin-top: 10px;
-    height: 30%;
-    width: 80%;
+    height: 45px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    width: 100%;
 }
 
-.boton-cuenta:hover {
-    background-color: #357AE8;
-    cursor: pointer;
+/* Botón Iniciar sesión */
+.boton-cuenta.iniciar {
+    background-color: white;
+    color: #000C8F;
+    border: 2px solid #000C8F;
+}
+
+.boton-cuenta.iniciar:hover {
+    background-color: #f0f4ff;
+}
+
+/* Botón Crear cuenta */
+.boton-cuenta.crear {
+    background-color: #000C8F;
+    color: white;
+    border: none;
+}
+
+.boton-cuenta.crear:hover {
+    background-color: #003D7A;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* === Responsive: Centramos completamente en móviles === */
+@media (max-width: 768px) {
+    .modal-iniciar-sesion {
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: 90vw;
+        max-width: 320px;
+    }
 }

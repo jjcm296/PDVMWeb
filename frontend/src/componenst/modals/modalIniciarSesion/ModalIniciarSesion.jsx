@@ -1,13 +1,14 @@
 import React, { forwardRef } from 'react';
 import { useNavigate } from "react-router-dom";
 import "./ModalInicialSesion.css";
+import { UserIcon } from "@heroicons/react/24/solid";
 
-// Usamos forwardRef para pasar la referencia desde el componente principal
 const ModalIniciarSesion = forwardRef(({ position, onClose }, ref) => {
     const navigate = useNavigate();
+
     const handleNavigate = (path) => {
-      navigate(path);
-      onClose();
+        navigate(path);
+        onClose();
     };
 
     return (
@@ -19,8 +20,12 @@ const ModalIniciarSesion = forwardRef(({ position, onClose }, ref) => {
                 left: `${position.left}px`
             }}
         >
-            <button onClick={()=>handleNavigate("/login")} className="boton-cuenta">Iniciar Sesion</button>
-            <button onClick={()=>handleNavigate("/register")} className="boton-cuenta">Crear cuenta</button>
+            <div className="modal-header">
+                <UserIcon className="modal-avatar" />
+                <span className="modal-titulo">¡Bienvenido!</span>
+            </div>
+            <button onClick={() => handleNavigate("/login")} className="boton-cuenta iniciar">Iniciar sesión</button>
+            <button onClick={() => handleNavigate("/register")} className="boton-cuenta crear">Crear cuenta</button>
         </div>
     );
 });
