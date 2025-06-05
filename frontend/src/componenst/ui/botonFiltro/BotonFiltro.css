@@ -101,3 +101,10 @@
     color: #000c8f;
     white-space: nowrap;
 }
+
+.icono-categoria-activo {
+    background-color: #000c8f; /* fondo azul */
+    color: white;
+    padding: 4px;
+    border-radius: 4px;
+}

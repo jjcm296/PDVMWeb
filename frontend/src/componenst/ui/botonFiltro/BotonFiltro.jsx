@@ -8,22 +8,7 @@ import {
     ArrowTrendingDownIcon,
     ChevronDownIcon
 } from '@heroicons/react/24/solid';
-
-const opciones = [
-    { label: 'A-Z', value: 'az', icon: <ArrowDownIcon className="icono-opcion" /> },
-    { label: 'Z-A', value: 'za', icon: <ArrowUpIcon className="icono-opcion" /> },
-    { label: 'Nombre', value: 'nombre', icon: <BarsArrowDownIcon className="icono-opcion" /> },
-    {
-        label: 'Mayor precio',
-        value: 'precio_mayor',
-        icon: <ArrowTrendingUpIcon className="icono-opcion" />
-    },
-    {
-        label: 'Menor precio',
-        value: 'precio_menor',
-        icon: <ArrowTrendingDownIcon className="icono-opcion" />
-    }
-];
+import { Squares2X2Icon } from '@heroicons/react/24/outline';
 
 const BotonFiltro = ({ onSelect }) => {
     const [opcionSeleccionada, setOpcionSeleccionada] = useState(null);
@@ -32,6 +17,32 @@ const BotonFiltro = ({ onSelect }) => {
         setOpcionSeleccionada(opcion);
         onSelect?.(valor);
     };
+
+    const opciones = [
+        { label: 'A-Z', value: 'az', icon: <ArrowDownIcon className="icono-opcion" /> },
+        { label: 'Z-A', value: 'za', icon: <ArrowUpIcon className="icono-opcion" /> },
+        {
+            label: 'Mayor precio',
+            value: 'precio_mayor',
+            icon: <ArrowTrendingUpIcon className="icono-opcion color-verde" />
+        },
+        {
+            label: 'Menor precio',
+            value: 'precio_menor',
+            icon: <ArrowTrendingDownIcon className="icono-opcion color-rojo" />
+        },
+        {
+            label: 'Categoría',
+            value: 'categoria',
+            icon: (
+                <Squares2X2Icon
+                    className={`icono-opcion ${
+                        opcionSeleccionada?.value === 'categoria' ? 'icono-categoria-activo' : ''
+                    }`}
+                />
+            )
+        }
+    ];
 
     return (
         <div className="boton-filtro-wrapper">
