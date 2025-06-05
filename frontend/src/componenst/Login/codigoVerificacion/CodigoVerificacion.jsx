@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 const CodigoVerificacion = () => {
     const [codigo, setCodigo] = useState(["", "", "", "", "", ""]);
     const [correo, setCorreo] = useState('');
+    const [showModal, setShowModal] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -31,7 +32,15 @@ const CodigoVerificacion = () => {
         e.preventDefault();
         const codigoIngresado = codigo.join("");
         console.log("Código ingresado:", codigoIngresado);
-        // Aquí podrías enviar el código al servidor
+
+        // Aquí podrías validar el código con tu backend
+        // Por ahora solo mostramos el modal
+        setShowModal(true);
+    };
+
+    const cerrarModal = () => {
+        setShowModal(false);
+        navigate("/"); // Redirige a inicio o a la página que quieras
     };
 
     return (
@@ -58,15 +67,20 @@ const CodigoVerificacion = () => {
                         ))}
                     </div>
 
-                    <button
-                        onClick={() => navigate("/")}
-                        type="submit"
-                        className="boton-verificar"
-                    >
+                    <button type="submit" className="boton-verificar">
                         Verificar
                     </button>
                 </form>
             </div>
+
+            {showModal && (
+                <div className="modal-exito">
+                    <div className="modal-contenido">
+                        <h2>¡Cuenta verificada con éxito!</h2>
+                        <button onClick={cerrarModal}>Aceptar</button>
+                    </div>
+                </div>
+            )}
         </header>
     );
 };

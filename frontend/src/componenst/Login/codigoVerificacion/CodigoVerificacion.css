@@ -122,3 +122,49 @@ body {
         gap: 10px;
     }
 }
+
+.modal-exito {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 12, 143, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-contenido {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+.modal-contenido h2 {
+    color: #000C8F;
+    margin-bottom: 10px;
+}
+
+.modal-contenido p {
+    margin-bottom: 20px;
+}
+
+.modal-contenido button {
+    background-color: #000C8F;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-contenido button:hover {
+    background-color: #003D7A;
+}
