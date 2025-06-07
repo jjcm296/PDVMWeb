@@ -11,6 +11,7 @@ import {useCarrito} from "../../../../context/carritoContext";
 const PanelIzquierdo = () => {
     const [vista, setVista] = useState('grid');
     const [busqueda, setBusqueda] = useState('');
+    const [seleccionados, setSeleccionados] = useState([]);
 
     const { productosOriginales, loadProductos } = useProductos();
     const [productosOrdenados, setProductosOrdenados] = useState([]);
@@ -31,6 +32,18 @@ const PanelIzquierdo = () => {
         p.nombre.toLowerCase().includes(busqueda.toLowerCase())
     );
 
+    const handleAgregar = (producto) => {
+        agregarProducto({
+            id: producto.idProducto,
+            nombre: producto.nombre,
+            precio: producto.precio
+        });
+
+        if (!seleccionados.includes(producto.idProducto)) {
+            setSeleccionados([...seleccionados, producto.idProducto]);
+        }
+    };
+
     return (
         <div className="panel-izquierdo-contenedor">
             <div className="barra-superior">
@@ -45,22 +58,18 @@ const PanelIzquierdo = () => {
                             key={producto.idProducto || index}
                             nombre={producto.nombre}
                             precio={producto.precio}
-                            onAgregar={() => agregarProducto({
-                                id: producto.idProducto,
-                                nombre: producto.nombre,
-                                precio: producto.precio
-                            })}
+                            onAgregar={() => handleAgregar(producto)} // botón +
+                            onClick={() => handleAgregar(producto)}   // toda la tarjeta
+                            seleccionado={seleccionados.includes(producto.idProducto)}
+                            modoPDV={true}
                         />
+
                     ) : (
                         <TarjetaProductoBarra
                             key={producto.idProducto || index}
                             nombre={producto.nombre}
                             precio={producto.precio}
-                            onAgregar={() => agregarProducto({
-                                id: producto.idProducto,
-                                nombre: producto.nombre,
-                                precio: producto.precio
-                            })}
+                            onAgregar={() => handleAgregar(producto)}
                         />
                     )
                 )}
@@ -72,5 +81,6 @@ const PanelIzquierdo = () => {
         </div>
     );
 };
+
 
 export default PanelIzquierdo;
