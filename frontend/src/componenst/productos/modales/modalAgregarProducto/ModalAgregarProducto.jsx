@@ -71,17 +71,17 @@ const ModalAgregarProducto = ({ onClose, onSubmit }) => {
                 </div>
 
                 <div className="campo-entrada">
-                    <CustomInput name="descripcion" value={form.descripcion} onChange={handleChange} />
+                    <CustomInput name="descripcion" value={form.descripcion} onChange={handleChange} required/>
                     <label htmlFor="descripcion">Descripción</label>
                 </div>
 
                 <div className="campo-entrada">
-                    <CustomInput name="marca" value={form.marca} onChange={handleChange} />
+                    <CustomInput name="marca" value={form.marca} onChange={handleChange} required/>
                     <label htmlFor="marca">Marca</label>
                 </div>
 
                 <div className="campo-entrada">
-                    <CustomInput name="codigoBarra" value={form.codigoBarra} onChange={handleChange} />
+                    <CustomInput name="codigoBarra" value={form.codigoBarra} onChange={handleChange} required/>
                     <label htmlFor="codigoBarra">Código de barras</label>
                 </div>
 

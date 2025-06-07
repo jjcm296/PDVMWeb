@@ -122,20 +122,26 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(130, 130, 130, 0.05);
+    background-color: transparent !important; /* gris clarísimo, más transparente */
+    font-size: 18px;
+    font-weight: bold;
     border: none;
-    color: white;
-    font-size: 20px;
-    border-radius: 50%;
-    width: 40px;
+    border-radius: 50% !important; /* completamente circular */
+    width: 30px;
     height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    backdrop-filter: blur(2px);
-    transition: background-color 0.2s ease;
+    backdrop-filter: blur(3px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    z-index: 10;
 }
 
 .boton-eliminar-imagen:hover {
-    background-color: rgba(128, 128, 128, 0.7);
+    background-color: rgba(255, 255, 255, 0.8); /* menos transparente al hacer hover */
+    transform: translate(-50%, -50%) scale(1.08);
 }
 
 .modal-botones {
