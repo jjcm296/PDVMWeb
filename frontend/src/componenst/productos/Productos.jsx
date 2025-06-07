@@ -4,6 +4,7 @@ import VistaToggle from '../pdv/components/switchVista/VistaToggle';
 import TarjetaProducto from '../pdv/components/tarjetasProducto/TarjetaProducto';
 import TarjetaProductoBarra from '../pdv/components/tarjetasProducto/TarjetaProductoBarra';
 import ModalAgregarProducto from './modales/modalAgregarProducto/ModalAgregarProducto';
+import ModalDetalleProducto from './modales/modalDetalleProducto/ModalDetalleProducto';
 import './Productos.css';
 import BotonAgregar from "../ui/BotonAgregar/BotonAgregar";
 import BotonFiltro from "../ui/botonFiltro/BotonFiltro";
@@ -11,13 +12,14 @@ import BotonFiltro from "../ui/botonFiltro/BotonFiltro";
 import { useProductos } from '../../context/productosContext';
 import { useNavigate } from "react-router-dom";
 import { apiAddProductos } from "../../api/apiProductos";
-import {useCarrito} from "../../context/carritoContext";
+import { useCarrito } from "../../context/carritoContext";
 
 const Productos = () => {
     const navigate = useNavigate();
     const [vista, setVista] = useState('grid');
     const [busqueda, setBusqueda] = useState('');
     const [mostrarModal, setMostrarModal] = useState(false);
+    const [productoSeleccionado, setProductoSeleccionado] = useState(null);
 
     const { productosOriginales, loadProductos } = useProductos();
     const [productosOrdenados, setProductosOrdenados] = useState([]);
@@ -42,7 +44,6 @@ const Productos = () => {
         );
         setProductosFiltrados(filtrados);
     }, [busqueda, productosOrdenados]);
-
 
     const abrirModal = () => setMostrarModal(true);
     const cerrarModal = () => setMostrarModal(false);
@@ -77,6 +78,7 @@ const Productos = () => {
                                 key={producto.idProducto || index}
                                 nombre={producto.nombre}
                                 precio={producto.precio}
+                                onClick={() => setProductoSeleccionado(producto)}
                                 onAgregar={() => agregarProducto({
                                     id: producto.idProducto,
                                     nombre: producto.nombre,
@@ -104,6 +106,12 @@ const Productos = () => {
             </div>
 
             {mostrarModal && <ModalAgregarProducto onClose={cerrarModal} onSubmit={handleAgregarProducto} />}
+            {productoSeleccionado && (
+                <ModalDetalleProducto
+                    producto={productoSeleccionado}
+                    onClose={() => setProductoSeleccionado(null)}
+                />
+            )}
         </div>
     );
 };
