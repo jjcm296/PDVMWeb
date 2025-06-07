@@ -25,7 +25,7 @@
 /* TARJETA CUADRADA */
 .tarjeta-producto {
     width: 130px;
-    height: 180px;
+    height: 190px;
     border: 2px solid var(--color-principal);
     border-radius: var(--borde-radio);
     background-color: var(--color-fondo);
