@@ -27,6 +27,13 @@
     z-index: 1;
 }
 
+.logo-img {
+    height: 50px;
+    object-fit: contain;
+    cursor: pointer;
+    filter: brightness(0) invert(1);
+}
+
 .migajas-container {
     flex: 1;
     display: flex;

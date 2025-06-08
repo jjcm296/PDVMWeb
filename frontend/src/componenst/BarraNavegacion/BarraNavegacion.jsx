@@ -66,12 +66,16 @@ const BarraNavegacion = () => {
     return (
         <div className="BarraNavegacion">
             <div className="menu migajas-container">
-                <Migajas />
+                <Migajas/>
             </div>
 
             <div className="menu logo-centro" onClick={() => navigate("/")}>
-                PDVW
+                <img
+                    src="/logo/LogoB.png"
+                    className="logo-img"
+                />
             </div>
+
 
             <div className="menu">
                 <button
@@ -83,10 +87,10 @@ const BarraNavegacion = () => {
                 </button>
 
                 <ul className={`items ${isMobileMenuOpen ? "open" : ""}`}>
-                    <li className="item"><BellIcon className="icon-nav" /></li>
-                    <li className="item"><DevicePhoneMobileIcon className="icon-nav" /></li>
+                    <li className="item"><BellIcon className="icon-nav"/></li>
+                    <li className="item"><DevicePhoneMobileIcon className="icon-nav"/></li>
                     <li className="item" ref={loginButtonRef} onClick={handleButtonClick}>
-                        <UserIcon className="icon-nav" />
+                        <UserIcon className="icon-nav"/>
                     </li>
                 </ul>
             </div>
