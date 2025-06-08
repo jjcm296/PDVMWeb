@@ -19,34 +19,34 @@ const ModalDetalleProducto = ({ producto, onClose }) => {
                     )}
                 </div>
 
-                <div className="campo-entrada">
-                    <label>Nombre</label>
-                    <div className="campo-readonly">{producto.nombre}</div>
+                <div className="detalle-linea">
+                    <span className="detalle-label">Nombre</span>
+                    <span className="detalle-valor">{producto.nombre}</span>
                 </div>
 
-                <div className="campo-entrada">
-                    <label>Precio</label>
-                    <div className="campo-readonly">${producto.precio}</div>
+                <div className="detalle-linea">
+                    <span className="detalle-label">Precio</span>
+                    <span className="detalle-valor">${producto.precio}</span>
                 </div>
 
-                <div className="campo-entrada">
-                    <label>Categoría</label>
-                    <div className="campo-readonly">{producto.categoria?.nombre || 'Sin categoría'}</div>
+                <div className="detalle-linea">
+                    <span className="detalle-label">Categoría</span>
+                    <span className="detalle-valor">{producto.categoria?.nombre || 'Sin categoría'}</span>
                 </div>
 
-                <div className="campo-entrada">
-                    <label>Descripción</label>
-                    <div className="campo-readonly">{producto.descripcion || '—'}</div>
+                <div className="detalle-linea">
+                    <span className="detalle-label">Descripción</span>
+                    <span className="detalle-valor">{producto.descripcion || '—'}</span>
                 </div>
 
-                <div className="campo-entrada">
-                    <label>Marca</label>
-                    <div className="campo-readonly">{producto.marca || '—'}</div>
+                <div className="detalle-linea">
+                    <span className="detalle-label">Marca</span>
+                    <span className="detalle-valor">{producto.marca || '—'}</span>
                 </div>
 
-                <div className="campo-entrada">
-                    <label>Código de barras</label>
-                    <div className="campo-readonly">{producto.codigoBarra || '—'}</div>
+                <div className="detalle-linea">
+                    <span className="detalle-label">Código de barras</span>
+                    <span className="detalle-valor">{producto.codigoBarra || '—'}</span>
                 </div>
 
                 <div className="modal-botones">
