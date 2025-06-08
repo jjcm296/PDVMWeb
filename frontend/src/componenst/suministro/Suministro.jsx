@@ -5,26 +5,30 @@ import TarjetaProducto from '../pdv/components/tarjetasProducto/TarjetaProducto'
 import TarjetaProductoBarra from '../pdv/components/tarjetasProducto/TarjetaProductoBarra';
 import ModalRegistrarSuministro from '../suministro/modalSuministrarProducto/ModalRegistrarSuministro';
 import './Suministro.css';
-import {ApiAddSuministro} from "../../api/apiSuministro";
-import {useProductos} from "../../context/productosContext";
+import { ApiAddSuministro, apiGetProductosStock } from "../../api/apiSuministro";
 
-const Suministro = ({modo}) => {
+const Suministro = ({ modo }) => {
     const [vista, setVista] = useState('grid');
     const [busqueda, setBusqueda] = useState('');
     const [mostrarModal, setMostrarModal] = useState(false);
     const [productoSeleccionado, setProductoSeleccionado] = useState(null);
     const [productos, setProductos] = useState([]);
-    const { productosOriginales, loadProductos } = useProductos();
+
+    const cargarProductos = async () => {
+        const data = await apiGetProductosStock();
+        if (Array.isArray(data)) {
+            setProductos(data);
+        } else {
+            console.error("Respuesta inválida del backend:", data);
+            setProductos([]);
+        }
+    };
 
     useEffect(() => {
-        if (!productosOriginales || productosOriginales.length === 0) {
-            loadProductos();
-        } else {
-            setProductos(productosOriginales);
-        }
-    }, [productosOriginales]);
+        cargarProductos();
+    }, []);
 
-    const productosFiltrados = (productos || []).filter (p =>
+    const productosFiltrados = productos.filter(p =>
         p.nombre.toLowerCase().includes(busqueda.toLowerCase())
     );
 
@@ -47,7 +51,7 @@ const Suministro = ({modo}) => {
 
         if (response) {
             cerrarModal();
-            await loadProductos();
+            await cargarProductos();
         } else {
             alert("No se pudo registrar el suministro.");
         }
@@ -61,14 +65,15 @@ const Suministro = ({modo}) => {
                 </div>
 
                 <div className={`productos-scroll ${vista === 'list' ? 'modo-lista' : ''}`}>
-                    {productosFiltrados.map((producto, index) =>
+                    {productosFiltrados.map((producto) =>
                         vista === 'grid' ? (
                             <TarjetaProducto
                                 key={producto.idProducto}
                                 nombre={producto.nombre}
+                                stock={producto.stockActual}
+                                mostrarStock={true}
                                 onClick={() => abrirModal(producto)}
                             />
-
                         ) : (
                             <TarjetaProductoBarra
                                 key={producto.idProducto}

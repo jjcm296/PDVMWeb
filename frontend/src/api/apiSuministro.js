@@ -10,3 +10,13 @@ export const ApiAddSuministro = async (suministro) => {
         return false;
     }
 };
+
+export const apiGetProductosStock = async () => {
+    try {
+        const response = await axios.get(`${API_BASE_URL}/productos/con-stock`);
+        return response.data;
+    } catch (error) {
+        console.error("Error al obtener los productos con stock: ", error);
+        return false;
+    }
+};

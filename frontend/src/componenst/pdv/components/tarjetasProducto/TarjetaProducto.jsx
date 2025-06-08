@@ -4,9 +4,11 @@ import './TarjetaProducto.css';
 const TarjetaProducto = ({
                              nombre,
                              precio,
+                             stock,
                              onClick,
                              onAgregar,
                              mostrarPrecio = true,
+                             mostrarStock = false,
                              seleccionado = false,
                              modoPDV = false
                          }) => {
@@ -16,11 +18,17 @@ const TarjetaProducto = ({
         <div className={`tarjeta-producto ${modoPDV ? 'modo-pdv' : ''}`} onClick={onClick}>
             <div className="imagen-producto">📦</div>
             <div className="nombre-producto">{nombre}</div>
-            {mostrarPrecio && (
+
+            {mostrarPrecio && !mostrarStock && (
                 <div className="precio-producto">
                     <span className="moneda">$</span>{precio}
                 </div>
             )}
+
+            {mostrarStock && (
+                <div className="precio-producto">Stock: {stock}</div>
+            )}
+
             <button
                 className={botonClase}
                 onClick={(e) => {
