@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import "./BarraNavegacion.css";
 import ModalIniciarSesion from "../modals/modalIniciarSesion/ModalIniciarSesion";
 import ModalNotificaciones from "./components/modalNotificaciones/ModalNotificaciones";
+import ModalDispositivos from "./components/modalDispositivo/ModalDispositivo";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
     UserIcon,
@@ -13,8 +14,8 @@ const BarraNavegacion = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const formatearFechaHora = (fecha) => {
-        return fecha.toLocaleString("es-MX", {
+    const formatearFechaHora = (fecha) =>
+        fecha.toLocaleString("es-MX", {
             day: "2-digit",
             month: "2-digit",
             year: "numeric",
@@ -22,90 +23,66 @@ const BarraNavegacion = () => {
             minute: "2-digit",
             hour12: true
         });
-    };
 
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-
     const [isNotifOpen, setIsNotifOpen] = useState(false);
+    const [isMobileModalOpen, setIsMobileModalOpen] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
     const [notifPosition, setNotifPosition] = useState({ top: 0, left: 0 });
+    const [mobileModalPosition, setMobileModalPosition] = useState({ top: 0, left: 0 });
+
     const [notificaciones, setNotificaciones] = useState([
         { mensaje: "Venta registrada exitosamente", tipo: "venta", fecha: formatearFechaHora(new Date()) },
         { mensaje: "Producto Doritos tiene stock bajo", tipo: "stock", fecha: formatearFechaHora(new Date()) },
-        { mensaje: "Producto Coca 2L se agotó", tipo: "agotado", fecha: formatearFechaHora(new Date()) },
-        { mensaje: "Venta registrada exitosamente", tipo: "venta", fecha: formatearFechaHora(new Date()) },
-        { mensaje: "Venta registrada exitosamente", tipo: "venta", fecha: formatearFechaHora(new Date()) },
+        { mensaje: "Producto Coca 2L se agotó", tipo: "agotado", fecha: formatearFechaHora(new Date()) }
     ]);
 
     const loginButtonRef = useRef(null);
     const bellButtonRef = useRef(null);
+    const phoneButtonRef = useRef(null);
     const modalRef = useRef(null);
+    const dispositivosRef = useRef(null);
 
-    const closeModal = () => setIsModalOpen(false);
-
-    const handleButtonClick = () => {
-        const modalWidth = 250;
-        const screenWidth = window.innerWidth;
-        if (isModalOpen) {
+    const handleClickOutside = (event) => {
+        if (
+            (!modalRef.current || !modalRef.current.contains(event.target)) &&
+            (!dispositivosRef.current || !dispositivosRef.current.contains(event.target)) &&
+            (!loginButtonRef.current || !loginButtonRef.current.contains(event.target)) &&
+            (!bellButtonRef.current || !bellButtonRef.current.contains(event.target)) &&
+            (!phoneButtonRef.current || !phoneButtonRef.current.contains(event.target))
+        ) {
             setIsModalOpen(false);
-        } else if (screenWidth <= 768) {
-            setModalPosition({
-                top: window.innerHeight / 2 - 120,
-                left: screenWidth / 2 - modalWidth / 2,
-            });
-            setIsModalOpen(true);
-        } else if (loginButtonRef.current) {
-            const rect = loginButtonRef.current.getBoundingClientRect();
-            const estimatedLeft = rect.left + window.scrollX - 220;
-            const maxLeft = screenWidth - modalWidth - 10;
-            const finalLeft = Math.max(Math.min(estimatedLeft, maxLeft), 10);
-            setModalPosition({
-                top: rect.bottom + window.scrollY + 5,
-                left: finalLeft,
-            });
-            setIsModalOpen(true);
-        }
-    };
-
-    const handleBellClick = () => {
-        const modalWidth = 300;
-        const screenWidth = window.innerWidth;
-        if (isNotifOpen) {
             setIsNotifOpen(false);
-        } else if (screenWidth <= 768) {
-            setNotifPosition({
-                top: window.innerHeight / 2 - 120,
-                left: screenWidth / 2 - modalWidth / 2,
-            });
-            setIsNotifOpen(true);
-        } else if (bellButtonRef.current) {
-            const rect = bellButtonRef.current.getBoundingClientRect();
-            const estimatedLeft = rect.left + window.scrollX - 240;
-            const maxLeft = screenWidth - modalWidth - 10;
-            const finalLeft = Math.max(Math.min(estimatedLeft, maxLeft), 10);
-            setNotifPosition({
-                top: rect.bottom + window.scrollY + 5,
-                left: finalLeft,
-            });
-            setIsNotifOpen(true);
+            setIsMobileModalOpen(false);
         }
     };
 
     useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (
-                (modalRef.current && !modalRef.current.contains(event.target)) &&
-                (!loginButtonRef.current || !loginButtonRef.current.contains(event.target)) &&
-                (!bellButtonRef.current || !bellButtonRef.current.contains(event.target))
-            ) {
-                setIsModalOpen(false);
-                setIsNotifOpen(false);
-            }
-        };
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
+
+    const openModal = (ref, width, setter, positionSetter) => {
+        // Cierra todos antes de abrir uno
+        setIsModalOpen(false);
+        setIsNotifOpen(false);
+        setIsMobileModalOpen(false);
+
+        const screenWidth = window.innerWidth;
+        if (ref.current) {
+            const rect = ref.current.getBoundingClientRect();
+            const estimatedLeft = rect.left + window.scrollX - width + 50;
+            const maxLeft = screenWidth - width - 10;
+            const finalLeft = Math.max(Math.min(estimatedLeft, maxLeft), 10);
+            positionSetter({
+                top: rect.bottom + window.scrollY + 5,
+                left: finalLeft
+            });
+            setter(true); // abre el modal correspondiente
+        }
+    };
 
     const pageTitles = {
         "/": "Inicio",
@@ -121,20 +98,14 @@ const BarraNavegacion = () => {
         "/settings": "Reportes"
     };
 
-    const getPageTitle = (pathname) => pageTitles[pathname] || "PDV";
-
     return (
         <div className="BarraNavegacion">
             <div className="menu migajas-container">
-                <span className="titulo-pagina">{getPageTitle(location.pathname)}</span>
+                <span className="titulo-pagina">{pageTitles[location.pathname] || "PDV"}</span>
             </div>
 
             <div className="menu logo-centro" onClick={() => navigate("/")}>
-                <img
-                    src="/logo/Logo_sin_letras.png"
-                    className="logo-img"
-                    alt="Logo"
-                />
+                <img src="/logo/Logo_sin_letras.png" className="logo-img" alt="Logo" />
             </div>
 
             <div className="menu">
@@ -147,11 +118,13 @@ const BarraNavegacion = () => {
                 </button>
 
                 <ul className={`items ${isMobileMenuOpen ? "open" : ""}`}>
-                    <li className="item" ref={bellButtonRef} onClick={handleBellClick}>
+                    <li className="item" ref={bellButtonRef} onClick={() => openModal(bellButtonRef, 300, setIsNotifOpen, setNotifPosition)}>
                         <BellIcon className="icon-nav" />
                     </li>
-                    <li className="item"><DevicePhoneMobileIcon className="icon-nav" /></li>
-                    <li className="item" ref={loginButtonRef} onClick={handleButtonClick}>
+                    <li className="item" ref={phoneButtonRef} onClick={() => openModal(phoneButtonRef, 280, setIsMobileModalOpen, setMobileModalPosition)}>
+                        <DevicePhoneMobileIcon className="icon-nav" />
+                    </li>
+                    <li className="item" ref={loginButtonRef} onClick={() => openModal(loginButtonRef, 250, setIsModalOpen, setModalPosition)}>
                         <UserIcon className="icon-nav" />
                     </li>
                 </ul>
@@ -161,7 +134,7 @@ const BarraNavegacion = () => {
                 <ModalIniciarSesion
                     ref={modalRef}
                     position={modalPosition}
-                    onClose={closeModal}
+                    onClose={() => setIsModalOpen(false)}
                 />
             )}
 
@@ -170,6 +143,14 @@ const BarraNavegacion = () => {
                     position={notifPosition}
                     onClose={() => setIsNotifOpen(false)}
                     notificaciones={notificaciones}
+                />
+            )}
+
+            {isMobileModalOpen && (
+                <ModalDispositivos
+                    ref={dispositivosRef}
+                    position={mobileModalPosition}
+                    onClose={() => setIsMobileModalOpen(false)}
                 />
             )}
         </div>
