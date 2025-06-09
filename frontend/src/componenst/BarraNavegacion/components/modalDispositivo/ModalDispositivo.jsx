@@ -7,7 +7,18 @@ const ModalDispositivos = ({ position, onClose }) => {
         { nombre: "Galaxy A1", conectado: true },
         { nombre: "iPhone 13", conectado: false },
         { nombre: "Moto G9", conectado: true },
-        { nombre: "Redmi Note 10", conectado: false }
+        { nombre: "Redmi Note 10", conectado: false },
+        { nombre: "Moto G9", conectado: true },
+        { nombre: "Redmi Note 10", conectado: false },
+        { nombre: "iPhone 13", conectado: false },
+        { nombre: "Moto G9", conectado: true },
+        { nombre: "Redmi Note 10", conectado: false },
+        { nombre: "Moto G9", conectado: true },
+        { nombre: "Redmi Note 10", conectado: false },
+        { nombre: "iPhone 13", conectado: false },
+        { nombre: "Moto G9", conectado: true },
+        { nombre: "Redmi Note 10", conectado: false },
+        { nombre: "Moto G9", conectado: true }
     ]);
 
     const toggleConexion = (index) => {

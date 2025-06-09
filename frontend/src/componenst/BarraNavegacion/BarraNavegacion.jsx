@@ -36,6 +36,10 @@ const BarraNavegacion = () => {
     const [notificaciones, setNotificaciones] = useState([
         { mensaje: "Venta registrada exitosamente", tipo: "venta", fecha: formatearFechaHora(new Date()) },
         { mensaje: "Producto Doritos tiene stock bajo", tipo: "stock", fecha: formatearFechaHora(new Date()) },
+        { mensaje: "Producto Coca 2L se agotó", tipo: "agotado", fecha: formatearFechaHora(new Date()) },
+        { mensaje: "Producto Doritos tiene stock bajo", tipo: "stock", fecha: formatearFechaHora(new Date()) },
+        { mensaje: "Producto Coca 2L se agotó", tipo: "agotado", fecha: formatearFechaHora(new Date()) },
+        { mensaje: "Producto Doritos tiene stock bajo", tipo: "stock", fecha: formatearFechaHora(new Date()) },
         { mensaje: "Producto Coca 2L se agotó", tipo: "agotado", fecha: formatearFechaHora(new Date()) }
     ]);
 
