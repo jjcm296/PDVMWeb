@@ -28,7 +28,6 @@ const BarraNavegacion = () => {
             const screenWidth = window.innerWidth;
 
             if (screenWidth <= 768) {
-                // Centrado en móviles
                 setModalPosition({
                     top: window.innerHeight / 2 - 120,
                     left: screenWidth / 2 - modalWidth / 2,
