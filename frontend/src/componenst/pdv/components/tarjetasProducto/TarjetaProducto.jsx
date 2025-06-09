@@ -15,7 +15,11 @@ const TarjetaProducto = ({
     const botonClase = `boton-agregar ${modoPDV && seleccionado ? 'seleccionado' : ''}`;
 
     return (
-        <div className={`tarjeta-producto ${modoPDV ? 'modo-pdv' : ''}`} onClick={onClick}>
+        <div
+            className={`tarjeta-producto ${modoPDV ? 'modo-pdv' : ''} ${mostrarStock && stock === 0 ? 'sin-stock' : ''}`}
+            onClick={onClick}
+        >
+
             <div className="imagen-producto">📦</div>
             <div className="nombre-producto">{nombre}</div>
 
@@ -25,8 +29,16 @@ const TarjetaProducto = ({
                 </div>
             )}
 
-            {mostrarStock && (
-                <div className="precio-producto">Stock: {stock}</div>
+            {mostrarStock && stock > 0 && (
+                <div className="precio-producto">
+                    Stock: {stock}
+                </div>
+            )}
+
+            {mostrarStock && stock === 0 && (
+                <div className="alerta-sin-stock">
+                    <i className="fas fa-exclamation-triangle"></i> Agotado
+                </div>
             )}
 
             <button
