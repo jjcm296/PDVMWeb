@@ -1,16 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react';
 import "./BarraNavegacion.css";
 import ModalIniciarSesion from "../modals/modalIniciarSesion/ModalIniciarSesion";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
     UserIcon,
     BellIcon,
     DevicePhoneMobileIcon
 } from "@heroicons/react/24/solid";
-import Migajas from './components/migajas/Migajas';
 
 const BarraNavegacion = () => {
     const navigate = useNavigate();
+    const location = useLocation();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
@@ -62,19 +62,35 @@ const BarraNavegacion = () => {
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
+    const pageTitles = {
+        "/": "Inicio",
+        "/products": "Productos",
+        "/category": "Categorías",
+        "/inventory": "Inventario",
+        "/pdv": "PDV",
+        "/supply-per-unit": "Suministro por unidad",
+        "/supply-per-box": "Suministro por caja",
+        "/barcode-generator": "Generador de códigos de barras",
+        "/alerts": "Alertas",
+        "/account": "Cuenta",
+        "/settings": "Reportes"
+    };
+
+    const getPageTitle = (pathname) => pageTitles[pathname] || "PDV";
+
     return (
         <div className="BarraNavegacion">
             <div className="menu migajas-container">
-                <Migajas/>
+                <span className="titulo-pagina">{getPageTitle(location.pathname)}</span>
             </div>
 
             <div className="menu logo-centro" onClick={() => navigate("/")}>
                 <img
                     src="/logo/Logo_sin_letras.png"
                     className="logo-img"
+                    alt="Logo"
                 />
             </div>
-
 
             <div className="menu">
                 <button
@@ -86,10 +102,10 @@ const BarraNavegacion = () => {
                 </button>
 
                 <ul className={`items ${isMobileMenuOpen ? "open" : ""}`}>
-                    <li className="item"><BellIcon className="icon-nav"/></li>
-                    <li className="item"><DevicePhoneMobileIcon className="icon-nav"/></li>
+                    <li className="item"><BellIcon className="icon-nav" /></li>
+                    <li className="item"><DevicePhoneMobileIcon className="icon-nav" /></li>
                     <li className="item" ref={loginButtonRef} onClick={handleButtonClick}>
-                        <UserIcon className="icon-nav"/>
+                        <UserIcon className="icon-nav" />
                     </li>
                 </ul>
             </div>

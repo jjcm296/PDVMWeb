@@ -134,6 +134,14 @@
   bottom: 18px;
 }
 
+.titulo-pagina {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+
 /* Responsive */
 @media (max-width: 768px) {
     .items {
