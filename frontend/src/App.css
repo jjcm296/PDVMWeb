@@ -37,10 +37,27 @@
   }
 }
 
-button:active {
-  transform: scale(0.96) translateY(1px);
-  box-shadow: 0 1px 3px rgba(0, 12, 143, 0.4);
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
-  filter: brightness(0.95);
+button {
+  background-color: white;
+  border: 2px solid #000C8F;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 12, 143, 0.25);
+  transition: all 0.2s ease;
+  color: #000C8F;
+  font-weight: bold;
 }
 
+button:hover {
+  background-color: #A3C8FF;
+  box-shadow: 0 6px 12px rgba(0, 12, 143, 0.35);
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: scale(0.96) translateY(2px);
+  box-shadow: 0 2px 4px rgba(0, 12, 143, 0.4);
+  filter: brightness(0.95);
+}
