@@ -17,12 +17,15 @@
     padding: 12px 16px;
     border-bottom: 1px solid #eee;
     background-color: white;
+    gap: 10px;
 }
 
 .modal-header h4 {
     margin: 0;
     font-size: 16px;
     color: #000C8F;
+    flex-grow: 1;
+    text-align: left;
 }
 
 .cerrar-btn {
@@ -31,6 +34,17 @@
     font-size: 20px;
     cursor: pointer;
     color: #000C8F;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+}
+
+.cerrar-btn:hover {
+    background-color: rgba(0, 12, 143, 0.1);
 }
 
 .modal-contenido {
