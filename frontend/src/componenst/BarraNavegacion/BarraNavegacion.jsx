@@ -70,7 +70,7 @@ const BarraNavegacion = () => {
 
             <div className="menu logo-centro" onClick={() => navigate("/")}>
                 <img
-                    src="/logo/LogoB.png"
+                    src="/logo/Logo_sin_letras.png"
                     className="logo-img"
                 />
             </div>
