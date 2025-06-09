@@ -8,6 +8,7 @@ import {ProductosProvider} from "./context/productosContext";
 import {CategoriasProvider} from "./context/categoriaContext";
 import {CarritoProvider} from "./context/carritoContext";
 import {InventarioProvider} from "./context/invetarioContext";
+import {SuministroProductosProvider} from "./context/suministroProductosContext";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,7 +17,9 @@ root.render(
           <CategoriasProvider>
               <CarritoProvider>
                 <InventarioProvider>
-                    <App />
+                    <SuministroProductosProvider>
+                        <App />
+                    </SuministroProductosProvider>
                 </InventarioProvider>
               </CarritoProvider>
           </CategoriasProvider>

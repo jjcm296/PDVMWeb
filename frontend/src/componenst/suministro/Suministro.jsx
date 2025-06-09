@@ -5,43 +5,39 @@ import TarjetaProducto from '../pdv/components/tarjetasProducto/TarjetaProducto'
 import TarjetaProductoBarra from '../pdv/components/tarjetasProducto/TarjetaProductoBarra';
 import ModalRegistrarSuministro from '../suministro/modalSuministrarProducto/ModalRegistrarSuministro';
 import './Suministro.css';
-import { ApiAddSuministro, apiGetProductosStock } from "../../api/apiSuministro";
+import { ApiAddSuministro } from "../../api/apiSuministro";
+import { useSuministroProductos } from "../../context/suministroProductosContext";
 
 const Suministro = ({ modo }) => {
     const [vista, setVista] = useState('grid');
     const [busqueda, setBusqueda] = useState('');
     const [mostrarModal, setMostrarModal] = useState(false);
     const [productoSeleccionado, setProductoSeleccionado] = useState(null);
-    const [productos, setProductos] = useState([]);
-    const [idSeleccionado, setIdSeleccionado] = useState(null); // ✅ nuevo estado
+    const [idSeleccionado, setIdSeleccionado] = useState(null);
 
-    const cargarProductos = async () => {
-        const data = await apiGetProductosStock();
-        if (Array.isArray(data)) {
-            setProductos(data);
-        } else {
-            console.error("Respuesta inválida del backend:", data);
-            setProductos([]);
-        }
-    };
+    const {
+        productosSuministro,
+        loadProductosSuministro,
+        cargandoSuministro
+    } = useSuministroProductos();
 
     useEffect(() => {
-        cargarProductos();
+        loadProductosSuministro();
     }, []);
 
-    const productosFiltrados = productos.filter(p =>
+    const productosFiltrados = productosSuministro.filter(p =>
         p.nombre.toLowerCase().includes(busqueda.toLowerCase())
     );
 
     const abrirModal = (producto) => {
         setProductoSeleccionado(producto);
-        setIdSeleccionado(producto.idProducto); // ✅ marcar como seleccionado
+        setIdSeleccionado(producto.idProducto);
         setMostrarModal(true);
     };
 
     const cerrarModal = () => {
         setProductoSeleccionado(null);
-        setIdSeleccionado(null); // ✅ quitar selección
+        setIdSeleccionado(null);
         setMostrarModal(false);
     };
 
@@ -54,7 +50,7 @@ const Suministro = ({ modo }) => {
 
         if (response) {
             cerrarModal();
-            await cargarProductos();
+            await loadProductosSuministro();
         } else {
             alert("No se pudo registrar el suministro.");
         }
