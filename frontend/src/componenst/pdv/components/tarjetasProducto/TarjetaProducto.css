@@ -7,25 +7,12 @@
     --fuente: 'Segoe UI', sans-serif;
 }
 
-/* CONTENEDOR PRINCIPAL */
-.productos-scroll-contenedor {
-    flex: 1;
-    border: 2px solid var(--color-principal);
-    border-radius: var(--borde-radio);
-    background-color: var(--color-fondo);
-    padding: 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    box-sizing: border-box;
-    font-family: var(--fuente);
-}
-
 /* TARJETA CUADRADA */
 .tarjeta-producto {
     width: 130px;
     height: 190px;
+    margin: 0; /* 🔥 quita separación extra */
+    padding: 0; /* asegura cero relleno */
     border: 2px solid var(--color-principal);
     border-radius: var(--borde-radio);
     background-color: var(--color-fondo);
@@ -33,12 +20,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
     transition: transform 0.3s ease;
     box-sizing: border-box;
-    margin-left: 3px;
     overflow: hidden;
-    padding: 10px 0 0 0;
 }
+
 
 .tarjeta-producto:hover {
     transform: scale(1.05);

@@ -6,7 +6,7 @@ import TarjetaProductoBarra from '../tarjetasProducto/TarjetaProductoBarra';
 import './PanelIzquierdo.css';
 import BotonFiltro from "../../../ui/botonFiltro/BotonFiltro";
 import { useProductos } from "../../../../context/productosContext";
-import {useCarrito} from "../../../../context/carritoContext";
+import { useCarrito } from "../../../../context/carritoContext";
 
 const PanelIzquierdo = () => {
     const [vista, setVista] = useState('grid');
@@ -58,12 +58,11 @@ const PanelIzquierdo = () => {
                             key={producto.idProducto || index}
                             nombre={producto.nombre}
                             precio={producto.precio}
-                            onAgregar={() => handleAgregar(producto)} // botón +
-                            onClick={() => handleAgregar(producto)}   // toda la tarjeta
+                            onAgregar={() => handleAgregar(producto)}
+                            onClick={() => handleAgregar(producto)}
                             seleccionado={seleccionados.includes(producto.idProducto)}
                             modoPDV={true}
                         />
-
                     ) : (
                         <TarjetaProductoBarra
                             key={producto.idProducto || index}
@@ -81,6 +80,5 @@ const PanelIzquierdo = () => {
         </div>
     );
 };
-
 
 export default PanelIzquierdo;

@@ -5,11 +5,12 @@
     --padding-panel: 15px;
 }
 
+/* CONTENEDOR PRINCIPAL */
 .panel-izquierdo-contenedor {
     display: flex;
     flex-direction: column;
     height: 89vh;
-    width: 850px;
+    flex: 1;
     max-width: 100%;
     padding: var(--padding-panel);
     border: var(--borde-panel);
@@ -17,73 +18,66 @@
     background-color: var(--fondo-panel);
     box-sizing: border-box;
     position: relative;
-    gap: 2px;
+    gap: 8px;
 }
 
+/* BARRA SUPERIOR */
 .barra-superior {
-    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
+/* CONTENEDOR DE PRODUCTOS */
 .productos-scroll {
     flex: 1;
     width: 100%;
     overflow-y: auto;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(auto-fill, 130px);
+    grid-auto-rows: 195px;
+    column-gap: 8px;
+    row-gap: 0px;
+    padding: 8px 8px 0 8px;
     box-sizing: border-box;
-
     border: var(--borde-panel);
     border-radius: var(--radio-panel);
-    padding: 10px;
     background-color: var(--fondo-panel);
+    justify-content: flex-start;
 }
 
+/* MODO LISTA */
 .productos-scroll.modo-lista {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 8px;
 }
 
+/* MODO LISTA - ESTILO DE CADA TARJETA */
 .productos-scroll.modo-lista > * {
     width: 100%;
     max-width: 100%;
 }
 
+/* TOGGLE ABAJO */
 .switch-inferior {
     display: flex;
     justify-content: flex-end;
-    padding-top: 10px;
+    padding-top: 8px;
 }
 
-
-@media (max-width: 1024px) {
-    .productos-scroll {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-
+/* RESPONSIVE */
 @media (max-width: 768px) {
-    .panel-izquierdo-contenedor {
-        width: 100%;
-        height: auto;
-    }
-
-    .productos-scroll {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 480px) {
-    .productos-scroll {
-        grid-template-columns: repeat(2, 1fr);
+    .barra-superior {
+        flex-direction: column;
+        align-items: stretch;
     }
 
     .switch-inferior {
         justify-content: center;
-        padding-bottom: 10px;
     }
 }
