@@ -10,20 +10,20 @@ const MenuPrincipal = () => {
         <header className="menu-principal">
             <div className="contenedor">
                 <MenuButton label="Categoría" onClick={() => navigate('/category')} />
-                <MenuButton label="Barras" onClick={() => navigate('/barcode-generator')} />
+                <MenuButton label="Barras"  onClick={() => navigate('/barcode-generator')} />
                 <MenuButton label="Alertas" onClick={() => navigate('/alerts')} />
             </div>
             <div className="contenedor">
                 <MenuButton label="Inventario" onClick={() => navigate('/inventory')} />
-                <MenuButton label="PDV" onClick={() => navigate('/pdv')} fullWidth />
+                <MenuButton image={'/logo/LogoB.png'} onClick={() => navigate('/pdv')} fullWidth className="sapphire"/>
             </div>
             <div className="contenedor">
-                <MenuButton label="Suministrado por unidad" onClick={() => navigate('/supply-per-unit')} />
+                <MenuButton image={'/logo/Suministro.png'} onClick={() => navigate('/supply-per-unit')}/>
                 <MenuButton label="Ajustes" onClick={() => navigate('/settings')} />
-                <MenuButton label="Suministrado por caja" onClick={() => navigate('/supply-per-box')} />
+                <MenuButton label="Suministro caja" onClick={() => navigate('/supply-per-box')}/>
             </div>
             <div className="contenedor">
-                <MenuButton label="Productos" onClick={() => navigate('/products')} fullWidth />
+                <MenuButton image={'/logo/Productos.png'} onClick={() => navigate('/products')} fullWidth className="sapphire"/>
                 <MenuButton label="Cuenta" onClick={() => navigate('/account')} />
             </div>
         </header>
