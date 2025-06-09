@@ -23,22 +23,15 @@
     padding: 10px;
     box-sizing: border-box;
     color: var(--ultramarine);
+    position: relative;
+    z-index: 1;
 }
 
 .menu-button:hover {
     background-color: var(--jordy-blue);
     transform: scale(1.05);
     box-shadow: 0 4px 15px rgba(0, 12, 143, 0.2);
-}
-
-.menu-button:hover .menu-button-label {
-    color: var(--ultramarine);
-}
-
-.menu-button-label {
-    font-weight: bold;
-    color: var(--ultramarine);
-    margin-top: 8px;
+    z-index: 999;
 }
 
 .menu-button-img {
@@ -48,6 +41,55 @@
     object-fit: contain;
     margin-bottom: 5px;
     filter: brightness(0) saturate(100%) invert(10%) sepia(100%) saturate(2700%) hue-rotate(225deg) brightness(95%) contrast(105%);
+}
+
+/* Tooltip base */
+.tooltip {
+    position: absolute;
+    top: auto;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--ultramarine);
+    color: var(--white);
+    padding: 6px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+    font-size: 13px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 9999;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.tooltip.tooltip-bottom {
+    top: 110%;
+    bottom: auto;
+}
+
+/* Mostrar tooltip al pasar el mouse */
+.menu-button:hover .tooltip {
+    opacity: 1;
+}
+
+/* Flechita del tooltip */
+.tooltip::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+}
+
+.tooltip:not(.tooltip-bottom)::after {
+    top: 100%;
+    border-top-color: var(--ultramarine);
+}
+
+.tooltip.tooltip-bottom::after {
+    bottom: 100%;
+    border-bottom-color: var(--ultramarine);
 }
 
 /* Tamaño completo */

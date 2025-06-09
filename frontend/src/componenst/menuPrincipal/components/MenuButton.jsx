@@ -1,14 +1,14 @@
 import React from 'react';
 import './MenuButton.css';
 
-const MenuButton = ({ label, onClick, fullWidth = false, image }) => {
+const MenuButton = ({ label, onClick, fullWidth = false, image, tooltipBottom = false }) => {
     return (
         <div
             className={`menu-button ${fullWidth ? 'full-width' : ''}`}
             onClick={onClick}
         >
             {image && <img src={image} alt={label} className="menu-button-img" />}
-            <span className="menu-button-label">{label}</span>
+            <span className={`tooltip ${tooltipBottom ? 'tooltip-bottom' : ''}`}>{label}</span>
         </div>
     );
 };
