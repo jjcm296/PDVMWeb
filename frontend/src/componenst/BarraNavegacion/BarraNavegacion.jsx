@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import "./BarraNavegacion.css";
 import ModalIniciarSesion from "../modals/modalIniciarSesion/ModalIniciarSesion";
+import ModalNotificaciones from "./components/modalNotificaciones/ModalNotificaciones";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
     UserIcon,
@@ -11,51 +12,95 @@ import {
 const BarraNavegacion = () => {
     const navigate = useNavigate();
     const location = useLocation();
+
+    const formatearFechaHora = (fecha) => {
+        return fecha.toLocaleString("es-MX", {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: true
+        });
+    };
+
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
 
+    const [isNotifOpen, setIsNotifOpen] = useState(false);
+    const [notifPosition, setNotifPosition] = useState({ top: 0, left: 0 });
+    const [notificaciones, setNotificaciones] = useState([
+        { mensaje: "Venta registrada exitosamente", tipo: "venta", fecha: formatearFechaHora(new Date()) },
+        { mensaje: "Producto Doritos tiene stock bajo", tipo: "stock", fecha: formatearFechaHora(new Date()) },
+        { mensaje: "Producto Coca 2L se agotó", tipo: "agotado", fecha: formatearFechaHora(new Date()) },
+        { mensaje: "Venta registrada exitosamente", tipo: "venta", fecha: formatearFechaHora(new Date()) },
+        { mensaje: "Venta registrada exitosamente", tipo: "venta", fecha: formatearFechaHora(new Date()) },
+    ]);
+
     const loginButtonRef = useRef(null);
+    const bellButtonRef = useRef(null);
     const modalRef = useRef(null);
 
     const closeModal = () => setIsModalOpen(false);
 
     const handleButtonClick = () => {
+        const modalWidth = 250;
+        const screenWidth = window.innerWidth;
         if (isModalOpen) {
             setIsModalOpen(false);
-        } else {
-            const modalWidth = 250;
-            const screenWidth = window.innerWidth;
-
-            if (screenWidth <= 768) {
-                setModalPosition({
-                    top: window.innerHeight / 2 - 120,
-                    left: screenWidth / 2 - modalWidth / 2,
-                });
-            } else if (loginButtonRef.current) {
-                const rect = loginButtonRef.current.getBoundingClientRect();
-                const estimatedLeft = rect.left + window.scrollX - 220;
-                const maxLeft = screenWidth - modalWidth - 10;
-                const finalLeft = Math.max(Math.min(estimatedLeft, maxLeft), 10);
-
-                setModalPosition({
-                    top: rect.bottom + window.scrollY + 5,
-                    left: finalLeft,
-                });
-            }
-
+        } else if (screenWidth <= 768) {
+            setModalPosition({
+                top: window.innerHeight / 2 - 120,
+                left: screenWidth / 2 - modalWidth / 2,
+            });
             setIsModalOpen(true);
+        } else if (loginButtonRef.current) {
+            const rect = loginButtonRef.current.getBoundingClientRect();
+            const estimatedLeft = rect.left + window.scrollX - 220;
+            const maxLeft = screenWidth - modalWidth - 10;
+            const finalLeft = Math.max(Math.min(estimatedLeft, maxLeft), 10);
+            setModalPosition({
+                top: rect.bottom + window.scrollY + 5,
+                left: finalLeft,
+            });
+            setIsModalOpen(true);
+        }
+    };
+
+    const handleBellClick = () => {
+        const modalWidth = 300;
+        const screenWidth = window.innerWidth;
+        if (isNotifOpen) {
+            setIsNotifOpen(false);
+        } else if (screenWidth <= 768) {
+            setNotifPosition({
+                top: window.innerHeight / 2 - 120,
+                left: screenWidth / 2 - modalWidth / 2,
+            });
+            setIsNotifOpen(true);
+        } else if (bellButtonRef.current) {
+            const rect = bellButtonRef.current.getBoundingClientRect();
+            const estimatedLeft = rect.left + window.scrollX - 240;
+            const maxLeft = screenWidth - modalWidth - 10;
+            const finalLeft = Math.max(Math.min(estimatedLeft, maxLeft), 10);
+            setNotifPosition({
+                top: rect.bottom + window.scrollY + 5,
+                left: finalLeft,
+            });
+            setIsNotifOpen(true);
         }
     };
 
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (
-                modalRef.current &&
-                !modalRef.current.contains(event.target) &&
-                !loginButtonRef.current.contains(event.target)
+                (modalRef.current && !modalRef.current.contains(event.target)) &&
+                (!loginButtonRef.current || !loginButtonRef.current.contains(event.target)) &&
+                (!bellButtonRef.current || !bellButtonRef.current.contains(event.target))
             ) {
                 setIsModalOpen(false);
+                setIsNotifOpen(false);
             }
         };
         document.addEventListener("mousedown", handleClickOutside);
@@ -102,7 +147,9 @@ const BarraNavegacion = () => {
                 </button>
 
                 <ul className={`items ${isMobileMenuOpen ? "open" : ""}`}>
-                    <li className="item"><BellIcon className="icon-nav" /></li>
+                    <li className="item" ref={bellButtonRef} onClick={handleBellClick}>
+                        <BellIcon className="icon-nav" />
+                    </li>
                     <li className="item"><DevicePhoneMobileIcon className="icon-nav" /></li>
                     <li className="item" ref={loginButtonRef} onClick={handleButtonClick}>
                         <UserIcon className="icon-nav" />
@@ -115,6 +162,14 @@ const BarraNavegacion = () => {
                     ref={modalRef}
                     position={modalPosition}
                     onClose={closeModal}
+                />
+            )}
+
+            {isNotifOpen && (
+                <ModalNotificaciones
+                    position={notifPosition}
+                    onClose={() => setIsNotifOpen(false)}
+                    notificaciones={notificaciones}
                 />
             )}
         </div>
