@@ -14,6 +14,7 @@ const Suministro = ({ modo }) => {
     const [mostrarModal, setMostrarModal] = useState(false);
     const [productoSeleccionado, setProductoSeleccionado] = useState(null);
     const [idSeleccionado, setIdSeleccionado] = useState(null);
+    const [productosFiltrados, setProductosFiltrados] = useState([]);
 
     const {
         productosSuministro,
@@ -25,9 +26,13 @@ const Suministro = ({ modo }) => {
         loadProductosSuministro();
     }, []);
 
-    const productosFiltrados = productosSuministro.filter(p =>
-        p.nombre.toLowerCase().includes(busqueda.toLowerCase())
-    );
+    // Filtrado reactivo cuando cambia la búsqueda o el listado original
+    useEffect(() => {
+        const filtrados = productosSuministro.filter(p =>
+            p.nombre.toLowerCase().includes(busqueda.toLowerCase())
+        );
+        setProductosFiltrados(filtrados);
+    }, [busqueda, productosSuministro]);
 
     const abrirModal = (producto) => {
         setProductoSeleccionado(producto);
