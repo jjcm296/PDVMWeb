@@ -2,7 +2,7 @@
     position: absolute;
     width: 340px;
     background-color: none;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 12, 143, 0.15) !important;
     border-radius: 12px;
     z-index: 1001;
     animation: fadeIn 0.2s ease-out;

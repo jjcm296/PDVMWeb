@@ -3,39 +3,45 @@
     flex-direction: row;
     align-items: flex-start;
     background-color: #ffffff;
-    border-left: 4px solid #000C8F;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 12, 143, 0.15);
-    padding: 6px 10px;
-    gap: 8px;
+    border-radius: 12px;
+    padding: 10px 0 0 5px;
+    gap: 10px;
     cursor: pointer;
     transition: all 0.2s ease;
+    width: 100%;
+    max-width: 300px;
+    border-left: 4px solid #000C8F !important;
+    background-color: #fff;
+    box-shadow:
+            0 4px 8px rgba(0, 0, 0, 0.08),
+            0 1px 2px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e6e6e6;
 }
 
 /* Hover */
 .tarjeta-noti:hover {
     background-color: #E6F0FF;
-    box-shadow: 0 6px 12px rgba(0, 12, 143, 0.25);
-    transform: translateY(-1px);
+    box-shadow: 0 16px 24px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
 }
 
 /* Click */
 .tarjeta-noti:active {
     transform: scale(0.97) translateY(1px);
-    box-shadow: 0 2px 4px rgba(0, 12, 143, 0.2);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08);
 }
 
 .noti-izq {
     display: flex;
-    align-items: flex-start; /* Alinea arriba */
+    align-items: flex-start;
     justify-content: center;
-    padding-top: 2px; /* Opcional: pequeño ajuste si aún se baja */
+    padding-top: 2px;
 }
 
 .noti-icono {
-    width: 18px;
-    height: 18px;
-    margin: 0; /* Importante: sin margen que lo desplace */
+    width: 20px;
+    height: 20px;
+    margin: 0;
 }
 
 .amarillo { color: #FBBF24; }
@@ -47,11 +53,12 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    line-height: 1.1;           /* ⬅️ más compacto */
+    line-height: 1.1;
+    flex: 1;
 }
 
 .noti-titulo {
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 600;
     color: #000C8F;
     margin: 0;
@@ -59,15 +66,16 @@
 }
 
 .noti-mensaje {
-    font-size: 12.5px;
+    margin: 5px 0 5px 0 !important;
+    font-size: 11px;
     color: #333;
-    margin: 1px 0 0 0;          /* ⬅️ solo separación mínima arriba */
+    margin: 2px 0 0 0;
     padding: 0;
 }
 
 .noti-fecha {
     font-size: 11px;
     color: #777;
-    margin: 2px 0 0 0;          /* ⬅️ mínima separación arriba */
+    margin: 2px 0 0 0;
     padding: 0;
 }
