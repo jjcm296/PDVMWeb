@@ -14,7 +14,7 @@ const MenuPrincipal = () => {
                 <MenuButton label="Alertas" image={'/logo/Alerta.png'} onClick={() => navigate('/alerts')} tooltipBottom />
             </div>
             <div className="contenedor">
-                <MenuButton label="Inventario" image={'/logo/inventario.png'} onClick={() => navigate('/inventory')} />
+                <MenuButton label="inventario" image={'/logo/Inventario.png'} onClick={() => navigate('/inventory')} />
                 <MenuButton label="Punto de Venta" image={'/logo/LogoB.png'} onClick={() => navigate('/pdv')} fullWidth className="sapphire" />
             </div>
             <div className="contenedor">
