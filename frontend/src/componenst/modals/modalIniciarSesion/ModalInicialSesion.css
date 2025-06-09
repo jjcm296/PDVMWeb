@@ -9,16 +9,16 @@
     z-index: 1000;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 8px;
     animation: fadeIn 0.2s ease-in-out;
+    text-align: left !important;
 }
 
 .modal-header {
     display: flex;
     align-items: center;
     gap: 10px;
-    justify-content: center;
-    margin-bottom: 4px;
+    justify-content: center !important;
 }
 
 .modal-avatar {
@@ -33,13 +33,14 @@
     font-size: 18px;
     font-family: 'Impact', sans-serif;
     text-transform: uppercase;
+    text-align: left !important;
 }
 
 .modal-texto {
     font-size: 14px;
     color: #444;
     text-align: center;
-    margin: 0;
+    margin-top: 0;
     padding: 0 4px;
 }
 

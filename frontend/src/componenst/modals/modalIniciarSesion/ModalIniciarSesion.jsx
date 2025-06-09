@@ -24,6 +24,7 @@ const ModalIniciarSesion = forwardRef(({ position, onClose }, ref) => {
                 <UserIcon className="modal-avatar" />
                 <span className="modal-titulo">¡Bienvenido!</span>
             </div>
+            <p className="modal-texto">Accede a tu cuenta o crea una nueva para comenzar.</p>
             <button onClick={() => handleNavigate("/register")} className="boton-cuenta crear">Crear cuenta</button>
             <button onClick={() => handleNavigate("/login")} className="boton-cuenta iniciar">Iniciar sesión</button>
         </div>

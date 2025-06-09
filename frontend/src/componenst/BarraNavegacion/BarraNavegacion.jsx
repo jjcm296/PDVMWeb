@@ -133,14 +133,14 @@ const BarraNavegacion = () => {
             {isModalOpen && (
                 <ModalIniciarSesion
                     ref={modalRef}
-                    position={modalPosition}
+                    position={{top:70, left: 1210}}
                     onClose={() => setIsModalOpen(false)}
                 />
             )}
 
             {isNotifOpen && (
                 <ModalNotificaciones
-                    position={notifPosition}
+                    position={{top:70, left: 1010}}
                     onClose={() => setIsNotifOpen(false)}
                     notificaciones={notificaciones}
                 />
@@ -149,7 +149,7 @@ const BarraNavegacion = () => {
             {isMobileModalOpen && (
                 <ModalDispositivos
                     ref={dispositivosRef}
-                    position={mobileModalPosition}
+                    position={{top:70, left: 1110}}
                     onClose={() => setIsMobileModalOpen(false)}
                 />
             )}
