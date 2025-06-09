@@ -13,6 +13,7 @@ const Suministro = ({ modo }) => {
     const [mostrarModal, setMostrarModal] = useState(false);
     const [productoSeleccionado, setProductoSeleccionado] = useState(null);
     const [productos, setProductos] = useState([]);
+    const [idSeleccionado, setIdSeleccionado] = useState(null); // ✅ nuevo estado
 
     const cargarProductos = async () => {
         const data = await apiGetProductosStock();
@@ -34,11 +35,13 @@ const Suministro = ({ modo }) => {
 
     const abrirModal = (producto) => {
         setProductoSeleccionado(producto);
+        setIdSeleccionado(producto.idProducto); // ✅ marcar como seleccionado
         setMostrarModal(true);
     };
 
     const cerrarModal = () => {
         setProductoSeleccionado(null);
+        setIdSeleccionado(null); // ✅ quitar selección
         setMostrarModal(false);
     };
 
@@ -72,7 +75,10 @@ const Suministro = ({ modo }) => {
                                 nombre={producto.nombre}
                                 stock={producto.stockActual}
                                 mostrarStock={true}
+                                seleccionado={producto.idProducto === idSeleccionado}
+                                modoPDV={true}
                                 onClick={() => abrirModal(producto)}
+                                onAgregar={() => abrirModal(producto)}
                             />
                         ) : (
                             <TarjetaProductoBarra
