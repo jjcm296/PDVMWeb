@@ -20,6 +20,7 @@ const Productos = () => {
     const [busqueda, setBusqueda] = useState('');
     const [mostrarModal, setMostrarModal] = useState(false);
     const [productoSeleccionado, setProductoSeleccionado] = useState(null);
+    const [productoSinStock, setProductoSinStock] = useState(null);
 
     const { productosOriginales, loadProductos } = useProductos();
     const [productosOrdenados, setProductosOrdenados] = useState([]);
@@ -59,6 +60,20 @@ const Productos = () => {
         }
     };
 
+    const handleAgregarAlCarrito = (producto) => {
+        if (producto.stockActual <= 0) {
+            setProductoSinStock(producto);
+        } else {
+            agregarProducto({
+                id: producto.idProducto,
+                nombre: producto.nombre,
+                precio: producto.precio
+            });
+        }
+    };
+
+    const cerrarModalSinStock = () => setProductoSinStock(null);
+
     return (
         <div className="pantalla-productos">
             <div className="productos-scroll-contenedor">
@@ -79,22 +94,14 @@ const Productos = () => {
                                 nombre={producto.nombre}
                                 precio={producto.precio}
                                 onClick={() => setProductoSeleccionado(producto)}
-                                onAgregar={() => agregarProducto({
-                                    id: producto.idProducto,
-                                    nombre: producto.nombre,
-                                    precio: producto.precio
-                                })}
+                                onAgregar={() => handleAgregarAlCarrito(producto)}
                             />
                         ) : (
                             <TarjetaProductoBarra
                                 key={producto.idProducto || index}
                                 nombre={producto.nombre}
                                 precio={producto.precio}
-                                onAgregar={() => agregarProducto({
-                                    id: producto.idProducto,
-                                    nombre: producto.nombre,
-                                    precio: producto.precio
-                                })}
+                                onAgregar={() => handleAgregarAlCarrito(producto)}
                             />
                         )
                     )}
@@ -111,6 +118,16 @@ const Productos = () => {
                     producto={productoSeleccionado}
                     onClose={() => setProductoSeleccionado(null)}
                 />
+            )}
+            {productoSinStock && (
+                <div className="modal-desarrollo-overlay">
+                    <div className="modal-desarrollo">
+                        <img src="/logo/Logo.png" alt="logo" className="modal-logo" />
+                        <h2>Stock insuficiente</h2>
+                        <p>El producto "{productoSinStock.nombre}" no se puede agregar al carrito porque el stock es 0.</p>
+                        <button className="modal-desarrollo-boton" onClick={cerrarModalSinStock}>Entendido</button>
+                    </div>
+                </div>
             )}
         </div>
     );

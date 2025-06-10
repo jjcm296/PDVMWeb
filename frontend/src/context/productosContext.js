@@ -1,6 +1,6 @@
-// src/context/productosContext.js
 import { createContext, useContext, useState } from "react";
 import { apiGetAllProductos } from "../api/apiProductos";
+import { apiGetProductosStock } from "../api/apiSuministro";
 
 const ProductosContext = createContext();
 
@@ -13,8 +13,20 @@ export const ProductosProvider = ({ children }) => {
     const loadProductos = async () => {
         try {
             setCargandoProductos(true);
-            const response = await apiGetAllProductos();
-            setProductosOriginales(response);
+            const [productos, stockList] = await Promise.all([
+                apiGetAllProductos(),
+                apiGetProductosStock()
+            ]);
+
+            const productosConStock = productos.map((p) => {
+                const stock = stockList.find((s) => s.idProducto === p.idProducto);
+                return {
+                    ...p,
+                    stockActual: stock ? stock.stockActual : 0
+                };
+            });
+
+            setProductosOriginales(productosConStock);
         } catch (error) {
             console.error("Error cargando productos:", error);
         } finally {
@@ -22,14 +34,13 @@ export const ProductosProvider = ({ children }) => {
         }
     };
 
-
     return (
         <ProductosContext.Provider
             value={{
                 productosOriginales,
                 setProductosOriginales,
                 cargandoProductos,
-                loadProductos, // <- método reutilizable
+                loadProductos,
             }}
         >
             {children}
