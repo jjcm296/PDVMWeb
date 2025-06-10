@@ -13,17 +13,16 @@ body {
     min-height: 100vh;
 }
 
-
 .datos-usuario {
     background-color: white;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 12, 143, 0.15);
-    padding: 40px;
+    padding: 32px 28px; /* ⬅️ menos padding vertical */
     width: 100%;
     max-width: 420px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 14px; /* ⬅️ reduce espacio entre secciones */
 }
 
 .header-text {
@@ -32,7 +31,6 @@ body {
 }
 
 .header-text h1 {
-    margin: 0;
     text-transform: uppercase;
     font-size: 24px;
     color: #000C8F;
@@ -50,7 +48,7 @@ body {
 }
 
 .input-campo {
-    padding: 12px;
+    padding: 10px 12px; /* ⬅️ reduce altura */
     border: 1px solid #ccc;
     border-radius: 10px;
     font-size: 16px;
@@ -102,12 +100,13 @@ label {
 .texto-contrasena {
     font-size: 14px;
     color: #444;
-    margin: 0;
+    margin: 0 0 6px 0;
     padding-left: 5px;
 }
 
 .texto-contrasena li {
     margin-left: 20px;
+    margin-bottom: 4px; /* opcional */
 }
 
 .checkbox-container {
