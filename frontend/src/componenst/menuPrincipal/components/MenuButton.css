@@ -102,6 +102,7 @@
     width: 410px;
 }
 
+
 /* Responsive */
 @media (max-width: 768px) {
     .menu-button {
@@ -119,6 +120,20 @@
         width: 240px;
     }
 }
+
+.menu-button.disabled {
+    opacity: 0.5;
+    filter: grayscale(100%) brightness(0.9);
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+    /* pointer-events: none; <-- NO incluir esta línea, para permitir el clic */
+}
+
+.menu-button.disabled:hover .tooltip {
+    opacity: 0; /* No mostrar tooltip si está deshabilitado */
+}
+
 
 @media (max-width: 480px) {
     .menu-button {
