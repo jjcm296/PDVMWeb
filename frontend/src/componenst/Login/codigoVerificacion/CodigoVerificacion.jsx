@@ -75,7 +75,8 @@ const CodigoVerificacion = () => {
 
             {showModal && (
                 <div className="modal-exito">
-                    <div className="modal-contenido">
+                    <div className="modal-contenidoo">
+                        <img src="/logo/Logo.png" alt="logo" className="modal-logo" />
                         <h2>¡Cuenta verificada con éxito!</h2>
                         <button onClick={cerrarModal}>Aceptar</button>
                     </div>
