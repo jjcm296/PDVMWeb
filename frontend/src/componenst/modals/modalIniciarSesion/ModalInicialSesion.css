@@ -61,19 +61,11 @@
     border: 2px solid #000C8F;
 }
 
-.boton-cuenta.iniciar:hover {
-    background-color: #f0f4ff;
-}
-
 /* Botón Crear cuenta */
 .boton-cuenta.crear {
     background-color: #000C8F;
     color: white;
     border: none;
-}
-
-.boton-cuenta.crear:hover {
-    background-color: #003D7A;
 }
 
 @keyframes fadeIn {
