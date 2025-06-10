@@ -24,12 +24,12 @@ const BotonFiltro = ({ onSelect }) => {
         {
             label: 'Mayor precio',
             value: 'precio_mayor',
-            icon: <ArrowTrendingUpIcon className="icono-opcion color-verde" />
+            icon: <ArrowTrendingUpIcon className="icono-opcion" />
         },
         {
             label: 'Menor precio',
             value: 'precio_menor',
-            icon: <ArrowTrendingDownIcon className="icono-opcion color-rojo" />
+            icon: <ArrowTrendingDownIcon className="icono-opcion" />
         },
         {
             label: 'Categoría',

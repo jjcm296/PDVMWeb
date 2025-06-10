@@ -22,8 +22,6 @@
 }
 
 .boton-filtro-wrapper:hover .boton-filtro-global {
-    background-color: white;
-    color: var(--color-principal, #000c8f);
     border: 2px solid var(--color-principal, #000c8f);
 }
 
