@@ -159,6 +159,18 @@ label {
     padding: 0;
 }
 
+.input-error {
+    border: 2px solid #E30952 !important;
+    background-color: #fff0f3;
+}
+
+.mensaje-error {
+    color: #E30952;
+    font-size: 13px;
+    margin-top: 4px;
+    display: block;
+}
+
 /* 📱 Responsive para móviles */
 @media (max-width: 480px) {
     .menu-login {
