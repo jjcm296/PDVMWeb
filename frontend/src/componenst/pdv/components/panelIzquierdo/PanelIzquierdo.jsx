@@ -46,10 +46,15 @@ const PanelIzquierdo = () => {
 
     return (
         <div className="panel-izquierdo-contenedor">
-            <div className="barra-superior">
-                <Buscador onBuscar={setBusqueda} />
-                <BotonFiltro />
+            <div className="barra-superior-panel-izquierdo">
+                <div className="contenedor-buscador-panel">
+                    <Buscador onBuscar={setBusqueda}/>
+                </div>
+                <div className="contenedor-filtro-panel">
+                    <BotonFiltro/>
+                </div>
             </div>
+
 
             <div className={`productos-scroll ${vista === 'list' ? 'modo-lista' : ''}`}>
                 {productosFiltrados.map((producto, index) =>

@@ -63,11 +63,11 @@ const Productos = () => {
         <div className="pantalla-productos">
             <div className="productos-scroll-contenedor">
                 <div className="barra-superior">
-                    <Buscador onBuscar={setBusqueda} />
+                    <Buscador onBuscar={setBusqueda}/>
                     <div className="botones-superior">
-                        <BotonFiltro />
-                        <BotonAgregar esProducto={false} onClick={() => navigate('/category')} />
-                        <BotonAgregar onClick={abrirModal} />
+                        <BotonFiltro/>
+                        <BotonAgregar esProducto={false} onClick={() => navigate('/category')}/>
+                        <BotonAgregar onClick={abrirModal}/>
                     </div>
                 </div>
 
@@ -101,11 +101,11 @@ const Productos = () => {
                 </div>
 
                 <div className="switch-inferior">
-                    <VistaToggle vista={vista} onCambiarVista={setVista} />
+                    <VistaToggle vista={vista} onCambiarVista={setVista}/>
                 </div>
             </div>
 
-            {mostrarModal && <ModalAgregarProducto onClose={cerrarModal} onSubmit={handleAgregarProducto} />}
+            {mostrarModal && <ModalAgregarProducto onClose={cerrarModal} onSubmit={handleAgregarProducto}/>}
             {productoSeleccionado && (
                 <ModalDetalleProducto
                     producto={productoSeleccionado}

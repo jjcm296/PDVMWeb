@@ -9,8 +9,8 @@
 .contenedor-buscador {
     display: flex;
     width: 100%;
-    max-width: 855px;
-    height: 30px;
+    max-width: 800px;
+    height: 35px;
     border: 2px solid var(--color-principal);
     border-radius: var(--borde-radio);
     background-color: var(--color-fondo);
@@ -32,7 +32,7 @@
 }
 
 .boton-buscador {
-    width: 40px;
+    width: 50px;
     border: none;
     background-color: var(--color-principal);
     color: var(--color-fondo);

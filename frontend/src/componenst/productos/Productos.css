@@ -42,7 +42,14 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.botones-superior {
+    display: flex;
+    gap: 6px; /* menos espacio entre botones */
+    align-items: center;
+    flex-shrink: 0;
 }
 
 .productos-scroll {
@@ -84,29 +91,26 @@
     .switch-inferior {
         justify-content: center;
     }
+
+    .barra-superior {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .botones-superior {
+        justify-content: space-between;
+    }
 }
 
 .fila-superior {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 12px;
     margin-bottom: 16px;
     flex-wrap: wrap;
-}
-
-.contenedor-buscador {
-    flex: 1;
-    min-width: 200px;
-}
-
-.botones-superior {
-    display: flex;
-    gap: 10px;
 }
 
 .boton-agregar {
     padding: 10px 20px;
     font-size: 18px;
 }
-
