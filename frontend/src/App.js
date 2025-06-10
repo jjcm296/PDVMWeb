@@ -12,10 +12,13 @@ import Productos from "./componenst/productos/Productos";
 import Categorias from "./componenst/categorias/Categorias";
 import Suministro from "./componenst/suministro/Suministro";
 import Inventario from "./componenst/invetario/Inventario";
+import ModalAviso from "./componenst/modals/modalAvisos/ModalAviso";
+
 
 function App() {
   return (
       <Router>
+          <ModalAviso/>
           <header>
               <BarraNavegacion/>
               <Routes>
