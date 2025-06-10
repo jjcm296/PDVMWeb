@@ -61,3 +61,10 @@ button:active {
   box-shadow: 0 2px 4px rgba(0, 12, 143, 0.4);
   filter: brightness(0.95);
 }
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #E6F0FF !important; /* Color de fondo del body */
+  font-family: sans-serif; /* o el que estés usando */
+}
