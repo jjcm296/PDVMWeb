@@ -1,0 +1,108 @@
+.boton-filtro-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.boton-filtro-global {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    justify-content: center;
+    height: 40px;
+    width: 130px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: var(--color-principal, #000c8f);
+    color: white;
+    border: none;
+    border-radius: var(--radio-panel, 10px);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.boton-filtro-wrapper:hover .boton-filtro-global {
+    border: 2px solid var(--color-principal, #000c8f);
+}
+
+
+.filtro-dropdown {
+    position: absolute;
+    top: 100%; /* justo debajo del botón sin espacio */
+    right: 0;
+    background-color: white;
+    border: 2px solid var(--color-principal, #000c8f);
+    border-radius: 10px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 160px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    font-family: 'Segoe UI', sans-serif;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.boton-filtro-wrapper:hover .filtro-dropdown {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+.filtro-dropdown li {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.filtro-dropdown li:hover {
+    background-color: #f2f2f2;
+    color: var(--color-principal, #000c8f);
+}
+
+.icono-chevron {
+    width: 16px;
+    height: 16px;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
+.icono-opcion {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.color-verde {
+    color: #1a7f37; /* Verde oscuro para mayor precio */
+}
+
+.color-rojo {
+    color: #b91c1c; /* Rojo oscuro para menor precio */
+}
+
+.rotado {
+    transform: rotate(180deg);
+}
+
+.icono-opcion.rotado {
+    transform: rotate(180deg);
+}
+
+.etiqueta-seleccion {
+    margin-left: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #000c8f;
+    white-space: nowrap;
+}
+
+.icono-categoria-activo {
+    background-color: #000c8f; /* fondo azul */
+    color: white;
+    padding: 4px;
+    border-radius: 4px;
+}

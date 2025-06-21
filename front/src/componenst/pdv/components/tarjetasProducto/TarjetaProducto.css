@@ -1,0 +1,202 @@
+:root {
+    --color-principal: #000c8f;
+    --color-fondo: #ffffff;
+    --color-hover: #244876;
+    --color-seleccionado: #20D408;
+    --borde-radio: 14px;
+    --fuente: 'Segoe UI', sans-serif;
+}
+
+/* TARJETA CUADRADA */
+.tarjeta-producto {
+    width: 130px;
+    height: 190px;
+    margin: 0; /* 🔥 quita separación extra */
+    padding: 0; /* asegura cero relleno */
+    border: 2px solid var(--color-principal);
+    border-radius: var(--borde-radio);
+    background-color: var(--color-fondo);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    transition: transform 0.3s ease;
+    box-sizing: border-box;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+
+.tarjeta-producto:hover {
+    transform: scale(1.05);
+}
+
+.imagen-producto {
+    height: 90px;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nombre-producto {
+    font-size: 14px;
+    color: var(--color-principal);
+    font-weight: bold;
+    padding: 2px 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* PRECIO ESTILO BADGE */
+.precio-producto {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--color-principal);
+    background-color: #f4f4f4;
+    padding: 4px 8px;
+    border-radius: 8px;
+    margin: 4px auto 0 auto;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+    display: inline-block;
+}
+
+/* BOTÓN AGREGAR */
+.boton-agregar {
+    height: 35px;
+    width: 100%;
+    border: none;
+    background-color: var(--color-principal);
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 2px solid var(--color-principal);
+    border-bottom-left-radius: var(--borde-radio);
+    border-bottom-right-radius: var(--borde-radio);
+    margin-top: auto;
+    flex-shrink: 0;
+    padding: 0;
+}
+
+/* HOVER GENERAL */
+.boton-agregar:hover {
+    background-color: var(--color-fondo);
+    color: var(--color-principal);
+}
+
+/* ✅ CAMBIO VISUAL SOLO EN MODO PDV AL HACER HOVER EN LA TARJETA */
+.modo-pdv.tarjeta-producto:hover .boton-agregar {
+    background-color: var(--color-fondo);
+    color: var(--color-principal);
+}
+
+.modo-pdv.tarjeta-producto {
+    cursor: pointer;
+}
+
+/* TARJETA BARRA (SIN CAMBIOS) */
+.tarjeta-barra {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 45px;
+    border: 2px solid var(--color-principal);
+    border-radius: var(--borde-radio);
+    background-color: var(--color-fondo);
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+    padding: 0 10px;
+    gap: 10px;
+}
+
+.tarjeta-barra:hover {
+    transform: scale(1.01);
+}
+
+.nombre-barra {
+    flex: 1;
+    font-size: 14px;
+    color: var(--color-principal);
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.precio-barra {
+    font-size: 14px;
+    color: #444;
+    font-weight: bold;
+    white-space: nowrap;
+    margin-right: 8px;
+}
+
+.tarjeta-barra .boton-barra {
+    height: 100%;
+    width: 40px;
+    background-color: var(--color-principal);
+    color: var(--color-fondo);
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-left: 2px solid var(--color-principal);
+    border-top-right-radius: var(--borde-radio);
+    border-bottom-right-radius: var(--borde-radio);
+}
+
+.tarjeta-barra .boton-barra:hover {
+    background-color: var(--color-fondo);
+    color: var(--color-principal);
+}
+
+.tarjeta-producto.sin-stock {
+    border-color: #cc0000;
+}
+
+.tarjeta-producto.sin-stock .nombre-producto {
+    color: #cc0000;
+}
+
+.tarjeta-producto.sin-stock .precio-producto {
+    color: #cc0000;
+}
+
+.tarjeta-producto.sin-stock .boton-agregar {
+    background-color: #cc0000;
+    border-top: 2px solid #cc0000;
+}
+
+.tarjeta-producto.sin-stock .boton-agregar:hover {
+    background-color: var(--color-fondo);
+    color: #cc0000;
+}
+
+.tarjeta-producto.sin-stock.modo-pdv:hover .boton-agregar {
+    background-color: var(--color-fondo);
+    color: #cc0000;
+}
+
+.alerta-sin-stock {
+    color: #cc0000;
+    font-weight: bold;
+    font-size: 13px;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.alerta-sin-stock i {
+    font-size: 14px;
+}

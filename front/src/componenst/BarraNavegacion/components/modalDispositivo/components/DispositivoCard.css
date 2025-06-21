@@ -1,0 +1,124 @@
+.tarjeta-dispositivo {
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    padding: 10px 10px;
+    width: 100%;
+    min-width: 250px;
+    max-width: 290px;
+    transition: all 0.25s ease;
+    border-left: 4px solid #000C8F !important;
+    background-color: #fff;
+    box-shadow:
+            0 4px 8px rgba(0, 0, 0, 0.08),
+            0 1px 2px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e6e6e6;
+    cursor: pointer;
+}
+
+.tarjeta-dispositivo:hover {
+    background-color: #A3C8FF;
+    box-shadow:
+            0 8px 20px rgba(0, 12, 143, 0.15),
+            0 2px 6px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+}
+
+.dispositivo-icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icono-cel {
+    width: 26px;
+    height: 26px;
+    color: #000C8F;
+}
+
+.dispositivo-info-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    gap: 10px;
+    flex-wrap: nowrap;
+}
+
+.dispositivo-detalles {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+}
+
+.dispositivo-nombre {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+    color: #000C8F;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.estado {
+    font-size: 12px;
+    margin-top: 4px;
+    font-weight: 500;
+}
+
+.verde {
+    color: #20D408;
+}
+
+.gris {
+    color: #999;
+}
+
+.boton-wrapper {
+    flex-shrink: 0;
+}
+.boton-toggle {
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    white-space: nowrap;
+    max-height: 32px;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    background-color: transparent; /* será sobreescrito */
+    color: inherit;
+    transition: transform 0.1s ease;
+}
+
+/* 🔒 Evita que se vea diferente al pasar el cursor o enfocar */
+.boton-toggle:hover,
+.boton-toggle:focus,
+.boton-toggle:focus-visible,
+.boton-toggle:active,
+.boton-toggle:target {
+    background-color: inherit !important;
+    color: inherit !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Escala al hacer clic */
+.boton-toggle:active {
+    transform: scale(0.96);
+}
+
+/* Estilos específicos */
+.boton-toggle.conectar {
+    background-color: #20D408 !important;
+    color: white !important;
+}
+
+.boton-toggle.desconectar {
+    background-color: #E30952 !important;
+    color: white !important;
+}

@@ -1,0 +1,35 @@
+.inventario-scroll {
+    flex: 1;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 10px;
+    padding: 30px 24px;
+    width: 100%;
+}
+
+.inventario-scroll.modo-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    padding: 30px;
+}
+
+.tarjeta-inventario {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 18px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease;
+}
+
+.tarjeta-inventario:hover {
+    transform: scale(1.03);
+}
+
+.productos-scroll.modo-lista .tarjeta-inventario {
+    width: 100%;
+}
+

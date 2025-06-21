@@ -1,0 +1,65 @@
+.modal-desarrollo-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.modal-desarrollo {
+    background: white;
+    border-radius: 16px;
+    padding: 24px 32px;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-logo {
+    width: 250px;
+    filter: brightness(0) saturate(100%) invert(7%) sepia(91%) saturate(7527%) hue-rotate(223deg) brightness(87%) contrast(104%);
+    animation: slideDownFade 1s ease-in-out;
+}
+
+.modal-desarrollo h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #000C8F;
+}
+
+.modal-desarrollo p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.modal-desarrollo-boton {
+    padding: 10px 20px;
+    background-color: #000C8F;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.modal-desarrollo-boton:hover {
+    background-color: #244876;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
