@@ -1,12 +1,66 @@
-# React + Vite
+# Frontend de VenCloud
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este es el frontend del sistema de vencloud desarrollado con **Vite + React**. Se conecta a un backend desplegado en **Render**, y el cliente se encuentra desplegado en **Vercel**.
 
-Currently, two official plugins are available:
+## 🚀 Tecnologías utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Vite
+- React
+- React Router DOM
+- Axios
+- Heroicons
+- FontAwesome
 
-## Expanding the ESLint configuration
+## ⚙️ Variables de entorno
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Para desarrollo local (`.env`)
+VITE_BACKEND_URL=http://localhost:8080
+
+### Para producción (`.env.production`)
+VITE_BACKEND_URL=https://pdv-zabi.onrender.com
+
+## 📦 Instalación
+
+### Clona el repositorio
+git clone https://github.com/jjcm296/PDVMWeb.git
+
+### Entra a la carpeta del frontend
+cd front
+
+### Instala las dependencias
+npm install
+
+## 🧪 Comandos disponibles
+
+### Levanta el servidor de desarrollo
+npm run dev
+
+### Compila para producción
+npm run build
+
+### Previsualiza la versión compilada
+npm run preview
+
+### Linting
+npm run lint
+
+## 🚀 Despliegue automático (CI/CD)
+
+Este proyecto usa despliegue continuo con Vercel:
+
+### Se despliega automáticamente cuando haces push a las ramas main o develop.
+
+### Otras ramas están ignoradas mediante la configuración de vercel.json.
+
+```json
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "ignoreCommand": "if [ \"$VERCEL_GIT_BRANCH\" != \"main\" ] && [ \"$VERCEL_GIT_BRANCH\" != \"develop\" ]; then exit 1; fi"
+}
+```
+
+## 🌐 Producción
+
+### Frontend: https://pdv-web-psi.vercel.app/
+### Backend: https://pdv-zabi.onrender.com
