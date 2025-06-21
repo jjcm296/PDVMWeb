@@ -1,1 +1,5 @@
-{ "ignoreCommand": "if [ \"$VERCEL_GIT_BRANCH\" != \"main\" ] && [ \"$VERCEL_GIT_BRANCH\" != \"develop\" ]; then exit 1; fi" } 
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "ignoreCommand": "if [ \"$VERCEL_GIT_BRANCH\" != \"main\" ] && [ \"$VERCEL_GIT_BRANCH\" != \"develop\" ]; then exit 1; fi"
+}
