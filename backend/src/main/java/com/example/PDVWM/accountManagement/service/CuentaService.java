@@ -1,6 +1,6 @@
 package com.example.PDVWM.accountManagement.service;
 
-import com.example.PDVWM.accountManagement.model.Cuenta;
+import com.example.PDVWM.accountManagement.model.Account;
 import com.example.PDVWM.accountManagement.repository.CuentaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -29,11 +29,11 @@ public class CuentaService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public Cuenta guardarCuenta(Cuenta cuenta, String codigoIngresado) {
+    public Account guardarCuenta(Account account, String codigoIngresado) {
         // Verificar si el código de verificación ingresado es correcto
-        if (codigoVerificacionValido(cuenta.getCorreo(), codigoIngresado)) {
-            cuenta.setContrasena(passwordEncoder.encode(cuenta.getContrasena()));
-            return cuentaRepository.save(cuenta);
+        if (codigoVerificacionValido(account.getLogin(), codigoIngresado)) {
+            account.setPassword(passwordEncoder.encode(account.getPassword()));
+            return cuentaRepository.save(account);
         } else {
             throw new RuntimeException("Código de verificación incorrecto");
         }
