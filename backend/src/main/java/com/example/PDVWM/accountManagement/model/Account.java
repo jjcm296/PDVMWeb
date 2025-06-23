@@ -2,6 +2,7 @@ package com.example.PDVWM.accountManagement.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,12 +33,6 @@ public class Account {
 
     public Account() {}
 
-    public Account(String userName, String login, String password) {
-        this.userName = userName;
-        this.login = login;
-        this.password = password;
-    }
-
     public Long getIdAccount() {
         return idAccount;
     }
@@ -46,12 +41,12 @@ public class Account {
         this.idAccount = idAccount;
     }
 
-    public String getUserName() {
+    public Serializable getUsername() {
         return userName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String usuarioTemporal) {
+        this.userName = usuarioTemporal;
     }
 
     public String getLogin() {
@@ -76,5 +71,13 @@ public class Account {
 
     public void setUsers(List<User> users) {
         this.users = users;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

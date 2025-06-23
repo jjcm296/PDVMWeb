@@ -19,24 +19,20 @@ public class Business {
 
     @OneToMany(mappedBy = "business", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<User> users = new ArrayList<>();
-    
-    
 
     public Business() {}
-
-    public Business(String name) {
-        this.name = name;
-    }
-
-    public Business(String name, List<User> users) {
-        this.name = name;
-        this.users = users;
-    }
 
     public void addUser(User user) {
         user.setBusiness(this);
         this.users.add(user);
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
 

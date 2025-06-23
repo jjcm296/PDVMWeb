@@ -3,7 +3,7 @@ package com.example.PDVWM.accountManagement.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="Usuario")
+@Table(name="Users")
 public class User {
 
     @Id
