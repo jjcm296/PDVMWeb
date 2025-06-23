@@ -12,15 +12,15 @@ public class Business {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idNegocio")
-    private Long businessId;
+    private Long idBusiness;
 
     @Column(name = "nombre", nullable = false)
     private String name;
 
     @OneToMany(mappedBy = "business", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<User> users = new ArrayList<>();
-
-
+    
+    
 
     public Business() {}
 
