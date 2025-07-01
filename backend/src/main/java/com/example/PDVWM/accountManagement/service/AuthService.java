@@ -16,10 +16,7 @@ import org.springframework.stereotype.Service;
 import javax.mail.*;
 import javax.mail.internet.*;
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Random;
+import java.util.*;
 
 @Service
 public class AuthService {
@@ -162,5 +159,27 @@ public class AuthService {
     private boolean isVerificationCodeValid(String email, String enteredCode) {
         String storedCode = verificationCodes.get(email);
         return storedCode != null && storedCode.equals(enteredCode);
+    }
+
+    public Map<String, Object> refreshAccessToken(String refreshToken) {
+        Session session = sessionRepository.findByRefreshToken(refreshToken)
+                .orElseThrow(() -> new IllegalArgumentException("Sesión no encontrada para el token proporcionado."));
+
+        if (session.getExpiresAt().isBefore(LocalDateTime.now())) {
+            sessionRepository.delete(session);
+            throw new IllegalArgumentException("El token de actualización ha expirado.");
+        }
+
+        if (!jwtService.validateToken(refreshToken)) {
+            throw new IllegalArgumentException("El token de actualización no es válido.");
+        }
+
+        Account account = session.getAccount();
+        String newAccessToken = jwtService.generateAccessToken(account);
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("accessToken", newAccessToken);
+
+        return response;
     }
 }

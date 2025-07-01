@@ -37,4 +37,21 @@ public class AuthController {
             return ResponseEntity.internalServerError().body("No se pudo registrar la cuenta: " + e.getMessage());
         }
     }
+
+    @PostMapping("/refresh-token")
+    public ResponseEntity<?> refreshToken(@RequestBody Map<String, String> request) {
+        String refreshToken = request.get("refreshToken");
+        if (refreshToken == null || refreshToken.isEmpty()) {
+            return ResponseEntity.badRequest().body("El token de actualización es requerido.");
+        }
+
+        try {
+            Map<String, Object> response = authService.refreshAccessToken(refreshToken);
+            return ResponseEntity.ok(response);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body("No se pudo actualizar el token: " + e.getMessage());
+        }
+    }
 }

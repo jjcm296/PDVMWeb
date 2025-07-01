@@ -73,4 +73,9 @@ public class JwtService {
                 .getBody();
         return claimsResolver.apply(claims);
     }
+
+    public String generateAccessToken(Account account) {
+        return generateToken(account.getLogin(), account.getRole().name(), accessTokenExpiration);
+    }
+
 }
